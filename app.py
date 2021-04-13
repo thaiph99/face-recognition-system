@@ -57,12 +57,12 @@ def delete_user_by_id(user_id):
     # also delete all faces with user id
     app.db.delete('DELETE FROM faces WHERE faces.user_id = ?', [user_id])
 
-#   Route for Hompage
+
+#   Route for Homepage
 
 
 @app.route('/', methods=['GET'])
 def page_home():
-
     return render_template('index.html')
 
 
@@ -160,7 +160,7 @@ def recognize():
         return error_handle("Image is required")
     else:
         file = request.files['file']
-        # file extension valiate
+        # file extension validate
         if file.mimetype not in app.config['file_allowed']:
             return error_handle("File extension is not allowed")
         else:
