@@ -21,22 +21,21 @@
     </ul>
     <div id="train-content">
         <h2>Train it</h2>
-        <form method="post" id="train">
+        <form method="post" id="train" >
             <div class="message">
-
             </div>
             <p class="description">Pre-training our service. Upload an image contain the face and give it full name for
                 recognize later</p>
             <div class="form-item">
                 <label for="input-file">Face image</label>
-                <input type="file" name="file" id="input-file" accept="image/*"/>
+                <input multiple type="file" name="file[]" id="input-file" accept="image/*"/>
             </div>
             <div class="form-item">
                 <label>Full name</label>
                 <input id="name-field" name="name" value="" type="text" placeholder="Full name"/>
             </div>
             <div class="form-action">
-                <button type="submit">Begin train it</button>
+                <input type="submit" value="Begin train it"/>
             </div>
         </form>
     </div>

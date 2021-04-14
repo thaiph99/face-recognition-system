@@ -57,7 +57,7 @@ $(document).ready(function () {
 
 
         //set file object to train_data
-        train_data.file = _.get(event, 'target.files[0]', null);
+        train_data.file = _.get(event, 'target.files', null);
 
 
     });
@@ -105,8 +105,16 @@ $(document).ready(function () {
 
             var train_form_data = new FormData();
 
+            console.log(train_data)
             train_form_data.append('name', train_data.name);
-            train_form_data.append('file', train_data.file);
+//            train_form_data.append('file[]', train_data.file[0]);
+            for(let value of Object.values(train_data.file)) {
+                train_form_data.append('file[]', value);
+            }
+
+            for (var value of train_form_data.values()) {
+               console.log(value);
+            }
 
             axios.post('/api/train', train_form_data).then(function (response) {
 

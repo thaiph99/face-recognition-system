@@ -38,14 +38,10 @@ def homepage():
 
 @app.route('/api/train', methods=['POST'])
 def train():
-    print(app.config['dir'])
-    print(len(request.files))
-    print(request.files)
-    uploaded_files = request.files.getlist("file[]")
-    print(len(uploaded_files))
+    uploaded_files = request.files.getlist("files")
     for file in uploaded_files:
-        print(file.filename)
         file.save(path.join(app.config['dir'], file.filename))
+        print(file.filename)
 
     # if 'file' not in request.files:
     #     print("Face image is required")
@@ -59,7 +55,6 @@ def train():
     #         return error_handle("We are only allow upload file with *.png , *.jpg")
     #     else:
     #         name = request.form['name']
-    return success_handle('accepted Pham Hong Thai')
 
 
 def get_user_by_id(user_id):

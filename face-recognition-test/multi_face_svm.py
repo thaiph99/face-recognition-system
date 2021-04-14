@@ -34,7 +34,7 @@ import os
 import json
 import numpy as np
 from json import JSONEncoder
-import matplotlib.pyplot as plt
+import pickle
 
 # Training the SVC classifier
 
@@ -111,6 +111,11 @@ print(len(vec_face))
 clf = svm.SVC(gamma='scale')
 print('training face')
 clf.fit(vec_face, list_name)
+
+# save model
+filename = 'svm_model.sav'
+pickle.dump(clf, open(filename, 'wb'))
+
 print('done')
 
 # Load the test image with unknown faces into a numpy array
@@ -121,9 +126,11 @@ face_locations = face_recognition.face_locations(test_image)
 no = len(face_locations)
 print("Number of faces detected: ", no)
 
+# load model
+model = pickle.load(open(filename, 'rb'))
 # Predict all the faces in the test image using the trained classifier
 print("Found:")
 for i in range(no):
     test_image_enc = face_recognition.face_encodings(test_image)[i]
-    name = clf.predict([test_image_enc])
+    name = model.predict([test_image_enc])
     print(*name)
