@@ -1,74 +1,82 @@
 import face_recognition
-from os import path
+from sklearn import svm
+import os
+import json
+import numpy as np
+from json import JSONEncoder
+import pickle
 
 
-class Face:
+class Model:
     def __init__(self, app):
+        # for training
+        self.storage_temporary = app.config['storage_temporary']
         self.storage = app.config["storage"]
-        self.db = app.db
-        self.faces = []  # storage all faces in caches array of face object
-        self.known_encoding_faces = []  # faces data for recognition
-        self.face_user_keys = {}
-        self.load_all()
+        # for recognition
+        self.faces_encoded = []  # faces data for recognition
+        self.faces_name = []
+        self.model = None
 
-    def load_user_by_index_key(self, index_key=0):
+        self.__load_model()
+        self.__load_data()
 
-        key_str = str(index_key)
+    def __load_model(self):
+        filename = self.storage + 'svm_model'
+        self.model = pickle.load(open(filename, 'rb'))
 
-        if key_str in self.face_user_keys:
-            return self.face_user_keys[key_str]
+    def __load_data(self):
+        filename = self.storage + 'faces_data.json'
+        with open(filename, 'r') as f:
+            data = json.load(f)
 
-        return None
+        for name in data.keys():
+            for fa in data[name]:
+                self.faces_encoded.append(fa)
+                self.faces_name.append(name)
 
-    def load_train_file_by_name(self, name):
-        trained_storage = path.join(self.storage, 'trained')
-        return path.join(trained_storage, name)
+    def __save_date(self):
+        filename = self.storage + 'faces_data.json'
+        with open('face_data.json', 'w') as f:
+            json.dump(filename, f, cls=NumpyArrayEncoder)
 
-    def load_unknown_file_by_name(self, name):
-        unknown_storage = path.join(self.storage, 'unknown')
-        return path.join(unknown_storage, name)
+    def __append_new_face(self, name):
+        filename = self.storage_temporary
+        pix = os.listdir(filename)
 
-    def load_all(self):
+        for img in pix:
+            face = face_recognition.load_image_file(filename + '/' + img)
+            face_bounding_boxes = face_recognition.face_locations(face)
+            if len(face_bounding_boxes) == 1:
+                face_enc = face_recognition.face_encodings(face)[0]
+                self.faces_encoded.append(face_enc)
+                self.faces_name.append(name)
 
-        results = self.db.select('SELECT faces.id, faces.user_id, faces.filename, faces.created FROM faces')
+    def save_model(self):
+        filename = self.storage + 'svm_model'
+        pickle.dump(self.model, open(filename, 'wb'))
 
-        for row in results:
+    def train(self, name):
+        """
+        :param name:
+        :return: 1 if train success else 0
+        """
+        if name in self.faces_name:
+            return 0
 
-            user_id = row[1]
-            filename = row[2]
+        self.__append_new_face(name)
+        self.model = svm.SVC(gamma='scale')
+        self.model.fit(self.faces_encoded, self.faces_name)
+        self.save_model()
+        return 1
 
-            face = {
-                "id": row[0],
-                "user_id": user_id,
-                "filename": filename,
-                "created": row[3]
-            }
-            self.faces.append(face)
+    def recognize(self):
+        """
+        :return: 1 if detect old faces else 0
+        """
+        
 
-            face_image = face_recognition.load_image_file(self.load_train_file_by_name(filename))
-            face_image_encoding = face_recognition.face_encodings(face_image)[0]
-            index_key = len(self.known_encoding_faces)
-            self.known_encoding_faces.append(face_image_encoding)
-            index_key_string = str(index_key)
-            self.face_user_keys['{0}'.format(index_key_string)] = user_id
-
-    def recognize(self, unknown_filename):
-        unknown_image = face_recognition.load_image_file(self.load_unknown_file_by_name(unknown_filename))
-        unknown_encoding_image = face_recognition.face_encodings(unknown_image)[0]
-
-        results = face_recognition.compare_faces(self.known_encoding_faces, unknown_encoding_image);
-
-        print("results", results)
-
-        index_key = 0
-        for matched in results:
-
-            if matched:
-                # so we found this user with index key and find him
-                user_id = self.load_user_by_index_key(index_key)
-
-                return user_id
-
-            index_key = index_key + 1
-
-        return None
+class NumpyArrayEncoder(JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.ndarray):
+            return obj.tolist()
+        return JSONEncoder.default(self, obj)

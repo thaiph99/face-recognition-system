@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 app.config['file_allowed'] = ['image/png', 'image/jpeg', 'image/jpg']
 app.config['storage'] = path.join(getcwd(), 'storage')
-app.config['dir'] = path.join(getcwd(), 'store_temporary')
+app.config['dir'] = path.join(getcwd(), 'storage_temporary')
 app.db = Database()
 app.face = Face(app)
 
