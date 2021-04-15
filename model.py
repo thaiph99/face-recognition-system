@@ -1,3 +1,5 @@
+__author__ = 'thaiph99'
+
 import face_recognition
 from sklearn import svm
 import os
@@ -28,7 +30,8 @@ class Model:
         filename = self.storage + '/' + 'face_data.json'
         with open(filename, 'r') as f:
             data = json.load(f)
-
+        self.faces_encoded = []
+        self.faces_name = []
         for name in data.keys():
             for fa in data[name]:
                 self.faces_encoded.append(fa)
@@ -62,6 +65,8 @@ class Model:
         pix = os.listdir(filename)
 
         for img in pix:
+            if img == '.gitignore':
+                continue
             face = face_recognition.load_image_file(filename + '/' + img)
             face_bounding_boxes = face_recognition.face_locations(face)
             if len(face_bounding_boxes) == 1:
@@ -111,8 +116,13 @@ class Model:
         """
         :return: name of old people in image
         """
+        filename = ''
         filename_dir = self.storage_temporary
-        filename = os.listdir(filename_dir)[0]
+        for i in os.listdir(filename_dir):
+            if i != '.gitignore':
+                filename = i
+                break
+
         path = self.storage_temporary + '/' + filename
         test_img = face_recognition.load_image_file(path)
         test_img_encs = face_recognition.face_encodings(test_img)

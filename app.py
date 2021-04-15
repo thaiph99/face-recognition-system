@@ -1,3 +1,5 @@
+__author__ = 'thaiph99'
+
 from flask import Flask, json, Response, request, render_template
 from werkzeug.utils import secure_filename
 from os import path, getcwd
@@ -37,15 +39,14 @@ def homepage():
 def train():
     name = request.form['name']
     uploaded_files = request.files.getlist("file[]")
-    if len(uploaded_files) > 0:
-        print('upload done')
-    else:
+    if len(uploaded_files) == 0 or name in set(app.model.faces_name):
         print('upload failed')
+        return error_handle('upload failed')
 
     for file in uploaded_files:
         file.save(path.join(app.config['storage_temporary'], file.filename))
-
     app.model.train(name)
+    print('upload done')
     return success_handle('accepted')
 
 
