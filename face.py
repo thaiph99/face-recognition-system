@@ -55,7 +55,7 @@ class Face:
         unknown_image = face_recognition.load_image_file(self.load_unknown_file_by_name(unknown_filename))
         unknown_encoding_image = face_recognition.face_encodings(unknown_image)[0]
 
-        results = face_recognition.compare_faces(self.known_encoding_faces, unknown_encoding_image);
+        results = face_recognition.compare_faces(self.known_encoding_faces, unknown_encoding_image)
 
         print("results", results)
 

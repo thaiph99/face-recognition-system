@@ -112,6 +112,20 @@ class Model:
         self.__save_model()
         self.__save_data()
 
+    def is_unknown_faces(self, unknown_face):
+        """
+        :param unknown_face:
+        :return: True if unknown face else False
+        """
+        list_cmp = []
+        for i in range(1, len(self.faces_name)):
+            if self.faces_name[i - 1] != self.faces_name[i]:
+                list_cmp.append(self.faces_encoded[i])
+        if self.faces_name[0] != self.faces_name[1]:
+            list_cmp.append(self.faces_encoded[0])
+        results = face_recognition.compare_faces(list_cmp, unknown_face)
+        return True in results
+
     def recognize(self):
         """
         :return: name of old people in image
@@ -128,7 +142,10 @@ class Model:
         test_img_encs = face_recognition.face_encodings(test_img)
         list_name_predict = []
         for face_enc in test_img_encs:
-            name = self.model.predict(face_enc.reshape(1, -1))
+            if not self.is_unknown_faces(face_enc):
+                name = 'unknown face'
+            else:
+                name = self.model.predict(face_enc.reshape(1, -1))
             list_name_predict += list(name)
         print(list_name_predict)
         os.remove(path)
