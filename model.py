@@ -12,20 +12,20 @@ class Model:
         # for training
         self.storage_temporary = app.config['storage_temporary']
         self.storage = app.config["storage"]
-        # for recognition
-        self.faces_encoded = []  # faces data for recognition
+        self.faces_encoded = []
         self.faces_name = []
+        # for recognition
         self.model = None
 
         self.__load_model()
         self.__load_data()
 
     def __load_model(self):
-        filename = self.storage + 'svm_model'
+        filename = self.storage + '/' + 'svm_model.sav'
         self.model = pickle.load(open(filename, 'rb'))
 
     def __load_data(self):
-        filename = self.storage + 'faces_data.json'
+        filename = self.storage + '/' + 'face_data.json'
         with open(filename, 'r') as f:
             data = json.load(f)
 
@@ -39,6 +39,24 @@ class Model:
         with open('face_data.json', 'w') as f:
             json.dump(filename, f, cls=NumpyArrayEncoder)
 
+    def delete_face(self, name_del):
+        json_file = {}
+        for name in self.faces_name:
+            if name == name_del:
+                continue
+            json_file[name] = []
+        for i in range(len(self.faces_encoded)):
+            if self.faces_name[i] == name_del:
+                continue
+            json_file[self.faces_name[i]].append(self.faces_encoded[i])
+
+        filename = self.storage + '/' + 'face_data.json'
+        with open(filename, 'w') as f:
+            json.dump(json_file, f, cls=NumpyArrayEncoder)
+        self.__load_model()
+        self.__load_data()
+        self.train_again()
+
     def __append_new_face(self, name):
         filename = self.storage_temporary
         pix = os.listdir(filename)
@@ -50,10 +68,23 @@ class Model:
                 face_enc = face_recognition.face_encodings(face)[0]
                 self.faces_encoded.append(face_enc)
                 self.faces_name.append(name)
+            # clear storage temporary
+            os.remove(filename + '/' + img)
 
-    def save_model(self):
-        filename = self.storage + 'svm_model'
+    def __save_model(self):
+        filename = self.storage + '/' + 'svm_model.sav'
         pickle.dump(self.model, open(filename, 'wb'))
+
+    def __save_data(self):
+        json_file = {}
+        for name in self.faces_name:
+            json_file[name] = []
+        for i in range(len(self.faces_encoded)):
+            json_file[self.faces_name[i]].append(self.faces_encoded[i])
+
+        filename = self.storage + '/' + 'face_data.json'
+        with open(filename, 'w') as f:
+            json.dump(json_file, f, cls=NumpyArrayEncoder)
 
     def train(self, name):
         """
@@ -66,14 +97,33 @@ class Model:
         self.__append_new_face(name)
         self.model = svm.SVC(gamma='scale')
         self.model.fit(self.faces_encoded, self.faces_name)
-        self.save_model()
+        self.__save_model()
+        self.__save_data()
         return 1
+
+    def train_again(self):
+        self.model = svm.SVC(gamma='scale')
+        self.model.fit(self.faces_encoded, self.faces_name)
+        self.__save_model()
+        self.__save_data()
 
     def recognize(self):
         """
-        :return: 1 if detect old faces else 0
+        :return: name of old people in image
         """
-        
+        filename_dir = self.storage_temporary
+        filename = os.listdir(filename_dir)[0]
+        path = self.storage_temporary + '/' + filename
+        test_img = face_recognition.load_image_file(path)
+        test_img_encs = face_recognition.face_encodings(test_img)
+        list_name_predict = []
+        for face_enc in test_img_encs:
+            name = self.model.predict(face_enc.reshape(1, -1))
+            list_name_predict += list(name)
+        print(list_name_predict)
+        os.remove(path)
+        return list_name_predict
+
 
 class NumpyArrayEncoder(JSONEncoder):
     def default(self, obj):

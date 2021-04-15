@@ -2,14 +2,15 @@ from flask import Flask, json, Response, request, render_template
 from werkzeug.utils import secure_filename
 from os import path, getcwd
 import time
-from face import Face
+from model import Model
+from collections import Counter
 
 app = Flask(__name__)
 
 app.config['file_allowed'] = ['image/png', 'image/jpeg', 'image/jpg']
 app.config['storage'] = path.join(getcwd(), 'storage')
 app.config['storage_temporary'] = path.join(getcwd(), 'storage_temporary')
-app.face = Face(app)
+app.model = Model(app)
 
 
 def success_handle(output, status=200, mimetype='application/json'):
@@ -42,21 +43,9 @@ def train():
         print('upload failed')
 
     for file in uploaded_files:
-        file.save(path.join(app.config['dir'], file.filename))
+        file.save(path.join(app.config['storage_temporary'], file.filename))
 
-
-    # if 'file' not in request.files:
-    #     print("Face image is required")
-    #     return error_handle("Face image is required.")
-    # else:
-    #     print("File request", request.files)
-    #     file = request.files['file']
-    #
-    #     if file.mimetype not in app.config['file_allowed']:
-    #         print("File extension is not allowed")
-    #         return error_handle("We are only allow upload file with *.png , *.jpg")
-    #     else:
-    #         name = request.form['name']
+    app.model.train(name)
     return success_handle('accepted')
 
 
@@ -72,19 +61,24 @@ def recognize():
             return error_handle("File extension is not allowed")
         else:
             filename = secure_filename(file.filename)
-            unknown_storage = path.join(app.config["storage"], 'unknown')
-            file_path = path.join(unknown_storage, filename)
+            # filename = '/img_test.jpg'
+            # unknown_storage = path.join(app.config["storage"], 'unknown')
+            file_path = path.join(app.config['storage_temporary'], filename)
             file.save(file_path)
-
-            user_id = app.face.recognize(filename)
-            if user_id:
-                user = get_user_by_id(user_id)
-                message = {"message": "Hey we found {0} matched with your face image".format(user["name"]),
-                           "user": user}
+            print(file_path)
+            list_name = app.model.recognize()
+            if len(list_name) != 0:
+                user_name = list_name
+                message = {"message": "Hey we found {0} matched with your face image".format(len(user_name)),
+                           "user": user_name}
                 return success_handle(json.dumps(message))
             else:
                 return error_handle("Sorry we can not found any people matched with your face image, try another image")
 
+
+# app.model.delete_face('ronaldo')
+set_name = Counter(app.model.faces_name)
+print(set_name)
 
 # Run the app
 app.run()

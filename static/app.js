@@ -147,7 +147,7 @@ $(document).ready(function () {
           type: "success",
           message:
             "We found a user matched with your face image is: " +
-            response.data.user.name,
+            response.data.user.toString(),
         };
 
         recognize_data = { file: null };
