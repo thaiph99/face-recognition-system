@@ -6,8 +6,11 @@ from os import path, getcwd
 import time
 from model import Model
 from collections import Counter
+from flask_cors import CORS
+import socket
 
 app = Flask(__name__)
+CORS(app)
 
 app.config['file_allowed'] = ['image/png', 'image/jpeg', 'image/jpg']
 app.config['storage'] = path.join(getcwd(), 'storage')
@@ -82,4 +85,5 @@ set_name = Counter(app.model.faces_name)
 print(set_name)
 
 # Run the app
-app.run()
+app.run(host='0.0.0.0', port='3000')
+# app.run(host='localhost', port=3000)
