@@ -117,14 +117,16 @@ class Model:
         :param unknown_face:
         :return: True if unknown face else False
         """
-        list_cmp = []
+        list_cmp = [self.faces_encoded[0]]
+        print(self.faces_name[0], end=', ')
         for i in range(1, len(self.faces_name)):
             if self.faces_name[i - 1] != self.faces_name[i]:
                 list_cmp.append(self.faces_encoded[i])
-        if self.faces_name[0] != self.faces_name[1]:
-            list_cmp.append(self.faces_encoded[0])
-        results = face_recognition.compare_faces(list_cmp, unknown_face)
-        return True in results
+                print(self.faces_name[i], end=', ')
+        print('\n')
+        results = face_recognition.compare_faces(list_cmp, unknown_face, tolerance=0.5)
+        print(results)
+        return True not in results
 
     def recognize(self):
         """
@@ -141,9 +143,10 @@ class Model:
         test_img = face_recognition.load_image_file(path)
         test_img_encs = face_recognition.face_encodings(test_img)
         list_name_predict = []
+        name = ''
         for face_enc in test_img_encs:
-            if not self.is_unknown_faces(face_enc):
-                name = 'unknown face'
+            if self.is_unknown_faces(face_enc):
+                name = ['unknown face']
             else:
                 name = self.model.predict(face_enc.reshape(1, -1))
             list_name_predict += list(name)

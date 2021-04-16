@@ -1,7 +1,7 @@
 import face_recognition
 import cv2
 
-image = face_recognition.load_image_file("testimg.jpg")
+image = face_recognition.load_image_file("datatest/testimg.jpg")
 face_locations = face_recognition.face_locations(image)
 
 for location in face_locations:
