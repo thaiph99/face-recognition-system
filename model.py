@@ -124,7 +124,7 @@ class Model:
                 list_cmp.append(self.faces_encoded[i])
                 print(self.faces_name[i], end=', ')
         print('\n')
-        results = face_recognition.compare_faces(list_cmp, unknown_face, tolerance=0.5)
+        results = face_recognition.compare_faces(list_cmp, unknown_face)
         print(results)
         return True not in results
 

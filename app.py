@@ -80,7 +80,7 @@ def recognize():
                 return error_handle("Sorry we can not found any people matched with your face image, try another image")
 
 
-# app.model.delete_face('lisa')
+# app.model.delete_face('Hoang Ngoc')
 set_name = Counter(app.model.faces_name)
 print(set_name)
 
