@@ -143,6 +143,8 @@ function main(sources) {
       if (!success) {
         return;
       }
+      console.log("distToLeftEyeX :", distToLeftEyeX);
+      console.log("distToRightEyeX :", distToRightEyeX);
       console.log("Rotation Vector:", rvec.data64F);
       console.log(
         "Rotation Vector (in degree):",
