@@ -87,11 +87,6 @@ if __name__ == "__main__":
     app.run()
 ```
 
-## Database
-
-we can use any database to store user info. in this project i just use sqlite3 support by Python default. Tool for
-design sqlite http://sqlitebrowser.org/
-
 
 
 
