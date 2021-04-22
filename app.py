@@ -43,6 +43,8 @@ def train():
     name = request.form['name']
     uploaded_files = request.files.getlist("file[]")
     if len(uploaded_files) == 0 or name in set(app.model.faces_name):
+        print(len(uploaded_files))
+        print()
         print('upload failed')
         return error_handle('upload failed')
 
@@ -85,5 +87,5 @@ set_name = Counter(app.model.faces_name)
 print(set_name)
 
 # Run the app
-app.run(host='0.0.0.0', port='3000')
-# app.run(host='localhost', port=3000)
+# app.run(host='0.0.0.0', port='3000')
+app.run(host='localhost', port=3000)

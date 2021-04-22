@@ -68,7 +68,7 @@ class Model:
             if img == '.gitignore':
                 continue
             face = face_recognition.load_image_file(filename + '/' + img)
-            face_bounding_boxes = face_recognition.face_locations(face)
+            face_bounding_boxes = face_recognition.face_locations(face, model='cnn')
             if len(face_bounding_boxes) == 1:
                 face_enc = face_recognition.face_encodings(face)[0]
                 self.faces_encoded.append(face_enc)
