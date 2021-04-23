@@ -213,6 +213,7 @@ function main(sources) {
       cv.line(im, pNose, pZ, [255, 0, 0, 255], 2);
       cv.line(im, pNose, p3, [0, 255, 0, 255], 2);
       cv.line(im, pNose, p4, [0, 0, 255, 255], 2);
+      cv.putText('testtext')
       // Display image
       cv.imshow(document.querySelector("canvas"), im);
       im.delete();
