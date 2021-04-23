@@ -6,6 +6,8 @@ import xs from "xstream";
 import { makeDOMDriver } from "@cycle/dom";
 import { run } from "@cycle/run"; //
 import { makePoseDetectionDriver } from "cycle-posenet-driver";
+import html2canvas from "html2canvas";
+import axios from "axios";
 
 function main(sources) {
   // 3D model points
@@ -210,12 +212,28 @@ function main(sources) {
         x: nose_end_point2DX.data64F[0],
         y: nose_end_point2DX.data64F[1],
       };
-      cv.line(im, pNose, pZ, [255, 0, 0, 255], 2);
-      cv.line(im, pNose, p3, [0, 255, 0, 255], 2);
-      cv.line(im, pNose, p4, [0, 0, 255, 255], 2);
-      cv.putText('testtext')
+      // cv.line(im, pNose, pZ, [255, 0, 0, 255], 2);
+      // cv.line(im, pNose, p3, [0, 255, 0, 255], 2);
+      // cv.line(im, pNose, p4, [0, 0, 255, 255], 2);
+      // cv.putText("testtext");
       // Display image
       cv.imshow(document.querySelector("canvas"), im);
+      // split frame
+      html2canvas(document.querySelector("canvas")).then(async function (
+        canvas
+      ) {
+        const base64image = canvas.toDataURL("image/jpg");
+        console.log(base64image);
+        // push data to server
+        if (true) {
+          try {
+            const result = await axios.post("api", { img: base64image });
+            console.log(result);
+          } catch (e) {
+            console.log("error" + e);
+          }
+        }
+      });
       im.delete();
     },
   });

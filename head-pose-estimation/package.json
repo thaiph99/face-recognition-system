@@ -12,7 +12,9 @@
     "@cycle/dom": "22.3.0",
     "@cycle/run": "5.2.0",
     "@mjyc/opencv.js": "1.0.0",
+    "axios": "^0.21.1",
     "cycle-posenet-driver": "0.0.20",
+    "html2canvas": "^1.0.0-rc.7",
     "xstream": "11.7.0"
   },
   "devDependencies": {

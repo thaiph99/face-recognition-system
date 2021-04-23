@@ -7,7 +7,6 @@ import time
 from model import Model
 from collections import Counter
 from flask_cors import CORS
-import socket
 
 app = Flask(__name__)
 CORS(app)
