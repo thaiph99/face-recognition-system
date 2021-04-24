@@ -86,5 +86,5 @@ set_name = Counter(app.model.faces_name)
 print(set_name)
 
 # Run the app
-# app.run(host='0.0.0.0', port='3000')
-app.run(host='localhost', port=3000)
+app.run(host='0.0.0.0', port='3000')
+# app.run(host='localhost', port=3000)

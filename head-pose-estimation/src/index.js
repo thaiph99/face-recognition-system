@@ -225,13 +225,11 @@ function main(sources) {
         const base64image = canvas.toDataURL("image/jpg");
         console.log(base64image);
         // push data to server
-        if (true) {
-          try {
-            const result = await axios.post("api", { img: base64image });
-            console.log(result);
-          } catch (e) {
-            console.log("error" + e);
-          }
+        try {
+          const result = await axios.post("api", { img: base64image });
+          console.log(result);
+        } catch (e) {
+          console.log("error" + e);
         }
       });
       im.delete();
