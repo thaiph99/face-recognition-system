@@ -24,9 +24,10 @@ known_face_names = [
 ]
 
 # Load an image with an unknown face
-unknown_image = face_recognition.load_image_file("datatest/testimg.jpg")
+unknown_image = face_recognition.load_image_file("datatest/messiwiths1.jpg")
 
 # Find all the faces and face encodings in the unknown image
+# face_locations = face_recognition.face_locations(unknown_image, model='cnn')
 face_locations = face_recognition.face_locations(unknown_image)
 face_encodings = face_recognition.face_encodings(unknown_image, face_locations)
 
@@ -60,6 +61,8 @@ for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodi
 
     # Draw a label with a name below the face
     text_width, text_height = draw.textsize(name)
+    draw.line((left, bottom - text_height - 10), fill=(0, 0, 0))
+    draw.line((right, bottom), fill=(0, 0, 0))
     draw.rectangle(((left, bottom - text_height - 10), (right, bottom)), fill=(0, 0, 255), outline=(0, 0, 255))
     draw.text((left + 6, bottom - text_height - 5), name, fill=(255, 255, 255, 255))
 
