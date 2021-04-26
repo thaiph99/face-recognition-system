@@ -1,11 +1,12 @@
 import face_recognition
 import cv2
+
 image = face_recognition.load_image_file("datatest/testimg.jpg")
 face_locations = face_recognition.face_locations(image, model='cnn')
 
 for location in face_locations:
-    start_point = location[:2]
-    end_point = location[2:]
+    start_point = (location[0], location[3])
+    end_point = (location[1], location[2])
     color = (255, 0, 0)
     thickness = 2
     cv2.rectangle(image, start_point, end_point, color, thickness)
