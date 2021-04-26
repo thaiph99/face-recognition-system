@@ -48,7 +48,7 @@ def gen(camera):
 
 @app.route('/regis')
 def regis():
-    print('test --------------------')
+    print('Camera action')
     return Response(gen(VideoCamera()), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
