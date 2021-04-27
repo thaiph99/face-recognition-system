@@ -3,13 +3,11 @@ import dlib
 import numpy as np
 import matplotlib.pyplot as plt
 import _pickle as pkl
-from keras.models import Sequential, load_model
-from keras.layers import Dense
-from keras.callbacks import EarlyStopping
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-
-std = StandardScaler()
+# from keras.models import Sequential, load_model
+# from keras.layers import Dense
+# from keras.callbacks import EarlyStopping
+# from sklearn.model_selection import train_test_split
+# from sklearn.preprocessing import StandardScaler
 
 
 def detect_face_points(image):
@@ -51,7 +49,7 @@ def compute_features(face_points):
 #     cv2.circle(im, (x, y), 1, (0, 255, 0), -1)
 
 # features = compute_features(face_points)
-# features = std.transform(features)
+# features = StandardScaler().fit_transform(features)
 
 # model = load_model('models/model.h5')
 # y_pred = model.predict(features)
@@ -67,7 +65,7 @@ def compute_features(face_points):
 
 
 camera = cv2.VideoCapture(0)
-model = load_model('models/model.h5')
+# model = load_model('models/model.h5')
 
 while True:
     ret, frame = camera.read()
@@ -78,26 +76,30 @@ while True:
         continue
 
     for x, y in face_points:
+        print(x, y)
         cv2.circle(frame, (x, y), 1, (0, 255, 0), -1)
-    print('points : ', face_points)
-    features = compute_features(face_points)
-    # features = StandardScaler.fit(features).transform(features.astype='float')
-    print('type : ',  type(features))
-    features = StandardScaler().fit_transform(features)
+#     # print('points : ', face_points)
+#     features = compute_features(face_points)
+#     # features = StandardScaler.fit(features).transform(features.astype='float')
+#     print('type : ',  type(features))
+#     features = StandardScaler().fit_transform(features)
 
-    y_pred = model.predict(features)
+#     y_pred = model.predict(features)
 
-    roll_pred, pitch_pred, yaw_pred = y_pred[0]
-    roll = (' Roll: {:.2f}°'.format(roll_pred))
-    pitch = ('Pitch: {:.2f}°'.format(pitch_pred))
-    yaw = ('  Yaw: {:.2f}°'.format(yaw_pred))
+#     roll_pred, pitch_pred, yaw_pred = y_pred[0]
+#     roll = (' Roll: {:.2f}°'.format(roll_pred))
+#     pitch = ('Pitch: {:.2f}°'.format(pitch_pred))
+#     yaw = ('  Yaw: {:.2f}°'.format(yaw_pred))
+#     print(roll)
+#     print(pitch)
+#     print(yaw)
 
-    cv2.putText(frame, roll, (10, 100), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1,
-                color=(255, 0, 0), thickness=1)
-    cv2.putText(frame, pitch, (10, 200), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1,
-                color=(255, 0, 0), thickness=1)
-    cv2.putText(frame, yaw, (10, 300), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1,
-                color=(255, 0, 0), thickness=1)
+#     # cv2.putText(frame, roll, (10, 100), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1,
+#     #             color=(255, 0, 0), thickness=1)
+#     # cv2.putText(frame, pitch, (10, 200), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1,
+#     #             color=(255, 0, 0), thickness=1)
+#     # cv2.putText(frame, yaw, (10, 300), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1,
+#     #             color=(255, 0, 0), thickness=1)
 
     cv2.imshow('camera', frame)
     key = cv2.waitKey(1)

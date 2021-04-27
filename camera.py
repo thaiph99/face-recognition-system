@@ -71,6 +71,23 @@ class VideoCamera(object):
                 y = i[1]
                 cv2.circle(frame, (x, y), 2, color=(0, 0, 0), thickness=2)
 
+            ratio1 = abs(points[1][0]-points[4][0])
+            ratio2 = abs(points[3][0]-points[4][0])
+            if ratio2 == 0 or ratio1 == 0:
+                ratio = 0
+            elif ratio1 > ratio2:
+                ratio = ratio1/ratio2
+            else:
+                ratio = -ratio2/ratio1
+            print(ratio)
+            if ratio > 0:
+                recomend = 'HAY QUAY SANG PHAI'
+            else:
+                recomend = 'HAY QUAY SANG TRAI'
+            cv2.putText(frame, str(ratio), org=(
+                10, 10), fontFace=cv2.FONT_HERSHEY_COMPLEX, fontScale=0.5, color=(255, 0, 0))
+            cv2.putText(frame, recomend, org=(
+                10, 50), fontFace=cv2.FONT_HERSHEY_COMPLEX, fontScale=0.5, color=(255, 0, 0))
             
 
             image = dlib.get_face_chip(frame_new, faces, size=320)
