@@ -47,32 +47,32 @@ class VideoCamera(object):
             coords[i] = (shape.part(i).x, shape.part(i).y)
         return coords
 
-    def get_frame(self):
+    def get_frame(self, time):
         frame = self.stream.read()
         frame = cv2.flip(frame, 1)
         frame_new = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         dets = self.detertor(frame_new, 1)
-        for i, det in enumerate(dets):
-            startX = int(det.left())
-            startY = int(det.top())
-            endX = int(det.right())
-            endY = int(det.bottom())
-            cv2.rectangle(frame, (startX, startY),
-                          (endX, endY), (0, 255, 0), 2)
+        if len(dets) == 1:
+            for i, det in enumerate(dets):
+                startX = int(det.left())
+                startY = int(det.top())
+                endX = int(det.right())
+                endY = int(det.bottom())
+                cv2.rectangle(frame, (startX, startY),
+                              (endX, endY), (0, 255, 0), 2)
 
-        faces = dlib.full_object_detections()
-        faces = self.predictor(frame_new, dets[0])
+            faces = dlib.full_object_detections()
+            faces = self.predictor(frame_new, dets[0])
 
-        points = self.shape_to_np(faces)
+            points = self.shape_to_np(faces)
 
-        for i in points:
-            x = i[0]
-            y = i[1]
-            cv2.circle(frame, (x, y), 2, color=(0, 0, 0), thickness=2)
-
-        image = dlib.get_face_chip(frame_new, faces, size=320)
-        cv_bgr_img = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-        cv2.imwrite('datatmp/img_in_sec.jpg', cv_bgr_img)
+            for i in points:
+                x = i[0]
+                y = i[1]
+                cv2.circle(frame, (x, y), 2, color=(0, 0, 0), thickness=2)
+            image = dlib.get_face_chip(frame_new, faces, size=320)
+            cv_bgr_img = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+            cv2.imwrite('datatmp/img_in_sec.jpg', cv_bgr_img)
         _, jpg = cv2.imencode('.jpg', frame)
         jpg = jpg.tobytes()
         return jpg

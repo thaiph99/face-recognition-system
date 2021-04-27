@@ -39,8 +39,10 @@ def homepage():
 
 
 def gen(camera):
+    start = time.time()
     while True:
-        data = camera.get_frame()
+        end = time.time()
+        data = camera.get_frame(int(end-start))
         frame = data
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
