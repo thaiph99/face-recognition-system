@@ -80,6 +80,8 @@ class VideoCamera(object):
             else:
                 ratio = -ratio2/ratio1
             print(ratio)
+            list_left_face = [1, 2, 3, 4, 5, 6, 7, 8]
+            list_right_face = [-1, -2, -3, -4, -5, -6, -7, -8]
             if ratio > 0:
                 recomend = 'HAY QUAY SANG PHAI'
             else:
@@ -88,8 +90,9 @@ class VideoCamera(object):
                 10, 10), fontFace=cv2.FONT_HERSHEY_COMPLEX, fontScale=0.5, color=(255, 0, 0))
             cv2.putText(frame, recomend, org=(
                 10, 50), fontFace=cv2.FONT_HERSHEY_COMPLEX, fontScale=0.5, color=(255, 0, 0))
+            cv2.putText(frame, f'time :{time}', org=(
+                10, 90), fontFace=cv2.FONT_HERSHEY_COMPLEX, fontScale=0.5, color=(255, 0, 0))
             
-
             image = dlib.get_face_chip(frame_new, faces, size=320)
             cv_bgr_img = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
             cv2.imwrite('datatmp/img_in_sec.jpg', cv_bgr_img)

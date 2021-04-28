@@ -42,7 +42,9 @@ def gen(camera):
     start = time.time()
     while True:
         end = time.time()
-        data = camera.get_frame(int(end-start))
+        data = camera.get_frame(300-int(end-start))
+        if int(end-start) >= 300:
+            break
         frame = data
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
