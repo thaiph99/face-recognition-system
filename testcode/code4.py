@@ -1,9 +1,12 @@
 import face_recognition
 import cv2
+import matplotlib.pyplot as plt
 
 image = face_recognition.load_image_file("datatest/testimg.jpg")
-face_locations = face_recognition.face_locations(image, model='cnn')
 
+face_locations = face_recognition.face_locations(image)
+print(type(face_locations))
+print(len(face_locations))
 for location in face_locations:
     start_point = (location[0], location[3])
     end_point = (location[1], location[2])
@@ -11,9 +14,11 @@ for location in face_locations:
     thickness = 2
     cv2.rectangle(image, start_point, end_point, color, thickness)
 
-cv2.imshow('win img', image)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+plt.imshow(image)
+plt.show()
+# cv2.imshow('win img', image)  
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
 
 # from PIL import Image, ImageDraw
 # import face_recognition

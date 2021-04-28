@@ -92,7 +92,69 @@ class VideoCamera(object):
                 10, 50), fontFace=cv2.FONT_HERSHEY_COMPLEX, fontScale=0.5, color=(255, 0, 0))
             cv2.putText(frame, f'time :{time}', org=(
                 10, 90), fontFace=cv2.FONT_HERSHEY_COMPLEX, fontScale=0.5, color=(255, 0, 0))
-            
+
+            image = dlib.get_face_chip(frame_new, faces, size=320)
+            cv_bgr_img = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+            cv2.imwrite('datatmp/img_in_sec.jpg', cv_bgr_img)
+        _, jpg = cv2.imencode('.jpg', frame)
+        jpg = jpg.tobytes()
+        return jpg
+
+    def get_frame1(self, time):
+        frame = self.stream.read()
+        frame = cv2.flip(frame, 1)
+        frame_new = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        dets = face_recognition.face_locations(frame_new)
+        if len(dets) == 1:
+            # for i, det in enumerate(dets):
+            #     startX = int(det.left())
+            #     startY = int(det.top())
+            #     endX = int(det.right())
+            #     endY = int(det.bottom())
+            #     cv2.rectangle(frame, (startX, startY),
+            #                   (endX, endY), (0, 255, 0), 2)
+
+            for det in dets:
+                startX = int(det[3])
+                startY = int(det[0])
+                endX = int(det[1])
+                endY = int(det[2])
+                cv2.rectangle(frame, (startX, startY),
+                              (endX, endY), (0, 255, 0), 2)
+
+            # faces = dlib.full_object_detections()
+            # faces = self.predictor(frame_new, dets[0])
+
+            # points = self.shape_to_np(faces)
+            points = face_recognition.face_landmarks(frame, dets)
+
+            for i in points:
+                x = i[0]
+                y = i[1]
+                cv2.circle(frame, (x, y), 2, color=(0, 0, 0), thickness=2)
+
+            ratio1 = abs(points[1][0]-points[4][0])
+            ratio2 = abs(points[3][0]-points[4][0])
+            if ratio2 == 0 or ratio1 == 0:
+                ratio = 0
+            elif ratio1 > ratio2:
+                ratio = ratio1/ratio2
+            else:
+                ratio = -ratio2/ratio1
+            print(ratio)
+            list_left_face = [1, 2, 3, 4, 5, 6, 7, 8]
+            list_right_face = [-1, -2, -3, -4, -5, -6, -7, -8]
+            if ratio > 0:
+                recomend = 'HAY QUAY SANG PHAI'
+            else:
+                recomend = 'HAY QUAY SANG TRAI'
+            cv2.putText(frame, str(ratio), org=(
+                10, 10), fontFace=cv2.FONT_HERSHEY_COMPLEX, fontScale=0.5, color=(255, 0, 0))
+            cv2.putText(frame, recomend, org=(
+                10, 50), fontFace=cv2.FONT_HERSHEY_COMPLEX, fontScale=0.5, color=(255, 0, 0))
+            cv2.putText(frame, f'time :{time}', org=(
+                10, 90), fontFace=cv2.FONT_HERSHEY_COMPLEX, fontScale=0.5, color=(255, 0, 0))
+
             image = dlib.get_face_chip(frame_new, faces, size=320)
             cv_bgr_img = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
             cv2.imwrite('datatmp/img_in_sec.jpg', cv_bgr_img)
