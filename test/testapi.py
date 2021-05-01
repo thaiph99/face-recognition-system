@@ -40,18 +40,25 @@ print(type(embed))
 print(len(embed))
 print(embed)
 
+# DeepFace.find(img_path, db_path)
 embed1 = DeepFace.represent(img_path, model_name='VGG-Face')
 print(type(embed1))
 print(len(embed1))
 print(embed1)
 
+
 embed2 = DeepFace.represent(img_path, model_name='Facenet')
 print(type(embed2))
 print(len(embed2))
 print(embed2)
+# print(sum(embed2))
 
 em = [embed, embed1, embed2]
 em = [np.array(e) for e in em]
 
-# print('sum 1 : ', np.sum(em[2]-em[0]))
+print('sum 1 : ', np.sum(em[2]-em[0]))
 # print('sum 2 : ', np.sum(em[1]-em[0]))
+
+print('sum one embeb: ', np.sum(em[0]))
+print('sum one embeb: ', np.sum(em[1]))
+print('sum one embeb: ', np.sum(em[2]))

@@ -5,6 +5,7 @@ from sklearn import svm
 import os
 import json
 import numpy as np
+from numpy.linalg import norm
 from json import JSONEncoder
 import pickle
 from deepface import DeepFace
@@ -127,26 +128,42 @@ class Model:
         self.__save_model()
         self.__save_data()
 
-    def is_unknown_faces(self, unknown_face):
+    @staticmethod
+    def is_similarity(unknown_face_em, list_em):
+        """
+        cal similarity by euclidean distances
+        """
+        compare = []
+        for em in list_em:
+            cal_norm2 = norm(em-unknown_face_em, 2)
+            compare.append(cal_norm2 <= 0.4)
+        return True in compare
+
+    def is_known_faces(self, unknown_face_em, list_ems):
         """
         :param unknown_face:
-        :return: True if unknown face else False
+        :return: True if known face else False
         """
-        list_cmp = [self.faces_encoded[0]]
-        print(self.faces_name[0], end=', ')
-        for i in range(1, len(self.faces_name)):
-            if self.faces_name[i - 1] != self.faces_name[i]:
-                list_cmp.append(self.faces_encoded[i])
-                print(self.faces_name[i], end=', ')
-        print('\n')
-        results = face_recognition.compare_faces(list_cmp, unknown_face)
-        print(results)
-        return True not in results
+        results = []
+        for list_em in list_ems:
+            list_em = np.array(list_em)
+            results.append(self.is_similarity(unknown_face_em, list_em))
+
+        return True in results
 
     def recognize(self):
         """
         :return: name of old people in image
         """
+
+        dict_em = {}
+        # create dict faces
+        for i in range(len(self.faces_name)):
+            if self.faces_name[i] not in dict_em.keys():
+                dict_em[self.faces_name[i]] = []
+            dict_em[self.faces_name[i]].append(self.faces_encoded[i])
+
+        # get file name in data temporary
         filename = ''
         filename_dir = self.storage_temporary
         for i in os.listdir(filename_dir):
@@ -156,14 +173,16 @@ class Model:
 
         path = self.storage_temporary + '/' + filename
         test_img_encs = DeepFace.represent(
-            path, model=model, model_name=model_name)
+            path, model_name=model_name, model=model)
+
         list_name_predict = []
         name = ''
-        for face_enc in test_img_encs:
-            if self.is_unknown_faces(face_enc):
+        for key in dict_em.keys():
+            list_ems = dict_em[key]
+            if self.is_known_faces(test_img_encs, list_ems):
                 name = ['unknown face']
             else:
-                name = self.model.predict(face_enc.reshape(1, -1))
+                name = self.model.predict(test_img_encs.reshape(1, -1))
             list_name_predict += list(name)
         print(list_name_predict)
         os.remove(path)
