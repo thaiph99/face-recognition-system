@@ -8,6 +8,10 @@ import numpy as np
 from json import JSONEncoder
 import pickle
 from deepface import DeepFace
+from deepface.commons import functions, realtime, distance as dst
+
+model_name = "Facenet"
+model = DeepFace.build_model(model_name)
 
 
 class Model:
@@ -68,13 +72,22 @@ class Model:
         for img in pix:
             if img == '.gitignore':
                 continue
-            face = face_recognition.load_image_file(filename + '/' + img)
-            face_bounding_boxes = face_recognition.face_locations(
-                face, model='cnn')
-            if len(face_bounding_boxes) == 1:
-                face_enc = face_recognition.face_encodings(face)[0]
-                self.faces_encoded.append(face_enc)
-                self.faces_name.append(name)
+            # face = face_recognition.load_image_file(filename + '/' + img)
+            # face_bounding_boxes = face_recognition.face_locations(
+            #     face, model='cnn')
+
+            # detect locations ---------------
+            # functions.initialize_detector(detector_backend='mtcnn')
+            # face = functions.load_image(filename + '/' + img)
+            # face_bounding_boxes = functions.detect_face(
+            #     face, detector_backend='mtcnn', enforce_detection=True)[1]
+            # if len(face_bounding_boxes) == 1:
+
+            img_path = filename + '/' + img
+            face_enc = DeepFace.represent(
+                img_path, model_name=model_name, model=model)
+            self.faces_encoded.append(face_enc)
+            self.faces_name.append(name)
             # clear storage temporary
             os.remove(filename + '/' + img)
 
@@ -142,8 +155,8 @@ class Model:
                 break
 
         path = self.storage_temporary + '/' + filename
-        test_img = face_recognition.load_image_file(path)
-        test_img_encs = face_recognition.face_encodings(test_img)
+        test_img_encs = DeepFace.represent(
+            path, model=model, model_name=model_name)
         list_name_predict = []
         name = ''
         for face_enc in test_img_encs:

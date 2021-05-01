@@ -4,7 +4,7 @@ from flask import Flask, json, Response, request, render_template
 from werkzeug.utils import secure_filename
 from os import path, getcwd
 import time
-from api import Model
+from api1 import Model
 from collections import Counter
 from flask_cors import CORS
 from camera import VideoCamera
