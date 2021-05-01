@@ -7,6 +7,8 @@ import json
 import numpy as np
 from json import JSONEncoder
 import pickle
+from mtcnn import MTCNN
+from deepface import DeepFace
 
 
 class Model:

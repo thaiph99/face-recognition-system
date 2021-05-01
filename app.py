@@ -4,7 +4,7 @@ from flask import Flask, json, Response, request, render_template
 from werkzeug.utils import secure_filename
 from os import path, getcwd
 import time
-from model import Model
+from api import Model
 from collections import Counter
 from flask_cors import CORS
 from camera import VideoCamera
@@ -43,6 +43,7 @@ def gen(camera):
     while True:
         end = time.time()
         data = camera.get_frame(300-int(end-start))
+        # data = camera.get_frame_by_face_recognition()
         if int(end-start) >= 300:
             break
         frame = data

@@ -1,4 +1,4 @@
-from model import Model
+from api import Model
 import numpy as np
 import os
 import face_recognition
