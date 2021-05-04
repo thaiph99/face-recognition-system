@@ -135,9 +135,11 @@ class Model:
         """
         compare = []
         for em in list_em:
-            cal_norm2 = norm(em-unknown_face_em, 2)
-            compare.append(cal_norm2 <= 0.4)
-        return True in compare
+            cal_norm2 = norm(em-unknown_face_em)
+            compare.append(cal_norm2)
+        compare = np.array(compare)
+        print(compare)
+        return True in (compare <= 0.4)
 
     def is_known_faces(self, unknown_face_em, list_ems):
         """
@@ -172,18 +174,25 @@ class Model:
                 break
 
         path = self.storage_temporary + '/' + filename
+        # test_img_encs = DeepFace.represent(
+        #     path, model_name=model_name, model=model)
         test_img_encs = DeepFace.represent(
             path, model_name=model_name, model=model)
+        test_img_encs = np.array(test_img_encs)
 
         list_name_predict = []
+        result = []
         name = ''
         for key in dict_em.keys():
             list_ems = dict_em[key]
-            if self.is_known_faces(test_img_encs, list_ems):
-                name = ['unknown face']
-            else:
-                name = self.model.predict(test_img_encs.reshape(1, -1))
-            list_name_predict += list(name)
+            res = self.is_known_faces(test_img_encs, list_ems)
+            result.append(res)
+
+        if True in result:
+            name = self.model.predict(test_img_encs)
+        else:
+            name = ['_unknown face']
+        list_name_predict += list(name)
         print(list_name_predict)
         os.remove(path)
         return list_name_predict

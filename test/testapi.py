@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import os
 import numpy as np
 
+DeepFace.verify(img1_path)
 
 def test1(file_name):
     # filename = self.storage_temporary
@@ -21,7 +22,7 @@ def test1(file_name):
     return img, locations
 
 
-img_path = '/home/thai/Data2/face-recognition-system/testcode/datatest/Nayeon.jpg'
+img_path = '/home/thai/Data2/face-recognition-system/testcode/datatest/ngoc2.jpg'
 
 img, locations = test1(img_path)
 print('info img :', type(img), img.shape)
@@ -45,6 +46,7 @@ embed1 = DeepFace.represent(img_path, model_name='VGG-Face')
 print(type(embed1))
 print(len(embed1))
 print(embed1)
+
 
 
 embed2 = DeepFace.represent(img_path, model_name='Facenet')
