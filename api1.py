@@ -10,6 +10,8 @@ from json import JSONEncoder
 import pickle
 from deepface import DeepFace
 from deepface.commons import functions, realtime, distance as dst
+from mtcnn import MTCNN
+import cv2
 
 model_name = "Facenet"
 model = DeepFace.build_model(model_name)
@@ -23,14 +25,14 @@ class Model:
         self.faces_encoded = []
         self.faces_name = []
         # for recognition
-        self.model = None
+        self.model_svm = None
 
         self.__load_model()
         self.__load_data()
 
     def __load_model(self):
         filename = self.storage + '/' + 'svm_model.sav'
-        self.model = pickle.load(open(filename, 'rb'))
+        self.model_svm = pickle.load(open(filename, 'rb'))
 
     def __load_data(self):
         filename = self.storage + '/' + 'face_data.json'
@@ -69,24 +71,20 @@ class Model:
     def __append_new_face(self, name):
         filename = self.storage_temporary
         pix = os.listdir(filename)
-
+        detector = MTCNN()
         for img in pix:
             if img == '.gitignore':
                 continue
-            # face = face_recognition.load_image_file(filename + '/' + img)
-            # face_bounding_boxes = face_recognition.face_locations(
-            #     face, model='cnn')
-
-            # detect locations ---------------
-            # functions.initialize_detector(detector_backend='mtcnn')
-            # face = functions.load_image(filename + '/' + img)
-            # face_bounding_boxes = functions.detect_face(
-            #     face, detector_backend='mtcnn', enforce_detection=True)[1]
-            # if len(face_bounding_boxes) == 1:
 
             img_path = filename + '/' + img
-            face_enc = DeepFace.represent(
-                img_path, model_name=model_name, model=model)
+
+            image = cv2.imread(img_path)
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+            res = detector.detect_faces(image)
+            if len(res) != 1:
+                continue
+
             self.faces_encoded.append(face_enc)
             self.faces_name.append(name)
             # clear storage temporary
@@ -94,7 +92,7 @@ class Model:
 
     def __save_model(self):
         filename = self.storage + '/' + 'svm_model.sav'
-        pickle.dump(self.model, open(filename, 'wb'))
+        pickle.dump(self.model_svm, open(filename, 'wb'))
 
     def __save_data(self):
         json_file = {}
@@ -116,15 +114,15 @@ class Model:
             return 0
 
         self.__append_new_face(name)
-        self.model = svm.SVC(gamma='scale')
-        self.model.fit(self.faces_encoded, self.faces_name)
+        self.model_svm = svm.SVC(gamma='scale')
+        self.model_svm.fit(self.faces_encoded, self.faces_name)
         self.__save_model()
         self.__save_data()
         return 1
 
     def train_again(self):
-        self.model = svm.SVC(gamma='scale')
-        self.model.fit(self.faces_encoded, self.faces_name)
+        self.model_svm = svm.SVC(gamma='scale')
+        self.model_svm.fit(self.faces_encoded, self.faces_name)
         self.__save_model()
         self.__save_data()
 
@@ -135,7 +133,7 @@ class Model:
         """
         compare = []
         for em in list_em:
-            cal_norm2 = norm(em-unknown_face_em)
+            cal_norm2 = norm(em - unknown_face_em)
             compare.append(cal_norm2)
         compare = np.array(compare)
         print(compare)
@@ -143,7 +141,6 @@ class Model:
 
     def is_known_faces(self, unknown_face_em, list_ems):
         """
-        :param unknown_face:
         :return: True if known face else False
         """
         results = []
@@ -189,7 +186,7 @@ class Model:
             result.append(res)
 
         if True in result:
-            name = self.model.predict(test_img_encs)
+            name = self.model_svm.predict(test_img_encs)
         else:
             name = ['_unknown face']
         list_name_predict += list(name)
