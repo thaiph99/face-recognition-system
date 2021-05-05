@@ -24,7 +24,7 @@ print('info img :', type(img), img.shape)
 print('info location :', type(locations), len(locations))
 print(locations)
 # plt.imshow(img)
-# plt.show()
+# plt.show()image_face = image[y1: y2, x1: x2]
 
 # model = DeepFace.build_model('Facenet')
 # embedding = model.predict(img)[0].tolist()

@@ -12,9 +12,10 @@ from deepface import DeepFace
 from deepface.commons import functions, realtime, distance as dst
 from mtcnn import MTCNN
 import cv2
+from PIL import Image
+import Facenet
 
-model_name = "Facenet"
-model = DeepFace.build_model(model_name)
+model = Facenet.loadModel()
 
 
 class Model:
@@ -68,22 +69,46 @@ class Model:
         self.__load_data()
         self.train_again()
 
+    @staticmethod
+    def get_embedding(model, face_pixels):
+        # scale pixel values
+        face_pixels = face_pixels.astype('float32')
+        # standardize pixel values across channels (global)
+        mean, std = face_pixels.mean(), face_pixels.std()
+        face_pixels = (face_pixels - mean) / std
+        # transform face into one sample
+        samples = expand_dims(face_pixels, axis=0)
+        # make prediction to get embedding
+        yhat = model.predict(samples)
+        return yhat[0]
+
     def __append_new_face(self, name):
         filename = self.storage_temporary
         pix = os.listdir(filename)
-        detector = MTCNN()
         for img in pix:
             if img == '.gitignore':
                 continue
 
             img_path = filename + '/' + img
 
-            image = cv2.imread(img_path)
-            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+            image = Image.open(filename)
+            image = image.convert('RGB')
+            pixels = asarray(image)
 
-            res = detector.detect_faces(image)
-            if len(res) != 1:
+            results = detector.detect_faces(pixels)
+            if len(results) != 1:
                 continue
+
+            x1, y1, width, height = results[0]['box']
+            x1, y1 = abs(x1), abs(y1)
+            x2, y2 = x1 + width, y1 + height
+            face = pixels[y1:y2, x1:x2]
+            image = Image.fromarray(face)
+            image = image.resize(160)
+            face_array = asarray(image)
+
+            # face_enc = bla bla -> face_array  # embeding for face image
+            face_enc = self.get_embedding(model, face_array)
 
             self.faces_encoded.append(face_enc)
             self.faces_name.append(name)

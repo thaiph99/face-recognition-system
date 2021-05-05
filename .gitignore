@@ -1,2 +1,4 @@
 /dataset/samples.pkl
-/models/shape_predictor_68_face_landmarks.dat
+/models_weight/shape_predictor_68_face_landmarks.dat
+/miniproject/keras-facenet
+/models_weight/facenet_keras_weights.h5

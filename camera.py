@@ -5,7 +5,6 @@ import cv2
 import face_recognition
 import dlib
 import numpy as np
-import mtcnn
 
 
 # predictor_path = 'testcode/shape_predictor_5_face_landmarks.dat'
@@ -16,7 +15,7 @@ class VideoCamera(object):
         self.stream = WebcamVideoStream(src=0).start()
         self.detertor = dlib.get_frontal_face_detector()
         self.predictor = dlib.shape_predictor(
-            'testcode/shape_predictor_5_face_landmarks.dat')
+            'models_weight/shape_predictor_5_face_landmarks.dat')
         # with open()
 
     def __del__(self):
@@ -96,7 +95,7 @@ class VideoCamera(object):
 
             image = dlib.get_face_chip(frame_new, faces, size=320)
             cv_bgr_img = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-            cv2.imwrite('datatmp/img_in_sec.jpg', cv_bgr_img)
+            cv2.imwrite('data_face_temporary/thai/img_in_sec.jpg', cv_bgr_img)
         _, jpg = cv2.imencode('.jpg', frame)
         jpg = jpg.tobytes()
         return jpg
