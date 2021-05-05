@@ -5,6 +5,7 @@ from sklearn import svm
 import os
 import json
 import numpy as np
+from numpy import asarray, expand_dims
 from numpy.linalg import norm
 from json import JSONEncoder
 import pickle
@@ -14,6 +15,11 @@ from mtcnn import MTCNN
 import cv2
 from PIL import Image
 import Facenet
+import matplotlib.pyplot as plt
+
+# turn off gpu
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 model = Facenet.loadModel()
 
@@ -70,6 +76,30 @@ class Model:
         self.train_again()
 
     @staticmethod
+    def extract_multi_face(filename, required_size=(160, 160)):
+        image = Image.open(filename)
+        image = image.convert('RGB')
+        pixels = asarray(image)
+        detector = MTCNN()
+        results = detector.detect_faces(pixels)
+        face_arrays = []
+        for res in results:
+            x1, y1, width, height = res['box']
+            # bug fix
+            x1, y1 = abs(x1), abs(y1)
+            x2, y2 = x1 + width, y1 + height
+            # extract the face
+            face = pixels[y1:y2, x1:x2]
+            # resize pixels to the model size
+            image = Image.fromarray(face)
+            image = image.resize(required_size)
+            face_array = asarray(image)
+            face_arrays.append(face_array)
+            # plt.imshow(face_array)
+            # plt.show()
+        return face_arrays
+
+    @staticmethod
     def get_embedding(model, face_pixels):
         # scale pixel values
         face_pixels = face_pixels.astype('float32')
@@ -91,10 +121,10 @@ class Model:
 
             img_path = filename + '/' + img
 
-            image = Image.open(filename)
+            image = Image.open(img_path)
             image = image.convert('RGB')
             pixels = asarray(image)
-
+            detector = MTCNN()
             results = detector.detect_faces(pixels)
             if len(results) != 1:
                 continue
@@ -104,7 +134,7 @@ class Model:
             x2, y2 = x1 + width, y1 + height
             face = pixels[y1:y2, x1:x2]
             image = Image.fromarray(face)
-            image = image.resize(160)
+            image = image.resize((160, 160))
             face_array = asarray(image)
 
             # face_enc = bla bla -> face_array  # embeding for face image
@@ -139,10 +169,11 @@ class Model:
             return 0
 
         self.__append_new_face(name)
+        self.__save_data()
         self.model_svm = svm.SVC(gamma='scale')
         self.model_svm.fit(self.faces_encoded, self.faces_name)
         self.__save_model()
-        self.__save_data()
+
         return 1
 
     def train_again(self):
@@ -198,8 +229,13 @@ class Model:
         path = self.storage_temporary + '/' + filename
         # test_img_encs = DeepFace.represent(
         #     path, model_name=model_name, model=model)
-        test_img_encs = DeepFace.represent(
-            path, model_name=model_name, model=model)
+
+        faces_test = self.extract_multi_face(path)
+
+        test_img_encs = []
+        for face_fixel in faces_test:
+            print(face_fixel.shape)
+            test_img_encs.append(self.get_embedding(model, face_fixel))
         test_img_encs = np.array(test_img_encs)
 
         list_name_predict = []
@@ -209,7 +245,8 @@ class Model:
             list_ems = dict_em[key]
             res = self.is_known_faces(test_img_encs, list_ems)
             result.append(res)
-
+        # test trua
+        result.append(True)
         if True in result:
             name = self.model_svm.predict(test_img_encs)
         else:
