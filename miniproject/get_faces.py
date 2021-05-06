@@ -52,6 +52,29 @@ def extract_face(filename, required_size=(160, 160)):
     return face_array
 
 
+def extract_multi_face(filename, required_size=(160, 160)):
+    image = Image.open(filename)
+    image = image.convert('RGB')
+    pixels = asarray(image)
+    detector = MTCNN()
+    results = detector.detect_faces(pixels)
+    face_arrays = []
+    for res in results:
+        x1, y1, width, height = res['box']
+        # bug fix
+        x1, y1 = abs(x1), abs(y1)
+        x2, y2 = x1 + width, y1 + height
+        # extract the face
+        face = pixels[y1:y2, x1:x2]
+        # resize pixels to the model size
+        image = Image.fromarray(face)
+        image = image.resize(required_size)
+        face_array = asarray(image)
+        face_arrays.append(face_array)
+        # plt.imshow(face_array)
+        # plt.show()
+    return face_arrays
+
 # load the photo and extract the face
 # pixels = extract_face('messi.jpg')
 # plt.imshow(pixels)
