@@ -4,6 +4,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import Normalizer
 from sklearn.svm import SVC
+
 # load dataset
 data = load('face_embeded.npz')
 trainX, trainy, testX, testy = data['arr_0'], data['arr_1'], data['arr_2'], data['arr_3']
@@ -27,4 +28,4 @@ yhat_test = model.predict(testX)
 score_train = accuracy_score(trainy, yhat_train)
 score_test = accuracy_score(testy, yhat_test)
 # summarize
-print('Accuracy: train=%.3f, test=%.3f' % (score_train*100, score_test*100))
+print('Accuracy: train=%.3f, test=%.3f' % (score_train * 100, score_test * 100))

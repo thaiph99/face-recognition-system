@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Facial Recognition Service</title>
+    <title>Nhận diện khuôn mặt</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}" />
     <script
       type="text/javascript"
@@ -26,27 +26,18 @@
   </head>
   <body>
     <div class="container">
-      <h1>Facial Recognition</h1>
-      <p>by Thaiph99</p>
-      <p>This service is very frail, please don't destroy</p>
+      <h1>Nhận diện khuôn mặt</h1>
 
       <ul class="tabs">
-        <li data-section="train-content">Train it</li>
-        <li data-section="recognize-content">Recognize</li>
+        <li data-section="train-content">Đăng ký khuôn mặt</li>
+        <li data-section="recognize-content">Nhận diện khuôn mặt</li>
       </ul>
       <div id="train-content">
-        <h2>Train</h2>
+        <h2>Đăng ký</h2>
         <form method="post" id="train">
           <div class="message"></div>
-          <p class="description">
-            Pre-training our service. Upload an image contain the face and give
-            it full name for recognize later <3
-          </p>
-          <h4>
-            If you clicked "Begin train", you must wait for training, please :v
-          </h4>
           <div class="form-item">
-            <label for="input-file">Face image</label>
+            <label for="input-file">Đăng ký bằng hình ảnh</label>
             <input
               multiple
               type="file"
@@ -56,7 +47,7 @@
             />
           </div>
           <div class="form-item">
-            <label>Full name</label>
+            <label>Họ và tên</label>
             <input
               id="name-field"
               name="name"
@@ -65,22 +56,29 @@
               placeholder="Full name"
             />
           </div>
+          <div class="form-item">
+            <label>Bắt đầu đăng ký khuôn mặt bằng camera</label>
+            <a href="regis" target="_blank"
+              ><button type="button">Bật camera</button>
+            </a>
+          </div>
+          <br />
           <div class="form-action">
-            <input type="submit" value="Begin train" />
+            <input type="submit" value="Đăng ký" />
           </div>
         </form>
       </div>
 
       <div id="recognize-content">
-        <h2>Recognize</h2>
+        <h2>Nhận diện</h2>
 
         <form method="post" id="recognize">
           <div class="message"></div>
           <p class="description">
-            Upload an image and i will tell to you who is is the picture.
+            Tải lên ảnh mà bạn muốn nhận diện các khuôn mặt trong đó
           </p>
           <div class="form-item">
-            <label for="input-file">Image</label>
+            <label for="input-file">Hình ảnh</label>
             <input
               type="file"
               name="file"
@@ -90,11 +88,10 @@
           </div>
 
           <div class="form-action">
-            <button type="submit">Recognize it</button>
+            <button type="submit">Bắt đầu nhận diện</button>
           </div>
         </form>
       </div>
     </div>
-    <a href="regis" target="_blank">test </a>
   </body>
 </html>

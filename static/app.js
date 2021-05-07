@@ -124,11 +124,6 @@ $(document).ready(function () {
     update();
     event.preventDefault();
   });
-
-  $("#test").on("click", function (e) {
-    window.open("http://127.0.0.1:5500/head-pose-estimation/index.html");
-    console.log("testhkjyikyk");
-  });
   // listen for recognize file field change
   $("#recognize-input-file").on("change", function (e) {
     recognize_data.file = _.get(e, "target.files[0]", null);

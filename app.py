@@ -15,7 +15,7 @@ CORS(app)
 app.config['file_allowed'] = ['image/png', 'image/jpeg', 'image/jpg']
 app.config['storage'] = path.join(getcwd(), 'storage')
 app.config['storage_temporary'] = path.join(getcwd(), 'storage_temporary')
-app.model = Model(app)
+app.model = Model()
 
 
 def success_handle(output, status=200, mimetype='application/json'):
@@ -42,9 +42,9 @@ def gen(camera):
     start = time.time()
     while True:
         end = time.time()
-        data = camera.get_frame(300-int(end-start))
+        data = camera.get_frame(60 - int(end - start))
         # data = camera.get_frame_by_face_recognition()
-        if int(end-start) >= 300:
+        if int(end - start) >= 60:
             break
         frame = data
         yield (b'--frame\r\n'
@@ -61,14 +61,25 @@ def regis():
 def train():
     name = request.form['name']
     uploaded_files = request.files.getlist("file[]")
-    if len(uploaded_files) == 0 or name in set(app.model.faces_name):
+
+    check_data = 0
+
+    if True:
+        check_data = 1
+        pass
+
+    if (len(uploaded_files) == 0 or name in set(app.model.faces_name)) and check_data != 1:
         print(len(uploaded_files))
         print()
-        print('upload failed')
+        print('upload image failed')
+        check_data = 2
+    if check_data == 0:
         return error_handle('upload failed')
 
-    for file in uploaded_files:
-        file.save(path.join(app.config['storage_temporary'], file.filename))
+    if check_data == 2:
+        for file in uploaded_files:
+            file.save(
+                path.join(app.config['storage_temporary'], file.filename))
     app.model.train(name)
     print('upload done')
     return success_handle('accepted')

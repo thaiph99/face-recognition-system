@@ -6,6 +6,30 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import Normalizer
 from sklearn.svm import SVC
 from matplotlib import pyplot
+import numpy as np
+from math import e, log
+
+
+def entropy(labels, base=None):
+    """ Computes entropy of label distribution. """
+
+    n_labels = len(labels)
+    if n_labels <= 1:
+        return 0
+
+    value, counts = np.unique(labels, return_counts=True)
+    probs = counts / n_labels
+    n_classes = np.count_nonzero(probs)
+    if n_classes <= 1:
+        return 0
+    ent = 0.
+    # Compute entropy
+    base = e if base is None else base
+    for i in probs:
+        ent -= i * log(i, base)
+    return ent
+
+
 # load faces
 data = load('face.npz')
 testX_faces = data['arr_2']
@@ -22,7 +46,7 @@ out_encoder.fit(trainy)
 trainy = out_encoder.transform(trainy)
 testy = out_encoder.transform(testy)
 # fit model
-model = SVC(gamma='scale', probability=True)
+model = SVC(kernel='linear', probability=True)
 model.fit(trainX, trainy)
 # test model on a random example from the test dataset
 selection = choice([i for i in range(testX.shape[0])])
@@ -38,8 +62,11 @@ yhat_prob = model.predict_proba(samples)
 class_index = yhat_class[0]
 class_probability = yhat_prob[0, class_index] * 100
 predict_names = out_encoder.inverse_transform(yhat_class)
+print('yhat probabiliti', yhat_prob)
+print('entropy', entropy(yhat_prob[0]))
 print('Predicted: %s (%.3f)' % (predict_names[0], class_probability))
 print('Expected: %s' % random_face_name[0])
+
 # plot for fun
 pyplot.imshow(random_face_pixels)
 title = '%s (%.3f)' % (predict_names[0], class_probability)

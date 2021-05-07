@@ -6,6 +6,7 @@ from numpy import savez_compressed
 from keras.models import load_model
 import Facenet
 
+
 # get the face embedding for one face
 
 

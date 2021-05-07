@@ -16,20 +16,23 @@ import cv2
 from PIL import Image
 import Facenet
 import matplotlib.pyplot as plt
-
+from sklearn.preprocessing import LabelEncoder
+import pickle
+from math import log, e
 # turn off gpu
 import os
+
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 model = Facenet.loadModel()
 
 
 class Model:
-    def __init__(self, app):
+    def __init__(self):
         # for training
-        self.storage_temporary = app.config['storage_temporary']
-        self.storage = app.config["storage"]
-        self.faces_encoded = []
+        self.storage_temporary = 'storage_temporary'
+        self.storage = 'storage'
+        self.faces_embedded = []
         self.faces_name = []
         # for recognition
         self.model_svm = None
@@ -45,15 +48,15 @@ class Model:
         filename = self.storage + '/' + 'face_data.json'
         with open(filename, 'r') as f:
             data = json.load(f)
-        self.faces_encoded = []
+        self.faces_embedded = []
         self.faces_name = []
         for name in data.keys():
             for fa in data[name]:
-                self.faces_encoded.append(fa)
+                self.faces_embedded.append(fa)
                 self.faces_name.append(name)
 
     def __save_data(self):
-        filename = self.storage + 'faces_data.json'
+        filename = self.storage + '/' + 'faces_data.json'
         with open('face_data.json', 'w') as f:
             json.dump(filename, f, cls=NumpyArrayEncoder)
 
@@ -63,10 +66,10 @@ class Model:
             if name == name_del:
                 continue
             json_file[name] = []
-        for i in range(len(self.faces_encoded)):
+        for i in range(len(self.faces_embedded)):
             if self.faces_name[i] == name_del:
                 continue
-            json_file[self.faces_name[i]].append(self.faces_encoded[i])
+            json_file[self.faces_name[i]].append(self.faces_embedded[i])
 
         filename = self.storage + '/' + 'face_data.json'
         with open(filename, 'w') as f:
@@ -140,7 +143,7 @@ class Model:
             # face_enc = bla bla -> face_array  # embeding for face image
             face_enc = self.get_embedding(model, face_array)
 
-            self.faces_encoded.append(face_enc)
+            self.faces_embedded.append(face_enc)
             self.faces_name.append(name)
             # clear storage temporary
             os.remove(filename + '/' + img)
@@ -153,8 +156,8 @@ class Model:
         json_file = {}
         for name in self.faces_name:
             json_file[name] = []
-        for i in range(len(self.faces_encoded)):
-            json_file[self.faces_name[i]].append(self.faces_encoded[i])
+        for i in range(len(self.faces_embedded)):
+            json_file[self.faces_name[i]].append(self.faces_embedded[i])
 
         filename = self.storage + '/' + 'face_data.json'
         with open(filename, 'w') as f:
@@ -169,18 +172,24 @@ class Model:
             return 0
 
         self.__append_new_face(name)
+        out_encoder = LabelEncoder()
+        out_encoder.fit(self.faces_name)
+        face_name_encoded = out_encoder.transform(self.faces_name)
+        # save out encoder
+        np.save(self.storage + '/' + 'face_name_encoded.npy',
+                out_encoder.classes_)
         self.__save_data()
-        self.model_svm = svm.SVC(gamma='scale')
-        self.model_svm.fit(self.faces_encoded, self.faces_name)
+        self.model_svm = svm.SVC(kernel='linear', probability=True)
+        self.model_svm.fit(self.faces_embedded, face_name_encoded)
         self.__save_model()
 
         return 1
 
-    def train_again(self):
-        self.model_svm = svm.SVC(gamma='scale')
-        self.model_svm.fit(self.faces_encoded, self.faces_name)
-        self.__save_model()
-        self.__save_data()
+    # def train_again(self):
+    #     self.model_svm = svm.SVC(gamma='scale')
+    #     self.model_svm.fit(self.faces_embedded, self.faces_name)
+    #     self.__save_model()
+    #     self.__save_data()
 
     @staticmethod
     def is_similarity(unknown_face_em, list_em):
@@ -192,8 +201,28 @@ class Model:
             cal_norm2 = norm(em - unknown_face_em)
             compare.append(cal_norm2)
         compare = np.array(compare)
-        print(compare)
+        # print(compare)
         return True in (compare <= 0.4)
+
+    @staticmethod
+    def entropy(labels, base=None):
+        """ Computes entropy of label distribution. """
+
+        n_labels = len(labels)
+        if n_labels <= 1:
+            return 0
+
+        value, counts = np.unique(labels, return_counts=True)
+        probs = counts / n_labels
+        n_classes = np.count_nonzero(probs)
+        if n_classes <= 1:
+            return 0
+        ent = 0.
+        # Compute entropy
+        base = e if base is None else base
+        for i in probs:
+            ent -= i * log(i, base)
+        return ent
 
     def is_known_faces(self, unknown_face_em, list_ems):
         """
@@ -216,7 +245,7 @@ class Model:
         for i in range(len(self.faces_name)):
             if self.faces_name[i] not in dict_em.keys():
                 dict_em[self.faces_name[i]] = []
-            dict_em[self.faces_name[i]].append(self.faces_encoded[i])
+            dict_em[self.faces_name[i]].append(self.faces_embedded[i])
 
         # get file name in data temporary
         filename = ''
@@ -248,7 +277,16 @@ class Model:
         # test trua
         result.append(True)
         if True in result:
-            name = self.model_svm.predict(test_img_encs)
+            out_encoder = LabelEncoder()
+            out_encoder.classes_ = np.load(
+                self.storage + '/' + 'face_name_encoded.npy')
+            face_class = self.model_svm.predict(test_img_encs)
+            face_prob = self.model_svm.predict_proba(test_img_encs)
+            name = out_encoder.inverse_transform(face_class)
+            for i in range(len(name)):
+                print('name', name[i])
+                print('probability', face_prob[i]*100)
+                print('entropy', self.entropy(face_prob[i]))
         else:
             name = ['_unknown face']
         list_name_predict += list(name)
