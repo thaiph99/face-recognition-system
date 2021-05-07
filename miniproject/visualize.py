@@ -53,8 +53,8 @@ def cal_similarity_score(embed, name):
     embed = np.array(embed)
     list_norm = []
     for em in dict_face[name]:
-        # print('em :', em.shape, sum(em))
-        # print('embed:', embed.shape, sum(embed))
+        print('em :', em.shape, sum(em))
+        print('embed:', embed.shape, sum(embed))
         list_norm.append(norm(em-embed, ord=2))
     print('list norm', list_norm)
     return sum(list_norm)/len(list_norm)
@@ -90,8 +90,7 @@ print(len(samples))
 print('entropy', entropy(yhat_prob[0]))
 print('yhat probabiliti', yhat_prob)
 
-print('similarity score', cal_similarity_score(
-    samples[0], random_face_name[0]))
+print('similarity score', cal_similarity_score(samples[0], random_face_name[0]))
 print('Predicted: %s (%.3f)' % (predict_names[0], class_probability))
 print('Expected: %s' % random_face_name[0])
 
@@ -100,9 +99,3 @@ pyplot.imshow(random_face_pixels)
 title = '%s (%.3f)' % (predict_names[0], class_probability)
 pyplot.title(title)
 pyplot.show()
-a = [0.03299391, 0.0539205,  0.75515319,
-     0.03211268, 0.04338872, 0.02955863,  0.05287238]
-b = [0.03018399, 0.07807933, 0.07207307,
-     0.07256684, 0.05560967, 0.61860175, 0.07288536]
-print('a : ', entropy(a))
-print('b : ', entropy(b))

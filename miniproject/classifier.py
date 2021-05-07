@@ -16,11 +16,14 @@ testX = in_encoder.transform(testX)
 # label encode targets
 out_encoder = LabelEncoder()
 out_encoder.fit(trainy)
+np.save('face_name_encoded.npy', out_encoder.classes_)
 trainy = out_encoder.transform(trainy)
 testy = out_encoder.transform(testy)
 # fit model
 model = SVC(kernel='linear', probability=True)
 model.fit(trainX, trainy)
+filename = 'svm_model.sav'
+pickle.dump(self.model, open(filename, 'wb'))
 # predict
 yhat_train = model.predict(trainX)
 yhat_test = model.predict(testX)
@@ -28,4 +31,5 @@ yhat_test = model.predict(testX)
 score_train = accuracy_score(trainy, yhat_train)
 score_test = accuracy_score(testy, yhat_test)
 # summarize
-print('Accuracy: train=%.3f, test=%.3f' % (score_train * 100, score_test * 100))
+print('Accuracy: train=%.3f, test=%.3f' %
+      (score_train * 100, score_test * 100))
