@@ -6,6 +6,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import Normalizer
 from sklearn.svm import SVC
 from matplotlib import pyplot
+from numpy.linalg import norm
 import numpy as np
 from math import e, log
 
@@ -36,6 +37,29 @@ testX_faces = data['arr_2']
 # load face embeddings
 data = load('face_embeded.npz')
 trainX, trainy, testX, testy = data['arr_0'], data['arr_1'], data['arr_2'], data['arr_3']
+
+# create dict ( key == name , value = embedded)
+# print(trainy)
+dict_face = {}
+for i in range(len(trainX)):
+    if trainy[i] not in dict_face.keys():
+        dict_face[trainy[i]] = []
+    dict_face[trainy[i]].append(trainX[i])
+
+# print(dict_face)
+
+
+def cal_similarity_score(embed, name):
+    embed = np.array(embed)
+    list_norm = []
+    for em in dict_face[name]:
+        # print('em :', em.shape, sum(em))
+        # print('embed:', embed.shape, sum(embed))
+        list_norm.append(norm(em-embed, ord=2))
+    print('list norm', list_norm)
+    return sum(list_norm)/len(list_norm)
+
+
 # normalize input vectors
 in_encoder = Normalizer(norm='l2')
 trainX = in_encoder.transform(trainX)
@@ -62,8 +86,12 @@ yhat_prob = model.predict_proba(samples)
 class_index = yhat_class[0]
 class_probability = yhat_prob[0, class_index] * 100
 predict_names = out_encoder.inverse_transform(yhat_class)
-print('yhat probabiliti', yhat_prob)
+print(len(samples))
 print('entropy', entropy(yhat_prob[0]))
+print('yhat probabiliti', yhat_prob)
+
+print('similarity score', cal_similarity_score(
+    samples[0], random_face_name[0]))
 print('Predicted: %s (%.3f)' % (predict_names[0], class_probability))
 print('Expected: %s' % random_face_name[0])
 
@@ -72,3 +100,9 @@ pyplot.imshow(random_face_pixels)
 title = '%s (%.3f)' % (predict_names[0], class_probability)
 pyplot.title(title)
 pyplot.show()
+a = [0.03299391, 0.0539205,  0.75515319,
+     0.03211268, 0.04338872, 0.02955863,  0.05287238]
+b = [0.03018399, 0.07807933, 0.07207307,
+     0.07256684, 0.05560967, 0.61860175, 0.07288536]
+print('a : ', entropy(a))
+print('b : ', entropy(b))

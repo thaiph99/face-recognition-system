@@ -76,7 +76,8 @@ $(document).ready(function () {
   $("#train").submit(function (event) {
     message = null;
 
-    if (train_data.name && train_data.file) {
+    // if (train_data.name && train_data.file) {
+    if (train_data.name) {
       // do send data to backend api
 
       var train_form_data = new FormData();

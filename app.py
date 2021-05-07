@@ -8,6 +8,8 @@ from api1 import Model
 from collections import Counter
 from flask_cors import CORS
 from camera import VideoCamera
+from os import listdir
+import shutil
 
 app = Flask(__name__)
 CORS(app)
@@ -64,22 +66,30 @@ def train():
 
     check_data = 0
 
-    if True:
+    list_img_tmp = listdir('data_face_temporary')
+    # print(list_img_tmp)
+    if len(list_img_tmp) != 1:
         check_data = 1
-        pass
+        for filename in list_img_tmp:
+            if filename == '.gitignore':
+                continue
+            shutil.move("data_face_temporary/"+filename,
+                        "storage_temporary/"+filename)
 
     if (len(uploaded_files) == 0 or name in set(app.model.faces_name)) and check_data != 1:
         print(len(uploaded_files))
         print()
         print('upload image failed')
-        check_data = 2
-    if check_data == 0:
-        return error_handle('upload failed')
-
-    if check_data == 2:
+        check_data = 0
+    else:
         for file in uploaded_files:
             file.save(
                 path.join(app.config['storage_temporary'], file.filename))
+        check_data = 1
+
+    if check_data == 0:
+        return error_handle('upload failed')
+
     app.model.train(name)
     print('upload done')
     return success_handle('accepted')
@@ -112,7 +122,7 @@ def recognize():
                 return error_handle("Sorry we can not found any people matched with your face image, try another image")
 
 
-# app.model.delete_face('messi')
+# app.model.delete_face('ronaldo')
 set_name = Counter(app.model.faces_name)
 print(set_name)
 

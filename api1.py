@@ -17,6 +17,7 @@ from PIL import Image
 import Facenet
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import Normalizer
 import pickle
 from math import log, e
 # turn off gpu
@@ -174,27 +175,38 @@ class Model:
         self.__append_new_face(name)
         out_encoder = LabelEncoder()
         out_encoder.fit(self.faces_name)
+        faces_em = np.array(self.faces_embedded)
+
+        in_encoder = Normalizer(norm='l2')
+        # print('shape ', faces_em.shape)
+        face_embeded_encoded = in_encoder.transform(faces_em)
         face_name_encoded = out_encoder.transform(self.faces_name)
         # save out encoder
         np.save(self.storage + '/' + 'face_name_encoded.npy',
                 out_encoder.classes_)
         self.__save_data()
         self.model_svm = svm.SVC(kernel='linear', probability=True)
-        self.model_svm.fit(self.faces_embedded, face_name_encoded)
+        self.model_svm.fit(face_embeded_encoded, face_name_encoded)
         self.__save_model()
 
         return 1
 
-    # def train_again(self):
-    #     self.model_svm = svm.SVC(gamma='scale')
-    #     self.model_svm.fit(self.faces_embedded, self.faces_name)
-    #     self.__save_model()
-    #     self.__save_data()
-
     @staticmethod
+    def cal_similarity_score(embed, name, dict_face):
+        embed = np.array(embed)
+        list_norm = []
+        for em in dict_face[name]:
+            em = np.array(em)
+            # print('em :', em.shape, sum(em))
+            # print('embed:', embed.shape, sum(embed))
+            list_norm.append(norm(em-embed, ord=2))
+        print('list norm', list_norm)
+        return sum(list_norm)/len(list_norm)
+
+    @ staticmethod
     def is_similarity(unknown_face_em, list_em):
         """
-        cal similarity by euclidean distances
+        cal similarity by norm 1
         """
         compare = []
         for em in list_em:
@@ -204,14 +216,13 @@ class Model:
         # print(compare)
         return True in (compare <= 0.4)
 
-    @staticmethod
+    @ staticmethod
     def entropy(labels, base=None):
         """ Computes entropy of label distribution. """
 
         n_labels = len(labels)
         if n_labels <= 1:
             return 0
-
         value, counts = np.unique(labels, return_counts=True)
         probs = counts / n_labels
         n_classes = np.count_nonzero(probs)
@@ -235,6 +246,20 @@ class Model:
 
         return True in results
 
+    def get_embeb_multi_faces(self, path):
+        faces_test = self.extract_multi_face(path)
+
+        # get embedding all faces
+        test_img_encs = []
+        for face_fixel in faces_test:
+            test_img_encs.append(self.get_embedding(model, face_fixel))
+        test_img_encs = np.array(test_img_encs)
+
+        in_encoder = Normalizer(norm='l2')
+        test_img_encs_origin = test_img_encs
+        test_img_encs = in_encoder.transform(test_img_encs)
+        return test_img_encs_origin, test_img_encs, faces_test
+
     def recognize(self):
         """
         :return: name of old people in image
@@ -256,16 +281,8 @@ class Model:
                 break
 
         path = self.storage_temporary + '/' + filename
-        # test_img_encs = DeepFace.represent(
-        #     path, model_name=model_name, model=model)
-
-        faces_test = self.extract_multi_face(path)
-
-        test_img_encs = []
-        for face_fixel in faces_test:
-            print(face_fixel.shape)
-            test_img_encs.append(self.get_embedding(model, face_fixel))
-        test_img_encs = np.array(test_img_encs)
+        test_img_encs_origin, test_img_encs, faces_test = self.get_embeb_multi_faces(
+            path)
 
         list_name_predict = []
         result = []
@@ -274,23 +291,46 @@ class Model:
             list_ems = dict_em[key]
             res = self.is_known_faces(test_img_encs, list_ems)
             result.append(res)
-        # test trua
-        result.append(True)
-        if True in result:
-            out_encoder = LabelEncoder()
-            out_encoder.classes_ = np.load(
-                self.storage + '/' + 'face_name_encoded.npy')
-            face_class = self.model_svm.predict(test_img_encs)
-            face_prob = self.model_svm.predict_proba(test_img_encs)
-            name = out_encoder.inverse_transform(face_class)
-            for i in range(len(name)):
-                print('name', name[i])
-                print('probability', face_prob[i]*100)
-                print('entropy', self.entropy(face_prob[i]))
-        else:
-            name = ['_unknown face']
+        # test True
+        out_encoder = LabelEncoder()
+        out_encoder.classes_ = np.load(
+            self.storage + '/' + 'face_name_encoded.npy')
+        face_class = self.model_svm.predict(test_img_encs)
+        face_prob = self.model_svm.predict_proba(test_img_encs)
+        name = out_encoder.inverse_transform(face_class)
+        dict_name = {}
+        for i in range(len(name)):
+            similarity_score = self.cal_similarity_score(
+                test_img_encs_origin[i], name[i], dict_em)
+            print('------------------')
+            print('similarity', similarity_score)
+            print('name ', name[i])
+            if name[i] not in dict_name.keys():
+                dict_name[name[i]] = [similarity_score, i]
+            else:
+                print(name[i])
+                print(dict_name[name[i]])
+                if dict_name[name[i]][0] > similarity_score:
+                    dict_name[name[i]][0] = similarity_score
+                    name[dict_name[name[i]][1]] = 'unknown'
+                    dict_name[name[i]][1] = i
+                else:
+                    name[i] = 'unknown'
+
+            if similarity_score >= 10:
+                name[i] = 'unknown'
+
+        for i in range(len(name)):
+            print('-----------------')
+            print('name', name[i])
+            print('probability', face_prob[i])
+            # print('entropy', self.entropy(face_prob[i]))
+            plt.imshow(faces_test[i])
+            title = (str(name[i]))
+            plt.title(title)
+            plt.show()
         list_name_predict += list(name)
-        print(list_name_predict)
+        print('list name', list_name_predict)
         os.remove(path)
         return list_name_predict
 
