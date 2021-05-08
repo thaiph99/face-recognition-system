@@ -4,7 +4,7 @@ from flask import Flask, json, Response, request, render_template
 from werkzeug.utils import secure_filename
 from os import path, getcwd
 import time
-from api1 import Model
+from api import Model
 from collections import Counter
 from flask_cors import CORS
 from camera import VideoCamera
@@ -122,7 +122,7 @@ def recognize():
                 return error_handle("Sorry we can not found any people matched with your face image, try another image")
 
 
-# app.model.delete_face('ronaldo')
+app.model.delete_face('lisa')
 set_name = Counter(app.model.faces_name)
 print(set_name)
 
