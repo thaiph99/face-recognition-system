@@ -207,11 +207,11 @@ class Model:
             em = np.array(em)
             # print('em :', em.shape, sum(em))
             # print('embed:', embed.shape, sum(embed))
-            list_norm.append(norm(em-embed, ord=2))
+            list_norm.append(norm(em - embed, ord=2))
         print('list norm', list_norm)
-        return sum(list_norm)/len(list_norm)
+        return sum(list_norm) / len(list_norm)
 
-    @ staticmethod
+    @staticmethod
     def is_similarity(unknown_face_em, list_em):
         """
         cal similarity by norm 
@@ -224,7 +224,7 @@ class Model:
         # print(compare)
         return True in (compare <= 0.4)
 
-    @ staticmethod
+    @staticmethod
     def entropy(labels, base=None):
         """ Computes entropy of label distribution. """
 
