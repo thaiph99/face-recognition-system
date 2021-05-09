@@ -26,6 +26,7 @@ import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 model = Facenet.loadModel()
+model.summary()
 
 
 class Model:
@@ -213,7 +214,7 @@ class Model:
     @ staticmethod
     def is_similarity(unknown_face_em, list_em):
         """
-        cal similarity by norm 1
+        cal similarity by norm 
         """
         compare = []
         for em in list_em:
@@ -302,9 +303,13 @@ class Model:
         out_encoder = LabelEncoder()
         out_encoder.classes_ = np.load(
             self.storage + '/' + 'face_name_encoded.npy')
+
         face_class = self.model_svm.predict(test_img_encs)
         face_prob = self.model_svm.predict_proba(test_img_encs)
+        print('class : ', face_class)
+        print('out encoder classes : ', out_encoder.classes_)
         name = out_encoder.inverse_transform(face_class)
+
         dict_name = {}
         for i in range(len(name)):
             similarity_score = self.cal_similarity_score(
