@@ -1,0 +1,45 @@
+\documentclass[envcountsame,envcountchap, openany, 10pt]{mysvmono2}
+\usepackage{blindtext}
+\usepackage[paperheight=27.5cm,paperwidth=19.5cm,margin=25mm]{geometry}
+\usepackage[ddmmyyyy]{datetime}
+\include{packages_book}
+% add (.) into section number. E.g: 1.1., 1.2., 
+\usepackage{titlesec}
+\titlelabel{\thetitle.~}
+% continous footnote numbering.
+\usepackage{chngcntr}
+\counterwithout{footnote}{chapter}
+
+\usepackage{enumitem}
+% \usepackage{enumerate}
+\def\myenum{label=\alph*)}
+\setenumerate[0]{label=\alph*.}      
+
+%%%%%% format subsubsection to bold italic
+\usepackage{titlesec}
+\titleformat*{\subsubsection}{\bfseries\itshape}
+
+
+\usepackage{natbib}
+% \setlength{\bibsep}{5.0pt}
+\usepackage{indentfirst}
+\usepackage{makecell}
+% \usepackage{pbox}
+\begin{document}
+\frontmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% %% cover
+% \incgraph[documentpaper, overlay={\node[red] at (page.center) {};}][width=\paperwidth]{Chapters/cover/cover1.png}
+
+\tableofcontents
+\input{Chapters/dimred2}
+\input{Chapters/07_DimemsionalityReduction/dr_intro2}
+\include{Chapters/07_DimemsionalityReduction/27_pca2}
+
+\backmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{alpha}
+\bibliography{refs}
+
+\printindex
+\end{document}

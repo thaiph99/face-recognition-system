@@ -1,0 +1,935 @@
+%!TEX root = ../../book_ML.tex
+\chapter{Phân tích thành phần chính}
+\label{cha:pca}
+% \index{principal component analysis}
+% \index{PCA -- \textit{xem} principle component analysis}
+\index{PCA}
+
+\index{phân tích thành phần chính -- principle component analysis}
+\index{principle component analysis -- phân tích thành phần chính}
+\index{PCA}
+\section{Phân tích thành phần chính}
+\subsection{Ý tưởng} % (fold)
+
+
+% subsection ý_tưởng (end)
+%%%%%%% Three subfigures with bottom caption%%%%%%%%%%%%%%
+\begin{figure}[t]
+    \begin{subfigure}{0.59\textwidth}
+        \includegraphics[width=0.99\linewidth]{Chapters/07_DimemsionalityReduction/27_pca/latex/pca_diagvar.pdf}
+        \caption{}
+        \label{fig:pca_2a}
+    \end{subfigure}
+    \begin{subfigure}{0.33\textwidth}
+        \includegraphics[width=0.99\linewidth]{Chapters/07_DimemsionalityReduction/27_pca/latex/pca_var0.pdf}
+        \caption{}
+        \label{fig:pca_2b}
+    \end{subfigure}
+    \caption{Ví dụ về phương sai của dữ liệu trong không gian hai chiều. (a)
+        Phương sai của chiều thử hai (tỉ lệ với độ rộng của đường hình chuông) nhỏ
+        hơn phương sai của chiều thứ nhất. (b) Cả hai chiều có phương sai đáng kể. Phương sai của
+        mỗi chiều là phương sai của thành phần tương ứng được lấy trên toàn bộ dữ
+        liệu. Phương sai tỉ lệ thuận với độ phân tán của dữ liệu.}
+    \label{fig:pca_2}
+\end{figure}
+
+Giả sử vector dữ liệu ban đầu $\bx \in \R^{D}$ được giảm chiều trở thành $\bz
+    \in \R^K$ với $K < D$. Một cách đơn giản để giảm chiều dữ liệu từ $D$ về $K < D$ là chỉ giữ lại $K$ phần tử {quan trọng nhất}. Có hai câu hỏi lập tức
+được đặt ra. Thứ nhất, làm thế nào để xác định {tầm quan trọng} của
+mỗi phần tử? Thứ hai, nếu tầm quan trọng của các phần tử là như
+nhau, ta cần bỏ đi những phần tử nào?
+
+Để trả lời câu hỏi thứ nhất, hãy quan sát Hình~\ref{fig:pca_2a}. Giả sử các
+điểm dữ liệu có thành phần thứ hai (phương đứng) giống hệt nhau hoặc sai khác
+nhau không đáng kể (phương sai nhỏ). Khi đó, thành phần này hoàn toàn có thể được lược
+bỏ, và ta ngầm hiểu rằng nó sẽ được xấp xỉ bằng kỳ vọng của thành phần đó
+trên toàn bộ dữ liệu. Ngược lại, nếu áp dụng phương pháp này lên chiều thứ nhất (phương ngang), {lượng thông tin} bị mất đi đáng kể do sai số xấp xỉ quá lớn. Vì vậy, lượng thông tin theo mỗi thành phần có thể được đo bằng phương sai của dữ liệu trên thành phần đó. Tổng lượng
+thông tin là tổng phương sai trên toàn bộ các thành phần. Lấy
+một ví dụ về việc có hai camera được đặt dùng để chụp cùng một người, một camera
+phía trước và một camera đặt trên đầu. Rõ ràng, hình ảnh thu được từ
+camera đặt phía trước mang nhiều thông tin hơn so với hình ảnh nhìn từ
+phía trên đầu. Vì vậy, bức ảnh chụp từ phía trên đầu có thể được bỏ qua mà không
+làm mất đi quá nhiều thông tin về hình dáng của người đó.
+
+Câu hỏi thứ hai tương ứng với trường hợp Hình~\ref{fig:pca_2b}. Trong cả hai
+chiều, phương sai của dữ liệu đều lớn; việc bỏ đi một trong hai chiều đều khiến
+một lượng thông tin đáng kể bị mất đi. Tuy nhiên, nếu xoay trục toạ độ đi một
+góc phù hợp, một trong hai chiều dữ liệu có thể được lược bở vì dữ liệu có xu
+hướng phân bố xung quanh một đường thẳng.
+
+\textit{Phân tích thành phần chính} (principle component analysis, PCA) là
+phương pháp đi tìm một phép xoay trục toạ độ để được một hệ trục toạ độ mới sao
+cho trong hệ mới này, thông tin của dữ liệu chủ yếu tập trung ở một vài thành
+phần. Phần còn lại chứa ít thông tin hơn có thể được lược bỏ.
+
+Phép xoay trục toạ độ có liên hệ chặt chẽ tới hệ trực chuẩn và ma trận trực giao
+.Giả sử hệ cơ sở trực chuẩn mới là $\bU$ (mỗi cột của $\bU$ là một vector đơn vị cho
+một chiều) và ta muốn giữ lại $K$ toạ độ trong hệ
+cơ sở mới này. Không mất tính tổng quát, giả sử đó là $K$ thành phần đầu tiên.
+% ******************************************************************************
+\begin{figure}[t]
+    \centering
+    \includegraphics[width = \textwidth]{Chapters/07_DimemsionalityReduction/27_pca/latex/pca_idea.pdf}
+    \caption[]{Ý tưởng chính của PCA: Tìm một hệ trực chuẩn mới sao cho trong hệ này, các thành phần quan trọng nhất nằm trong $K$ thành phần đầu tiên.}
+    \label{fig:27_3}
+\end{figure}
+% ******************************************************************************
+Quan sát Hình~\ref{fig:27_3} với cơ sở mới $\bU =
+    [\bU_K, \what{\bU}_K]$ là một hệ trực chuẩn với $\bU_K$ là ma trận con tạo bởi $K$ cột đầu tiên của $\bU$. Trong hệ cơ sở mới này, ma trận dữ liệu có thể được viết thành
+\begin{equation}
+    \label{eqn:27_8}
+    \bX = \bU_K \mathbf{Z} + \widehat{\bU}_K \mathbf{Y}
+\end{equation}
+Từ đây ta cũng suy ra
+\begin{eqnarray}
+    \label{eqn:27_9}
+    \left[\begin{matrix} \mathbf{Z} \\\ \mathbf{Y} \end{matrix} \right] =
+    \left[\begin{matrix} \bU_K^T \\\ \what{\bU}_K^T \end{matrix} \right]\bX \Rightarrow
+    \begin{matrix}
+        \mathbf{Z} = \bU_K^T \bX \\\
+        \mathbf{Y} = \what{\bU}_K^T\bX
+    \end{matrix}
+\end{eqnarray}
+Mục đích của PCA là đi tìm ma trận trực giao $\bU$ sao cho phần lớn thông tin
+nằm ở $\bU_K \mathbf{Z}$, phần nhỏ thông tin nằm ở $\what{\bU}_K\mathbf{Y}$.
+Phần nhỏ này sẽ được lược bỏ và xấp xỉ bằng một ma trận có các
+cột như nhau. Gọi mỗi cột đó là
+$\mathbf{b}$, khi đó, ta sẽ xấp xỉ $\mathbf{Y} \approx
+    \mathbf{b1}^T$ với $\mathbf{1}^T\in \mathbb{R}^{1
+        \times N}$ là một vector hàng có toàn
+bộ các phần tử bằng một. Giả sử đã tìm được $\bU$, ta cần tìm $\mathbf{b}$ thoả mãn:
+\begin{equation}
+    \mathbf{b} = \text{argmin}_{\bb} \|\mathbf{Y} - \mathbf{b1}^T\|_F^2 =
+    \text{argmin}_{\mathbf{b}} \|\what{\bU}_K^T\bX - \mathbf{b1}^T\|_F^2
+\end{equation}
+Giải phương trình đạo hàm theo $\mathbf{b}$ của hàm mục tiêu bằng $\bzero$:
+\begin{equation}
+    (\mathbf{b1}^T - \what{\bU}_K^T\bX)\mathbf{1} = 0 \Rightarrow N\mathbf{b} = \what{\bU}_K^T \mathbf{X1} \Rightarrow \mathbf{b} = \what{\bU}_K^T \lbar{\mathbf{x}}.
+\end{equation}
+Ở đây ta đã sử dụng $\bone^T\bone = N$ và $\lbar{\bx} = \frac{1}{N}\bX\bone$ là
+vector trung bình các cột của $\bX$.
+Với giá trị $\mathbf{b}$ tìm được này, dữ liệu ban đầu sẽ được xấp xỉ bởi
+\begin{equation}
+    \label{eqn:27_10}
+    \bX = \bU_K \bZ + \what{\bU}_k\bY \approx \bU_K\bZ + \what{\bU}_k \bb\bone^T
+    = \bU_K \mathbf{Z} + \what{\bU}_K \what{\bU}_K^T\bar{\mathbf{x}}\mathbf{1}^T
+    \triangleq \tilde{\bX}
+    % \bX \approx \tilde{\bX} = \bU_K \mathbf{Z} + \what{\bU}_K \what{\bU}_K^T\bar{\mathbf{x}}\mathbf{1}^T
+\end{equation}
+\subsection{Hàm mất mát}
+Hàm mất mát của PCA được coi như sai số của phép xấp xỉ, được định
+nghĩa là
+\begin{eqnarray}
+    \nonumber
+    \frac{1}{N}\|\bX - \tilde{\bX}\|_F^2 &=&
+    \frac{1}{N}\|\what{\bU}_K \bY-  \what{\bU}_K
+    \what{\bU}_K^T\lbar{\bx}\bone^T\|_F^2 =
+    \frac{1}{N}\|\what{\bU}_K \what{\bU}_K^T \bX -  \what{\bU}_K
+    \what{\bU}_K^T \bar{\mathbf{x}}\mathbf{1}^T\|_F^2\\
+    \label{eqn:27_11}
+    &=& \frac{1}{N} \|\what{\bU}_k \what{\bU}_k^T(\bX - \lbar{\bx}\bone^T)\|_F^2
+    \triangleq J(\bU)
+\end{eqnarray}
+Chú ý rằng, nếu các cột của một ma trận $\mathbf{V}$ tạo thành một hệ
+trực chuẩn thì với một ma trận $\mathbf{W}$ bất kỳ, ta luôn có
+\begin{equation}
+    \|\mathbf{VW}\|_F^2 = \text{trace} (\mathbf{W}^T\mathbf{V}^T\mathbf{V} \mathbf{W}) = \text{trace}(\mathbf{W}^T\mathbf{W}) = \|\mathbf{W}\|_F^2
+\end{equation}
+Đặt $\what{\bX} = \bX - \lbar{\bx}\bone^T$. Ma trận này có được bằng cách trừ
+mỗi cột của $\bX$ đi trung bình các cột của nó. Ta gọi $\what{\bX}$ là {ma trận dữ liệu đã
+được chuẩn hoá}. Có thể thấy $\hat{\mathbf{x}}_n = \mathbf{x}_n -
+    \bar{\mathbf{x}},~\forall n = 1, 2, \dots, N$.
+
+% Ta tạm gọi
+% $\what{\bX}$ là ma trận dữ liệu chuẩn hoá.
+
+Vì vậy hàm mất mát trong~\eqref{eqn:27_11} có thể được viết lại thành:
+\begin{eqnarray}
+    J(\bU) &=&  \frac{1}{N} \|\what{\bU}_K^T\what{\bX} \|_F^2 = \frac{1}{N}
+    \|\what{\bX}^T \what{\bU}_K \|_F^2 =
+    \frac{1}{N}\sum_{i = K+1}^D \|\what{\bX}^T\mathbf{u}_i \|_2^2 \\\
+    \label{eqn:27_12}
+    &=& \frac{1}{N} \sum_{i=K+1}^D \mathbf{u}_i^T\what{\bX}\what{\bX}^T \mathbf{u}_i
+    = \sum_{i=K+1}^D \mathbf{u}_i^T\mathbf{S} \mathbf{u}_i
+\end{eqnarray}
+với $\mathbf{S} = \frac{1}{N}\what{\bX}\what{\bX}^T$ là ma trận hiệp phương sai
+của dữ liệu và luôn là một ma trận nửa xác định dương.
+% (xem Mục~\ref{sub:expectaion_covariance}).
+
+Công việc còn lại là tìm các $\mathbf{u}_i$ để mất mát là nhỏ nhất.
+
+Với ma trận $\bU$ trực giao bất kỳ, thay $K = 0$ vào \eqref{eqn:27_12} ta có
+\begin{eqnarray}
+    L &=& \sum_{i=1}^D \mathbf{u}_i^T\mathbf{Su}_i = \frac{1}{N} \|\what{\bX}^T\bU\|_F^2 =\frac{1}{N} \text{trace}(\what{\bX}^T\bU \bU^T \what{\bX})  \\\
+    \label{eqn:27_13}
+    &=& \frac{1}{N} \text{trace} (\what{\bX}^T \what{\bX})  = \frac{1}{N} \text{trace} (\what{\bX} \what{\bX}^T) =\text{trace} (\mathbf{S}) = \sum_{i=1}^D \lambda_i
+\end{eqnarray}
+Với $\lambda_1 \geq \lambda_2 \geq \dots \geq \lambda_D \geq 0$ là các trị riêng
+của ma trận nửa xác định dương $\mathbf{S}$. Chú ý rằng các trị riêng này là
+thực và không âm\footnote{Tổng các trị riêng của một ma trận vuông bất kỳ luôn
+    bằng vết của ma trận đó.}.
+
+
+\textit{Như vậy $L$ không phụ thuộc vào cách chọn ma trận trực giao $\bU$} và
+bằng tổng các phần tử trên đường chéo của $\mathbf{S}$. Nói cách khác, $L$ chính
+là tổng các phương sai theo từng thành phần của dữ liệu ban
+đầu\footnote{Mỗi thành phần trên đường chéo chính của ma trận hiệp phương sai
+    chính là phương sai của thành phần dữ liệu tương ứng.}.
+
+Vì vậy, việc tối thiểu hàm mất mát $J$ được cho bởi \eqref{eqn:27_12} tương
+đương với việc tối đa biểu thức
+\begin{equation}
+    F  = L - J = \sum_{i=1}^K \mathbf{u}_i \mathbf{S} \mathbf{u}_i^T
+\end{equation}
+\subsection{Tối ưu hàm mất mát}
+Nghiệm của bài toán tối ưu hàm mất mát PCA được tìm dựa trên khẳng định sau
+đây:
+\newnote{}{
+    Nếu $\bS$ là một ma trận nửa xác định dương, bài toán tối ưu
+    \begin{eqnarray}
+        \max_{\bU_K} \sum_{i=1}^K \bu_i^T\bS\bu_i \\
+        \text{thoả mãn:}~ \bU_K^T\bU_K = \bI
+    \end{eqnarray}
+    có nghiệm $\bu_1, \dots, \bu_K$ là các vector riêng ứng với $K$ trị riêng (kể
+    cả lặp) lớn
+    nhất của $\bS$. Khi đó, giá trị lớn nhất của hàm mục tiêu là $\sum_{i=1}^K\lambda_i$, với
+    $\lambda_1 \geq \lambda_2 \geq \dots \geq \lambda_D$ là các trị riêng của $\bS$.
+}
+
+% \textbf{Định lý 1:} $F$ đạt giá trị lớn nhất bằng $\sum_{i=1}^K \lambda_i$ khi $\mathbf{u}_i$ là các vector riêng có norm 2 bằng 1 ứng với các trị riêng này. Tất nhiên, chúng ta không quên điều kiện trực giao giữa các $\mathbf{u}_i$.
+
+% Chú ý rằng $\lambda_i, i = 1, \dots, K$ chính là $K$ trị riêng lớn nhất của ma trận hiệp phương sai $\mathbf{S}$.
+Khẳng định này có thể được chứng minh bằng quy nạp
+% \footnote
+% {Xin được bỏ qua
+% phần chứng minh. Bạn đọc có thể xem Excercise 12.1 trong tài liệu tham
+% khảo~\cite{bishop2006pattern} với lời giải tại \url{https://goo.gl/sM32pB}.}.
+
+Trị riêng lớn nhất $\lambda_1$ của ma trận hiệp phương sai $\bS$ còn được gọi
+là \textit{thành
+    phần chính thứ nhất} ({the first principal component}), trị riêng thứ hai
+$\lambda_2$ được gọi là \textit{thành phần chính thứ hai},... Tên gọi
+\textit{phân tích thành phần chính} ({principal component analysis}) bắt
+nguồn từ đây. Ta chỉ giữ lại $K$ thành phần chính đầu tiên khi giảm chiều dữ
+liệu dùng PCA.
+
+% ******************************************************************************
+\begin{figure}[t]
+    % caption on side
+
+
+    \floatbox[{\capbeside\thisfloatsetup{capbesideposition={right,top},capbesidewidth=7.5cm}}]{figure}[\FBwidth]
+    {\caption{ PCA có thể được coi là phương pháp đi tìm một hệ cơ sở trực chuẩn
+            đóng vai trò một phép xoay, sao cho trong hệ cơ sở mới này, phương sai theo
+            một số chiều nào đó là không đáng kể và có thể lược bỏ. Trong hệ cơ sở ban đầu
+            $\mathbf{O}\be_1\be_2$, phương sai theo mỗi chiều (độ rộng của các đường
+            hình chuông nét liền) đều lớn. Trong không gian mới với hệ cơ sở
+            $\mathbf{O}\bu_1\bu_2$, phương sai theo hai chiều (độ rộng của các đường
+            hình chuông nét đứt) chênh lệch nhau đáng kể. Chiều dữ liệu có phương sai nhỏ
+            có thể được lược bỏ vì dữ liệu theo chiều này ít phân tán. }
+        \label{fig:27_4}}
+    { % figure here
+
+        \includegraphics[width=.4\textwidth]{Chapters/07_DimemsionalityReduction/27_pca/latex/pca_var.pdf}
+    }
+\end{figure}
+% ******************************************************************************
+Hình~\ref{fig:27_4} minh hoạ các thành phần chính với dữ liệu hai chiều.
+Trong không gian ban đầu với các vector cơ sở $\mathbf{e}_1,
+    \mathbf{e}_2$, phương sai theo mỗi chiều dữ liệu (tỉ lệ với độ rộng của các hình chuông
+nét liền) đều lớn. Trong hệ cơ sở mới $\mathbf{O}\mathbf{u}_1\mathbf{u}_2$,
+phương sai theo chiều thứ hai $\hat{\sigma}_2^2$ nhỏ so với
+$\hat{\sigma}_1^2$. Điều này chỉ ra rằng khi chiếu dữ liệu lên $\mathbf{u}_2$, ta
+được các điểm rất gần nhau và gần với giá trị trung bình theo chiều đó. Trong
+trường hợp này, vì giá trị trung bình theo mọi chiều bằng 0, ta có thể thay thế
+toạ độ theo chiều $\mathbf{u}_2$ bằng 0. Rõ ràng là nếu dữ liệu có phương sai
+càng nhỏ theo một chiều nào đó thì khi xấp xỉ chiều đó bằng một hằng số, sai số
+xấp xỉ càng nhỏ. PCA thực chất là đi tìm một phép xoay tương ứng với một ma trận
+trực giao sao cho trong hệ toạ độ mới, tồn tại các chiều có phương sai nhỏ
+có thể được bỏ qua; ta chỉ cần giữ lại các chiều/thành phần khác quan trọng hơn. Như
+đã khẳng định ở trên, tổng phương sai theo toàn bộ các chiều chiều trong một hệ cơ sở bất kỳ là
+như nhau và bằng tổng các trị riêng của ma trận hiệp phương sai. Vì vậy, PCA còn
+được coi là phương pháp giảm số chiều dữ liệu sao tổng phương sai còn lại là lớn
+nhất.
+
+
+% Tôi sẽ bỏ qua phần chứng minh của Định lý 1. Tuy nhiên, cũng nêu một vài ý để bạn đọc có thể hình dung:
+
+% Khi $K = 1$. Ta cần giải bài toán:
+% \begin{eqnarray}
+%     \max_{\mathbf{u}_1} &\mathbf{u}_1^T\mathbf{S} \mathbf{u}_1 \\\
+%     \text{thoả mãn:} &\|\mathbf{u}_1\|_2 = 1
+% \end{eqnarray}
+
+% Như đã đề cập ở phía trên, hàm mục tiêu đạt giá trị lớn nhất bằng $\lambda_1$ khi $\mathbf{u}_1$ là một vector riêng của ma trận hiệp phương sai $\mathbf{S}$ tương ứng với trị riêng $\lambda_1$. Vậy định lý đúng với $K = 1$
+
+% Giả sử $\mathbf{u}_1$ đã là vector riêng ứng với trị riêng lớn nhất của $\mathbf{S}$ thế thì nghiệm $\mathbf{u}_2$ của bài toán tối ưu:
+% \begin{equation}
+%     \label{27_21}
+%     \begin{aligned}
+%     \max_{\mathbf{u}_2} &\mathbf{u}_2^T\mathbf{S} \mathbf{u}_2 \\\
+%     \text{thoả mãn:}~ &\|\mathbf{u}_2\|_2 = 1\\\
+%     & \mathbf{u}_2^T \mathbf{u}_1 = 0 &
+%     \end{aligned}
+% \end{equation}
+% là một vector riêng của $\mathbf{S}$ ứng với trị riêng lớn thứ hai $\lambda_2$ của nó. Chú ý rằng $\lambda_2$ có thể bằng $\lambda_1$ nếu không gian riêng ứng với $\lambda_1$ có số rank lớn hơn 1.
+
+% Nhận định này có thể được chứng minh bằng phương pháp nhân tử Lagrange. Thật vậy, Lagrangian của bài toán $(21)$ là:
+% \begin{equation}
+% \mathcal{L}( \mathbf{u}_2, \nu_1, \nu_2) = \mathbf{u}_2^T\mathbf{S} \mathbf{u}_2 + \nu_1\mathbf{u}_1^T\mathbf{u}_2 + \nu_2(1 - \mathbf{u}_2^T\mathbf{u}_2)
+% \end{equation}
+
+% Ta cần giải hệ phương trình đạo hàm của $\mathcal{L}$ theo từng biến bằng 0:
+% \begin{eqnarray}
+%     \label{eqn:27_22}
+%     \frac{\partial \mathcal{L}}{\partial \mathbf{u}_2} &=& 2 \mathbf{Su}_2 + \nu_1 \mathbf{u}_1 - 2\nu_2\mathbf{u}_2 = 0\\\
+%     \label{eqn:27_23}
+%     \frac{\partial \mathcal{L}}{\partial \nu_1} &=& \mathbf{u}_1^T \mathbf{u}_2 = 0 \\\
+%     \label{eqn:27_24}
+%     \frac{\partial \mathcal{L}}{\partial \nu_2} &=& 1 - \mathbf{u}_2^T \mathbf{u}_2 = 0 \\\
+% \end{eqnarray}
+
+
+% Nhân cả hai vế của \eqref{eqn:27_22} với $\mathbf{u}_1^T$ vào bên trái ta có:
+% \begin{equation}
+% 2\mathbf{u}_1^T\mathbf{Su}_2 + \nu_1 = 0
+% \end{equation}
+% Vì $\mathbf{Su}_1 = \lambda_1 \mathbf{u}_1 \Rightarrow \mathbf{u}_1^T\mathbf{Su}_2 = \lambda_1 \mathbf{u}_1^T\mathbf{u}_2 = 0$. Từ đó suy ra $\nu_1 = 0$ và \eqref{eqn:27_22} lúc này tương đương với:
+% \begin{equation}
+% \mathbf{Su}_2 = \nu_2\mathbf{u}_2 \Rightarrow \mathbf{u}_2^T\mathbf{S} \mathbf{u}_2 = \nu_2
+% \end{equation}
+% Vậy $\mathbf{u}_2$ là một vector riêng của $\mathbf{S}$ ứng với $\nu_2$. Và để hàm mục tiêu đạt giá trị lớn nhất, $\nu_2$ cần càng lớn càng tốt. Điều này dẫn đến $\nu_2$ phải là trị riêng thứ hai của $\mathbf{S}$.
+
+% Lập luận tương tự, ta có thể chứng minh được: Nếu $\mathbf{u}_i, i = 1, 2, \dots, k-1$ là các vector riêng ứng với trị riêng lớn thứ $i$ của ma trận nửa xác định dương $\mathbf{S}$, hơn nữa, $k-1$ vector riêng này tạo thành một hệ trực chuẩn, thế thì:
+
+% \begin{eqnarray}
+%     \max_{\mathbf{u}_k} & \mathbf{u}_k^T\mathbf{Su}_k \\\
+%     \text{thoả mãn:}~ & \mathbf{u}_k^T\mathbf{u}_k = 1; \\\
+%     & \mathbf{u}_k^T\mathbf{u}_i = 1, i = 1,\dots, k -1
+% \end{eqnarray}
+% bằng đúng với trị riêng tiếp theo $\lambda_k$ tại $\mathbf{u}_k$ là vector riêng ứng với trị riêng này.
+
+
+
+\section{Các bước thực hiện phân tích thành phần chính}
+Từ các suy luận trên, ta có thể tóm tắt lại các bước trong PCA như sau:
+\begin{itemize}
+    \item[1)] Tính vector trung bình của toàn bộ dữ liệu:
+          \begin{math}
+              \bar{\mathbf{x}} = \frac{1}{N} \sum_{n=1}^N \mathbf{x}_n
+          \end{math}.
+    \item[2)] Trừ mỗi điểm dữ liệu đi vector trung bình của toàn bộ dữ liệu để được dữ
+          liệu chuẩn hoá:
+          \begin{equation}
+              \hat{\mathbf{x}}_n = \mathbf{x}_n - \bar{\mathbf{x}}
+          \end{equation}
+    \item[3)] Đặt $\what{\bX} = [\what{\bx}_1, \what{\bx}_2, \dots,
+              \what{\bx}_D]$ là ma trận dữ liệu chuẩn hoá, tính ma trận hiệp phương sai:
+          \begin{equation}
+              \mathbf{S} = \frac{1}{N}\what{\bX}\what{\bX}^T
+          \end{equation}
+    \item[4)] Tính các trị riêng và vector riêng tương ứng có $\ell_2$ norm bằng 1
+          của ma trận này, sắp xếp chúng theo thứ tự giảm dần của trị riêng.
+    \item[5)] Chọn $K$ vector riêng ứng với $K$ trị riêng lớn nhất để xây dựng ma trận $\bU_K$ có các cột tạo thành một hệ trực giao. $K$ vector này được gọi là các thành phần chính, tạo thành một không gian con {gần} với phân bố của dữ liệu ban đầu đã chuẩn hoá.
+    \item[6)] Chiếu dữ liệu ban đầu đã chuẩn hoá $\what{\bX}$ xuống không gian con tìm được.
+    \item[7)] Dữ liệu mới là toạ độ của các điểm dữ liệu trên không gian mới:
+          \begin{math}
+              \mathbf{Z} = \bU_K^T\what{\bX}
+          \end{math}.
+\end{itemize}
+
+\textit{Như vậy, PCA là kết hợp của phép tịnh tiến, xoay trục toạ độ và chiếu dữ liệu lên hệ toạ độ mới.}
+
+Dữ liệu ban đầu có thể tính được xấp xỉ theo dữ liệu mới bởi
+\begin{math}
+    \mathbf{x} \approx \bU_K\mathbf{Z} + \bar{\mathbf{x}}
+\end{math}.
+
+Một điểm dữ liệu mới $\bv \in \R^D$ sẽ
+được giảm chiều bằng PCA theo công thức $\bw = \bU_K^T(\bv - \lbar{\bx}) \in
+    \R^K$. Ngược lại, nếu biết $\bw$, ta có thể xấp xỉ $\bv$ bởi $\bU_K\bw +
+    \lbar{\bx}$. Các bước thực hiện PCA được minh hoạ trong Hình \ref{fig:27_5}.
+
+% ******************************************************************************
+\begin{figure}[t]
+    \centering
+    \includegraphics[width = \textwidth]{Chapters/07_DimemsionalityReduction/27_pca/latex/pca_procedure.pdf}
+    \caption[]{Các bước thực hiện PCA.}
+    \label{fig:27_5}
+\end{figure}
+% ******************************************************************************
+
+\section{Liên hệ với phân tích giá trị suy biến}
+PCA và SVD có mối quan hệ đặc biệt với nhau. Xin phép nhắc lại hai điểm đã trình bày dưới đây:
+
+
+\subsection{SVD cho bài toán xấp xỉ hạng thấp tốt nhất}
+Nghiệm của bài toán xấp xỉ một ma trận bởi một ma trận có hạng không vượt quá $k$:
+\begin{equation}
+    \label{eqn:28_1}
+    \begin{aligned}
+        \min_{\mathbf{A}} & \|\bX - \mathbf{A}\|_F      \\\
+        \text{thoả mãn:}~ & \text{rank}(\mathbf{A}) = K
+    \end{aligned}
+\end{equation}
+chính là SVD cắt ngọn của $\mathbf{A}$.
+
+Cụ thể, nếu SVD của $\bX
+    \in\mathbb{R}^{D\times N}$ là
+\begin{equation}
+    \bX = \bU\mathbf{\Sigma}\mathbf{V}^T
+\end{equation}
+với $\bU \in \mathbb{R}^{D \times D}$ và $\mathbf{V}\in \mathbb{R}^{N\times N}$
+là các ma trận trực giao và $\mathbf{\Sigma} \in \mathbb{R}^{D \times N}$ là ma
+trận đường chéo (không nhất thiết vuông) với các phần tử trên đường chéo không
+âm giảm dần. Nghiệm của bài toán \eqref{eqn:28_1} chính là:
+\begin{equation}
+    \label{eqn:28_2}
+    \mathbf{A} = \bU_K \mathbf{\Sigma}_K \mathbf{V}_K^T
+\end{equation}
+với $\bU \in \mathbb{R}^{D \times K}$ và $\mathbf{V}\in \mathbb{R}^{N\times K}$
+là các ma trận tạo bởi $K$ cột đầu tiên của $\bU$ và $\mathbf{V}$,
+$\mathbf{\Sigma}_K \in \mathbb{R}^{K \times K}$ là ma trận đường chéo con ứng
+với $K$ hàng đầu tiên và $K$ cột đầu tiên của $\mathbf{\Sigma}$.
+
+
+\subsection{Ý tưởng của PCA}
+Như đã chứng minh ở \eqref{eqn:27_10}, PCA là bài toán đi tìm ma trận
+trực giao $\bU$ và ma trận mô tả dữ liệu ở không gian thấp chiều $\mathbf{Z}$
+sao cho việc xấp xỉ sau đây là tốt nhất:
+\begin{equation}
+    \label{eqn:28_3}
+    \bX \approx \tilde{\bX} = \bU_K \mathbf{Z} + \what{\bU}_K \what{\bU}_K^T\bar{\mathbf{x}}\mathbf{1}^T
+\end{equation}
+với $\bU_K, \what{\bU}_K$ lần lượt là các ma trận được tạo bởi $K$ cột đầu tiên
+và $D-K$ cột cuối cùng của ma trận trực giao $\bU$, và $\bar{\mathbf{x}}$ là
+vector trung bình của dữ liệu.
+
+{Giả sử rằng vector trung bình $\bar{\mathbf{x}} = \mathbf{0}$}. Khi đó, \eqref{eqn:28_3} tương đương với
+\begin{equation}
+    \label{eqn:28_4}
+    \bX \approx \tilde{\bX} = \bU_K \mathbf{Z}
+\end{equation}
+Bài toán tối ưu của PCA sẽ trở thành:
+\begin{equation}
+    \label{eqn:28_5}
+    \begin{aligned}
+        \bU_K, \mathbf{Z} & = & \arg \min_{\bU_K, \mathbf{Z} } \|\bX - \bU_K
+        \mathbf{Z}\|_F                                                         \\\
+        \text{thoả mãn:}  &   & \bU_K^T \bU_K = \mathbf{I}_K                 &
+    \end{aligned}
+\end{equation}
+với $\mathbf{I}_K \in \mathbb{R}^{K\times K}$ là ma trận đơn vị trong không gian $K$ chiều và điều kiện ràng buộc để đảm bảo các cột của $\bU_K$ tạo thành một hệ trực chuẩn.
+
+
+\subsection{Quan hệ giữa hai phương pháp}
+Có thể nhận ra nghiệm của bài toán \eqref{eqn:28_5} chính là
+\begin{align*}
+    \bU_K \quad \text{trong}\quad~\eqref{eqn:28_5}     & = \bU_K \quad\text{trong} \quad
+    \eqref{eqn:28_2}                                                                                                                 \\\
+    \mathbf{Z} \quad\text{trong}\quad~\eqref{eqn:28_5} & = \mathbf{\Sigma}_K \mathbf{V}_K^T \quad\text{trong} \quad \eqref{eqn:28_2}
+\end{align*}
+Như vậy, nếu các điểm dữ liệu được biểu diễn bởi các cột của một ma trận, và
+trung bình các cột của ma trận đó là vector không thì nghiệm của bài toán PCA được rút ra trực tiếp từ SVD cắt ngọn của
+ma trận đó. Nói cách khác, việc đi tìm nghiệm cho PCA chính là việc giải một
+bài toán phân tích ma trận thông qua SVD.
+
+
+\section{Làm thế nào để chọn số chiều của dữ liệu mới}
+
+Một câu hỏi được đặt ra là, làm thế nào để chọn giá trị $K$  --  chiều của dữ
+liệu mới  --  với từng dữ liệu cụ thể?
+
+Thông thường, $K$ được chọn dựa trên việc {lượng thông tin muốn giữ lại}. Ở đây, toàn bộ thông tin chính là tổng phương sai của toàn bộ các chiều dữ liệu. Lượng dữ liệu muốn dữ lại là tổng phương sai của dữ liệu trong hệ trục toạ độ mới.
+
+Nhắc lại rằng trong mọi hệ trục toạ độ, tổng phương sai của dữ liệu là như nhau
+và bằng tổng các trị riêng của ma trận hiệp phương sai $\sum_{i=1}^D
+    \lambda_i$. Thêm nữa, PCA giúp giữ lại lượng thông tin (tổng các phương sai) là
+$\sum_{i=1}^K \lambda_i$. Vậy ta có thể coi biểu thức:
+\begin{equation}
+    \label{eqn:28_6}
+    r_K = \frac{\sum_{i=1}^K \lambda_i}{\sum_{j=1}^D \lambda_j}
+\end{equation}
+là tỉ lệ thông tin được giữ lại khi số chiều dữ liệu mới sau PCA là $K$. Như
+vậy, giả sử ta muốn giữ lại 99\% dữ liệu, ta chỉ cần chọn $K$ là số tự nhiên
+nhỏ nhất sao cho $r_K \geq 0.99$.
+
+Khi dữ liệu phân bố quanh một không gian con, các giá trị phương sai lớn nhất
+ứng với các $\lambda_i$ đầu tiên cao gấp nhiều lần các phương sai còn lại.
+Khi đó, ta có thể chọn được $K$ khá nhỏ để đạt được $r_K \geq 0.99$.
+
+
+\section{Lưu ý về tính toán phân tích thành phần chính}
+Có hai trường hợp trong thực tế mà chúng ta cần lưu ý về PCA. Trường hợp thứ
+nhất là lượng dữ liệu có được nhỏ hơn rất nhiều so với số chiều dữ liệu. Trường
+hợp thứ hai là khi lượng dữ liệu trong tập huấn luyện rất lớn, việc tính toán ma trận hiệp phương sai và trị riêng đôi khi trở nên
+bất khả thi. Có những hướng giải quyết hiệu quả cho các trường hợp này.
+
+{Trong mục này, ta sẽ coi như dữ liệu đã được chuẩn hoá, tức đã được trừ đi
+vector kỳ vọng. Khi đó, ma trận hiệp phương sai sẽ là $\mathbf{S} =
+    \frac{1}{N}\bX\bX^T$.}
+
+\subsection{Số chiều dữ liệu nhiều hơn số điểm dữ liệu}
+
+Đó là trường hợp $D > N$, tức ma trận dữ liệu $\bX$ là một \textit{ma trận cao}.
+Khi đó, số trị riêng khác không của ma trận hiệp phương sai $\mathbf{S}$ sẽ
+không vượt quá hạng của nó, tức không vượt quá $N$. Vậy ta cần chọn $K \leq N$
+vì không thể chọn ra được nhiều hơn $N$ trị riêng khác không của một ma trận có hạng
+bằng $N$.
+
+Việc tính toán các trị riêng và vector riêng cũng có thể được thực hiện một cách hiệu quả dựa trên các tính chất sau đây:
+\begin{enumerate}
+    \item  Trị riêng của $\mathbf{A}$ cũng là trị riêng của $k\mathbf{A}$ với $k \neq 0$ bất kỳ. Điều này có thể được suy ra trực tiếp từ định nghĩa của trị riêng và vector riêng.
+
+
+    \item Trị riêng của $\mathbf{AB}$ cũng là trị riêng của
+          $\mathbf{BA}$ với $\mathbf{A} \in \mathbb{R}^{d_1 \times d_2}, \mathbf{B} \in \mathbb{R} ^{d_2 \times d_1}$ là các ma trận bất kỳ và $d_1, d_2$ là các số tự nhiên khác không bất kỳ.
+
+          Như vậy, thay vì tìm trị riêng của ma trận hiệp phương sai $\mathbf{S} \in \mathbb{R}^{D\times D}$, ta đi tìm trị riêng của ma trận $\mathbf{T} = \bX^T \bX \in \mathbb{R}^{N \times N}$ có số chiều nhỏ hơn (vì $N < D$).
+
+    \item Nếu $(\lambda, \mathbf{u})$ là một cặp trị riêng,
+          vector riêng của $\mathbf{T}$ thì $(\lambda, \mathbf{Xu})$ là một cặp trị
+          riêng, vector riêng của $\mathbf{S}$. Thật vậy:
+          \begin{eqnarray}
+              \label{eqn:28_8}
+              \bX^T \mathbf{Xu} = \bT\bu = \lambda \mathbf{u}
+              \Rightarrow (\bX\bX^T)(\mathbf{Xu}) = \lambda (\mathbf{Xu} )
+          \end{eqnarray}
+          Dấu bằng thứ nhất xảy ra theo định nghĩa của trị riêng và vector riêng.
+\end{enumerate}
+
+Như vậy, ta có thể hoàn toàn tính được trị riêng và vector riêng của ma trận
+hiệp phương sai $\bS$ dựa trên một ma trận $\bT$ có kích thước nhỏ hơn. Việc
+này trong nhiều trường hợp khiến thời gian tính toán giảm đi đáng kể.
+
+% \subsubsection{Chuẩn hoá các vector riêng}
+
+% \textit{Nhắc lại định nghĩa không gian riêng: Không gian riêng ứng với trị riêng của một ma trận là không gian sinh (span subspace) tạo bởi toàn bộ các vector riêng ứng với trị riêng đó.}
+
+% Việc cuối cùng phải làm là chuẩn hoá các vector riêng tìm được sao cho chúng tạo thành một hệ trực chuẩn. Việc này có thể dựa trên hai điểm sau đây:
+
+% \textbf{Thứ nhất}, nếu $\mathbf{A}$ là một ma trận đối xứng, $(\lambda_1,
+% \mathbf{x}_1), (\lambda_2, \mathbf{x}_2)$ là các cặp (trị riêng, vector riêng)
+% của $\mathbf{A}$ với $\lambda_1 \neq \lambda_2$, thì
+% $\mathbf{x}_1^T\mathbf{x}_2 = 0$. Nói cách khác, hai vector bất kỳ trong hai
+% không gian riêng khác nhau của một ma trận đối xứng trực giao với nhau.
+% Chứng mình:
+% \begin{eqnarray}
+%   \mathbf{x}_2^T \mathbf{Ax}_1 = \mathbf{x}_1^T \mathbf{Ax}_2 = \lambda_1 \mathbf{x}_2^T \mathbf{x}_1 = \lambda_2 \mathbf{x}_1^T \mathbf{x}_2 \Rightarrow \mathbf{x}_1^T \mathbf{x}_2 = 0
+% \end{eqnarray}
+% Dấu bằng cuối cùng xảy ra vì $\lambda_1 \neq \lambda_2$.
+
+% \textbf{Thứ hai}, với các trị riêng độc lập tìm được trong một không gian riêng,
+% ta có thể dùng quá trình trực giao hoá Gram-Schmit để chuẩn hoá chúng về một hệ
+% trực
+% chuẩn.
+
+% Kết hợp hai điểm trên, ta có thể thu được các vector riêng tạo thành một hệ trực chuẩn, chính là ma trận $\bU_K$ trong PCA.
+
+
+\subsection{Với các bài toán quy mô lớn}
+Trong rất nhiều bài toán quy mô lớn, ma trận hiệp phương sai là một ma trận rất lớn. Ví dụ, có một triệu bức ảnh
+1000 $\times$ 1000 pixel, như vậy $D = N = 10^6$ là các số rất lớn, việc trực
+tiếp tính toán trị riêng và vector riêng cho ma trận hiệp phương sai là không
+khả thi. Lúc này, các trị riêng và vector riêng của ma trận hiệp phương sai thường được tính thông qua \textit{power method}
+(\url{https://goo.gl/eBRPxH}).
+
+\section{Ứng dụng trong nén dữ liệu đa phương tiện dạng ảnh}
+
+\subsection{Triển khai thuật toán PCA bằng ngôn ngữ python}
+
+Để thực hiện triển khai thuật toán chúng ta sẽ thực hiện bằng 6 bước sau :
+
+\begin{itemize}
+    \item Tính hiệu giá trị của giá trị mỗi cột và giá trị trung bình của cột đó
+    \item Tính ma trận hiệp phương sai dữ liệu
+    \item Tính toán giá trị riêng và vector riêng của ma trận hiệp phương sai
+    \item Sắp xêp các giá trị riêng theo chiều tăng dần
+    \item Chọn tập con trong tập giá trị riêng đã sắp xếp
+    \item Chuyển đổi dữ liệu
+\end{itemize}
+
+\newpage
+Đây là đoạn code thực hiện các bước trên sử dụng ngôn ngữ python và thư viện numpy (1 thư viện hỗ trợ tính toán)
+\begin{lstlisting}[language=Python]
+    import numpy as np
+ 
+    def PCA(X , num_components):
+        
+        #Step-1
+        X_meaned = X - np.mean(X , axis = 0)
+        
+        #Step-2
+        cov_mat = np.cov(X_meaned , rowvar = False)
+        
+        #Step-3
+        eigen_values , eigen_vectors = np.linalg.eigh(cov_mat)
+        
+        #Step-4
+        sorted_index = np.argsort(eigen_values)[::-1]
+        sorted_eigenvalue = eigen_values[sorted_index]
+        sorted_eigenvectors = eigen_vectors[:,sorted_index]
+        
+        #Step-5
+        eigenvector_subset = sorted_eigenvectors[:,0:num_components]
+        
+        #Step-6
+        X_reduced = np.dot(eigenvector_subset.transpose() , X_meaned.transpose() ).transpose()
+        
+        return X_reduced
+    
+\end{lstlisting}
+
+\
+\newpage
+\subsection{Chương trình nén sử dụng PCA bằng ngôn ngữ python}
+\subsubsection{Mô hình tổng quan của chương trình}
+
+Mô hình tập trung vào chứng minh tính giảm chiều dữ liệu của thuật toán PCA
+
+\begin{center}
+    \begin{figure}[htp]
+        \begin{center}
+            \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Chapters/07_DimemsionalityReduction/27_pca/model.png}
+        \end{center}
+        \caption{Mô tả chương trình}
+        \label{fig:27_6}
+    \end{figure}
+\end{center}
+
+\subsubsection{Nén và lưu trữ dữ liệu nén}
+
+Hàm sử dụng để nén các ma trận ảnh riêng biệt kích thước mxn:
+
+
+Hàm này đươc thực thi với các tham số  là ma trận các điểm ảnh và phần trăm nén ảnh.
+\newpage
+\begin{lstlisting}[language=Python]
+    def compress_img(img, percen):
+        '''compress image with percent'''
+
+        pca = PCA().fit(img)
+        var_cumu = np.cumsum(pca.explained_variance_ratio_)*100
+        k = np.argmax(var_cumu > percen)
+
+        ipca = IncrementalPCA(n_components=k)
+        img_compressed = ipca.fit_transform(img)
+        list_att = ['components_', 'mean_', 'explained_variance_', 'whiten']
+        ipca_att = {}
+        for att in list_att:
+            ipca_att[att] = ipca.__getattribute__(att)
+        return k, img_compressed, ipca_att
+    
+\end{lstlisting}
+
+Kết quả các giá trị mà hàm này trả về :
+\begin{itemize}
+    \item Số lượng thành phần chính cần thiết để có phần trăm nén tương ứng
+    \item Ma trận rút gọn theo các thành phần ở trên
+    \item Các tham số cần thiết cho việc phục hồi lại ma trận ban đầu (đương nhiều là ma trận phục hội sẽ bị mất mát dữ liệu)
+\end{itemize}
+
+\begin{center}
+    \begin{figure}[htp]
+        \begin{center}
+            \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Chapters/07_DimemsionalityReduction/27_pca/imgg_origin.jpg}
+        \end{center}
+        \caption{Ảnh đưa vào bộ nén}
+        \label{fig:27_7}
+    \end{figure}
+\end{center}
+
+\subsubsection{Giải nén từ dữ liệu nén}
+
+Hàm giải nén được thực thi với các tham số truyền vào là các giá trị kết quả của hàm nén
+
+Hàm này chịu trách nghiệm phục hồi lại ảnh với kích thước ban đầu
+
+\begin{lstlisting}[language=Python]
+    def extract_img(result_compressed):
+        k = result_compressed[0]
+        ipca = IncrementalPCA(n_components=k)
+        img_compressed = result_compressed[1]
+        dict_att = result_compressed[2]
+        for key in dict_att.keys():
+            ipca.__setattr__(key, dict_att[key])
+        # print((dict_att['mean_']))
+        img_extracted = ipca.inverse_transform(img_compressed)
+        return img_extracted
+    
+\end{lstlisting}
+
+\subsubsection{Phục hồi ảnh từ các ma trận được giải nén}
+
+Đoạn mã sau thể hiện sự gộp các ma trận của 3 kênh màu RGB từ ảnh ban đầu sau 1 chuỗi xử lý nén và giải nén
+
+\begin{lstlisting}[language=Python]
+    # read json file
+    img_compressed1 = {}
+    with open(path+'imgj_compressed.json', 'r') as f:
+        img_compressed1 = json.load(f)
+
+    # extract image
+    img_extracted = [extract_img(img_tmp)for img_tmp in img_compressed1]
+    img_extracted = concat_img(*img_extracted)
+    
+\end{lstlisting}
+
+Biến \pythoninline{img_extracted} lưu ảnh hoàn thiện sau khi đã gộp lại từ các ma trận của 3 kênh màu RGB
+
+\begin{center}
+    \begin{figure}[htp]
+        \begin{center}
+            \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Chapters/07_DimemsionalityReduction/27_pca/imgg_extracted.jpg}
+        \end{center}
+        \caption{Ảnh giải nén sau khi đã được gộp từ các ma trận của 3 kênh màu}
+        \label{fig:27_8}
+    \end{figure}
+\end{center}
+
+
+
+\newpage
+\subsubsection{Biểu diễn hiệu quả nén}
+
+\begin{center}
+    \begin{figure}[htp]
+        \begin{center}
+            \includegraphics[scale=.5]{Chapters/07_DimemsionalityReduction/27_pca/cumsum.jpg}
+        \end{center}
+        \caption{Đường thể hiện tổng cộng dồn của các giá trị riêng thành phần chính}
+        \label{fig:27_9}
+    \end{figure}
+\end{center}
+
+Biểu đồ trên cho thấy khi ta lựa chọn số phần trăm nén là 99$\%$ thì số lượng thành phần được chọn cũng chỉ bằng $1/4$ tổng số thành phần.
+
+
+Nên khi gặp những ảnh có đường biểu diễn như thế thì hiệu quả nén được sẽ lớn nhưng mất mát thì nhỏ.
+
+\begin{center}
+    \begin{figure}[htp]
+        \begin{center}
+            \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Chapters/07_DimemsionalityReduction/27_pca/compare.png}
+        \end{center}
+        \caption{So sánh tệp trước và sau khi nén}
+        \label{fig:27_10}
+    \end{figure}
+\end{center}
+
+Kết quả chúng ta đã thu được tệp nén có kích thước 6.4 MB so với 16.4 MB của tệp gốc, tức là chỉ bằng $40\%$ so với tệp gốc.
+\newpage
+\subsubsection{So sánh hiệu quả nén với các định dạng ảnh khác nhau}
+\begin{center}
+    \begin{figure}[htp]
+        \begin{center}
+            \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Chapters/07_DimemsionalityReduction/27_pca/barplot.jpg}
+        \end{center}
+        \caption{Đối chiếu kích thước tệp nén và tệp gốc của các định dạng ảnh khác nhau}
+        \label{fig:27_11}
+    \end{figure}
+\end{center}
+
+Chú thích :
+\begin{itemize}
+    \item Cột màu xanh : dung lượng của file gốc
+    \item Cột màu vàng : dung lượng của file nén
+\end{itemize}
+
+Kết luận :
+\begin{itemize}
+    \item Đối với ảnh định dạng jpeg thì hiệu quả nén cao hơn so với các định dạng khác
+    \item Đối với ảnh định dạng png thì hiệu quả nén rất thấp do ảnh png là ảnh được tạo thành từ các vector chứ không phải từ những điểm ảnh cố định
+\end{itemize}
+
+
+% \begin{document}
+% \centering
+% \includegraphics[width = \textwidth]{Chapters/07_DimemsionalityReduction/27_pca/cumsum.jpg}
+% \caption{Ví dụ về ảnh của một người trong Yale Face Database.}
+% \end{document}
+
+
+
+\section{Một số ứng dụng khác}
+Ứng dụng đầu tiên của PCA chính là việc giảm chiều dữ liệu, giúp
+việc lưu trữ và tính toán được thuận tiện hơn. Thực tế cho thấy, nhiều khi làm
+việc trên dữ liệu đã được giảm chiều mang lại kết quả tốt hơn so với dữ liệu
+gốc. Thứ nhất, có thể phần dữ liệu mang thông tin nhỏ bị lược đi chính là phần
+gây nhiễu, những thông tin quan trọng hơn đã được giữ lại. Thứ hai, số điểm dữ
+liệu nhiều khi ít hơn số chiều dữ liệu. Khi có quá ít dữ liệu và số chiều dữ
+liệu quá lớn, quá khớp rất dễ xảy ra. Việc giảm chiều dữ liệu phần nào giúp
+khắc phục hiện tượng này.
+
+Dưới đây là hai ví dụ về ứng dụng của PCA trong bài toán phân loại khuôn mặt và dò điểm bất thường.
+
+\subsection{Khuôn mặt riêng}
+\index{khuôn mặt riêng -- eigenface}
+\index{eigenface -- khuôn mặt riêng}
+\textit{Khuôn mặt riêng} (eigenface) từng là một trong những kỹ thuật phổ biến
+trong bài toán nhận dạng khuôn mặt. Ý tưởng của khuôn mặt riêng là đi tìm một
+không gian có số chiều nhỏ hơn để mô tả mỗi khuôn mặt, từ đó sử dụng vector
+trong không gian thấp chiều này như vector đặc trưng cho bộ phân loại. Điều đáng
+nói là một bức ảnh khuôn mặt có kích thước khoảng 200 $\times$ 200 sẽ có số
+chiều là 40k -- một số rất lớn, trong khi đó, vector đặc trưng thường chỉ có số
+chiều bằng vài trăm hoặc vài nghìn. Khuôn mặt riêng thực ra chính là PCA. Các
+khuôn mặt riêng chính là các vector riêng ứng với những trị riêng lớn nhất của
+ma trận hiệp phương sai.
+
+\index{cơ sở dữ liệu khuôn mặt Yale -- Yale face database}
+\index{Yale face database -- cơ sở dữ liệu khuôn mặt Yale}
+Trong phần này, chúng ta làm một thí nghiệm nhỏ trên \textit{cơ sở dữ liệu
+    khuôn mặt Yale} (\url{https://goo.gl/LNg8LS}). Các bức ảnh trong thí nghiệm
+này đã được căn chỉnh cho cùng với kích thước và khuôn mặt nằm trọn vẹn trong
+một hình chữ nhật có kích thước $116 \times  98$ điểm ảnh. Có tất cả 15 người khác
+nhau, mỗi người có 11 bức ảnh được chụp ở các điều kiện ánh sáng và cảm xúc khác
+nhau, bao gồm \pythoninline{'centerlight', 'glasses', 'happy', 'leftlight',
+    'noglasses', 'normal', 'rightlight','sad', 'sleepy', 'surprised'}, và
+\pythoninline{'wink'}. Hình \ref{fig:28_1} minh hoạ các bức ảnh của
+người có id là 10.
+% <hr>
+% <div class="imgcap">
+% <img src ="/assets/28_pca2/yaleb_exs.png" align = "center" width = "800">
+% </div>
+% <div class = "thecap" align = "left">Hình 1: Ví dụ về ảnh của một người trong Yale Face Database. </div>
+% <hr>
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width = \textwidth]{Chapters/07_DimemsionalityReduction/28_pca2/latex/yaleb_exs.pdf}
+    \caption[]{Ví dụ về ảnh của một người trong Yale Face Database.}
+    \label{fig:28_1}
+\end{figure}
+
+Ta thấy rằng số chiều dữ liệu $116 \times 98 = 11368$ là một số khá
+lớn. Tuy nhiên, vì chỉ có tổng cộng $15 \times 11 = 165$ bức ảnh nên ta có thể
+nén các bức ảnh này về dữ liệu mới có chiều nhỏ hơn 165. Trong ví dụ này, chúng
+ta chọn $K = 100$.
+
+Dưới đây là đoạn code thực hiện PCA cho toàn bộ dữ liệu. Ở đây, PCA trong \pythoninline{sklearn} được sử dụng:
+\newpage
+\begin{lstlisting}[language=Python]
+    from sklearn.decomposition import PCA
+    import numpy as np
+    import scipy.misc                  # for loading image
+    from matplotlib.pyplot import imread
+    np.random.seed(1)
+    
+    # filename structure
+    path = 'YALE/unpadded/'  # path to the database
+    ids = range(1, 16)  # 15 persons
+    states = ['centerlight', 'glasses', 'happy', 'leftlight',
+              'noglasses', 'normal', 'rightlight', 'sad',
+              'sleepy', 'surprised', 'wink']
+    prefix = 'subject'
+    surfix = '.pgm'
+    # data dimension
+    h, w, K = 116, 98, 100  # hight, weight, new dim
+    D = h * w
+    N = len(states)*15
+    # collect all data
+    X = np.zeros((D, N))
+    cnt = 0
+    for person_id in range(1, 16):
+        for state in states:
+            fn = path + prefix + str(person_id).zfill(2) + '.' + state + surfix
+            print(fn)
+            X[:, cnt] = imread(fn).reshape(D)
+            # misc.imread
+            cnt += 1
+    
+    # Doing PCA, note that each row is a datapoint
+    pca = PCA(n_components=K)  # K = 100
+    pca.fit(X.T)
+    # projection matrix
+    U = pca.components_.T
+    
+\end{lstlisting}
+
+Trong dòng \pythoninline{pca = PCA(n_components=K)}, nếu
+\pythoninline{n_components} là một số thực trong khoảng $(0, 1)$, PCA sẽ thực
+hiện việc tìm $K$ dựa trên biểu thức~\eqref{eqn:28_6}.
+
+% ******************************************************************************
+\begin{figure}[t]
+    \centering
+    \includegraphics[width = \textwidth]{Chapters/07_DimemsionalityReduction/28_pca2/latex/yaleb_eig.pdf}
+    \caption[]{Các eigenfaces tìm được bằng PCA.}
+    \label{fig:28_2}
+\end{figure}
+% ******************************************************************************
+
+Hình \ref{fig:28_2} biểu diễn 18 vector riêng đầu tiên (18 cột đầu tiên của
+$\bU_k$) tìm được bằng PCA. Các vector đã được \pythoninline{reshape} về cùng
+kích thước như các bức ảnh gốc. Nhận thấy các
+vector thu được ít nhiều mang thông tin của mặt người. Thực tế, một khuôn mặt
+gốc sẽ được xấp xỉ như tổng có trọng số của các {khuôn mặt} này. Vì các
+vector riêng này đóng vai trò như cơ sở của không gian mới với ít chiều hơn,
+chúng còn được gọi là \textit{khuôn mặt riêng} hoặc \textit{khuôn mặt chính}. Từ \textit{chính} được dùng vì nó đi kèm với văn cảnh
+của \textit{phân tích thành phần chính}.
+% ******************************************************************************
+\begin{figure}[t]
+    \centering
+    \includegraphics[width = \textwidth]{Chapters/07_DimemsionalityReduction/28_pca2/latex/yaleb_ori_res.pdf}
+    \caption[]{Hàng trên: các ảnh gốc. Hàng dưới: các ảnh được tái tạo dùng khuôn mặt riêng. Ảnh ở hàng dưới có nhiễu nhưng vẫn mang những đặc điểm riêng mà mắt người có thể phân biệt được.}
+    \label{fig:28_3}
+\end{figure}
+% ******************************************************************************
+
+Để xem mức độ hiệu quả của phương pháp này, chúng ta  minh hoạ các bức ảnh gốc và các bức ảnh được xấp xỉ bằng PCA như trên
+Hình~\ref{fig:28_3}. Các khuôn mặt nhận được vẫn mang khá đầy đủ thông tin của
+các khuôn mặt gốc. Đáng chú ý hơn, các khuôn mặt trong hàng dưới được suy ra
+từ một vector 100 chiều, so với 11368 chiều như ở hàng trên.
+
+
+
+
+% Phần còn lại của source code có thể được tìm thấy \href{https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/28_pca2/python/EigenFaces.ipynb}{tại đây}.
+
+\subsection{Dò tìm điểm bất thường}
+Ngoài các ứng dụng về nén và phân loại, PCA còn được sử dụng trong nhiều lĩnh
+vực khác. \textit{Dò tìm điểm bất thường} (abnormal detection hoặc {outlier
+    detection}) là một trong số đó~\cite{shyu2003novel,lakhina2004diagnosing}.
+
+Ý tưởng cơ bản là giả sử tồn tại một không gian con mà các sự kiện bình thường
+nằm gần trong khi các sự kiện bất thường nằm xa không gian con đó. Hơn nữa, số
+sự kiện bất thường có một tỉ lệ nhỏ. Như vậy, PCA có thể được sử dụng trên toàn
+bộ dữ liệu để tìm ra các thành phần chính, từ đó suy ra không gian con mà các điểm bình thường nằm gần.
+Việc xác định một điểm là bình thường hay bất thường được xác định bằng cách đo
+khoảng cách từ điểm đó tới không gian con tìm được. Hình~\ref{fig:28_4} minh hoạ
+cho việc xác định các sự kiện bất thường bằng PCA.
+
+\begin{figure}[t]
+    % caption on side
+
+    \floatbox[{\capbeside\thisfloatsetup{capbesideposition={right,top},capbesidewidth=6.5cm}}]{figure}[\FBwidth]
+    {\caption{ PCA cho bài toán dò tìm điểm bất thường. Giả sử
+    các sự kiện {bình thường} chiếm đa số và nằm gần  một không
+    gian con nào đó. Khi đó, nếu làm PCA trên toàn bộ dữ liệu, không gian con
+    thu được gần với không gian con của tập các sự kiện {bình thường}.
+    Lúc này, các
+    điểm hình tròn to đậm hơn có thể được coi là các sự kiện {bất thường} vì chúng nằm xa không gian con chính.}
+    \label{fig:28_4}}
+    { % figure here
+    \includegraphics[width=.45\textwidth]{Chapters/07_DimemsionalityReduction/28_pca2/latex/abnormal.pdf}
+    }
+\end{figure}
+
+
+\section{Kết luận}
+\begin{itemize}
+    \item PCA là phương pháp giảm chiều dữ liệu dựa trên việc tối đa lượng
+          thông tin được giữ lại. Lượng thông tin được giữ lại được đo bằng tổng các
+          phương sai trên mỗi thành phần của dữ liệu. Lượng dữ liệu sẽ được giữ lại nhiều
+          nhất khi các chiều dữ liệu còn lại tương ứng với các vector riêng của trị riêng
+          lớn nhất của ma trận hiệp phương sai.
+
+    \item Với các bài toán quy mô lớn, đôi khi việc tính toán trên toàn bộ dữ liệu
+          là không khả thi vì vấn đề bộ nhớ. Giải pháp là thực hiện PCA lần đầu
+          trên một tập con dữ liệu vừa với bộ nhớ, sau đó lấy một tập con khác để {từ từ} (\textit{incrementally}) cập nhật nghiệm của PCA tới khi hội
+          tụ. Ý tưởng này khá giống với mini-batch gradient descent, và được gọi là
+          incremental PCA~\cite{zhao2006novel}.
+
+
+\end{itemize}
+

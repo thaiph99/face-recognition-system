@@ -27,6 +27,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 model = Facenet.loadModel()
 model.summary()
+print('name model :', model.name)
 
 
 class Model:
@@ -57,11 +58,6 @@ class Model:
             for fa in data[name]:
                 self.faces_embedded.append(fa)
                 self.faces_name.append(name)
-
-    def __save_data(self):
-        filename = self.storage + '/' + 'faces_data.json'
-        with open('face_data.json', 'w') as f:
-            json.dump(filename, f, cls=NumpyArrayEncoder)
 
     def delete_face(self, name_del):
         json_file = {}
