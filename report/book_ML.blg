@@ -3,49 +3,50 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: book_ML.aux
 A level-1 auxiliary file: Chapters/content/chap1.aux
 A level-1 auxiliary file: Chapters/content/chap2.aux
-A level-1 auxiliary file: Chapters/content/27_pca2.aux
+A level-1 auxiliary file: Chapters/content/chap3.aux
+A level-1 auxiliary file: Chapters/content/chap4.aux
 The style file: alpha.bst
+I found no \citation commands---while reading file book_ML.aux
 Database file #1: refs.bib
-Warning--can't use both volume and number fields in lakhina2004diagnosing
-You've used 3 entries,
+You've used 0 entries,
             2543 wiz_defined-function locations,
-            582 strings with 5171 characters,
-and the built_in function-call counts, 1481 in all, are:
-= -- 151
-> -- 81
-< -- 2
-+ -- 32
-- -- 30
-* -- 114
-:= -- 251
-add.period$ -- 10
-call.type$ -- 3
-change.case$ -- 23
-chr.to.int$ -- 3
-cite$ -- 4
-duplicate$ -- 51
-empty$ -- 93
-format.name$ -- 33
-if$ -- 298
+            562 strings with 4541 characters,
+and the built_in function-call counts, 24 in all, are:
+= -- 0
+> -- 0
+< -- 0
++ -- 0
+- -- 0
+* -- 2
+:= -- 10
+add.period$ -- 0
+call.type$ -- 0
+change.case$ -- 0
+chr.to.int$ -- 0
+cite$ -- 0
+duplicate$ -- 0
+empty$ -- 1
+format.name$ -- 0
+if$ -- 2
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 2
-newline$ -- 18
-num.names$ -- 9
-pop$ -- 17
+missing$ -- 0
+newline$ -- 3
+num.names$ -- 0
+pop$ -- 0
 preamble$ -- 1
-purify$ -- 25
+purify$ -- 0
 quote$ -- 0
-skip$ -- 46
+skip$ -- 2
 stack$ -- 0
-substring$ -- 80
-swap$ -- 14
-text.length$ -- 2
+substring$ -- 0
+swap$ -- 0
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 24
-warning$ -- 1
-while$ -- 14
-width$ -- 5
-write$ -- 43
-(There was 1 warning)
+type$ -- 0
+warning$ -- 0
+while$ -- 0
+width$ -- 0
+write$ -- 2
+(There was 1 error message)

@@ -1,52 +1,26 @@
 \begin{theindex}
 
-  \item cơ sở dữ liệu khuôn mặt Yale -- Yale face database, 
-		\hyperpage{28}
-
-  \indexspace
-
   \item dimensionality reduction -- giảm chiều dữ liệu, 
-		\hyperpage{3}
-
-  \indexspace
-
-  \item eigenface -- khuôn mặt riêng, \hyperpage{28}
+		\hyperpage{2}
 
   \indexspace
 
   \item feature extraction -- trích chọn đặc trưng, 
-		\hyperpage{3}
-  \item feature selection -- lựa chọn đặc trưng, \hyperpage{3}
+		\hyperpage{2}
+  \item feature selection -- lựa chọn đặc trưng, \hyperpage{2}
 
   \indexspace
 
   \item giảm chiều dữ liệu -- dimensionality reduction, 
-		\hyperpage{3}
+		\hyperpage{2}
 
   \indexspace
 
-  \item khuôn mặt riêng -- eigenface, \hyperpage{28}
-
-  \indexspace
-
-  \item lựa chọn đặc trưng -- feature selection, \hyperpage{3}
-
-  \indexspace
-
-  \item PCA, \hyperpage{11}
-  \item phân tích thành phần chính -- principle component analysis, 
-		\hyperpage{11}
-  \item principle component analysis -- phân tích thành phần chính, 
-		\hyperpage{11}
+  \item lựa chọn đặc trưng -- feature selection, \hyperpage{2}
 
   \indexspace
 
   \item trích chọn đặc trưng -- feature extraction, 
-		\hyperpage{3}
-
-  \indexspace
-
-  \item Yale face database -- cơ sở dữ liệu khuôn mặt Yale, 
-		\hyperpage{28}
+		\hyperpage{2}
 
 \end{theindex}
