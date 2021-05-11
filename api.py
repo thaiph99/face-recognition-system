@@ -1,6 +1,5 @@
 __author__ = 'thaiph99'
 
-import face_recognition
 from sklearn import svm
 import os
 import json
@@ -9,10 +8,7 @@ from numpy import asarray, expand_dims
 from numpy.linalg import norm
 from json import JSONEncoder
 import pickle
-from deepface import DeepFace
-from deepface.commons import functions, realtime, distance as dst
 from mtcnn import MTCNN
-import cv2
 from PIL import Image
 import Facenet
 import matplotlib.pyplot as plt
