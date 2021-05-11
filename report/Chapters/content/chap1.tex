@@ -1,0 +1,71 @@
+%!TEX root = ../../book_ML.tex
+\chapter{Nghiên cứu tổng quan}
+\label{cha:chap1}
+% \index{principal component analysis}
+% \index{PCA -- \textit{xem} principle component analysis}
+% \index{PCA}
+
+% \index{phân tích thành phần chính -- principle component analysis}
+% \index{principle component analysis -- phân tích thành phần chính}
+% \index{PCA}
+\section{Các phương pháp nghiên cứu}
+
+\begin{itemize}
+    \item Hiện nay có 2 phương pháp nhận diện khuôn mặt được sử dụng rộng rãi nhất là:
+          \begin{itemize}
+              \item Nhận dạng dựa trên các đặc trưng của các phần tử trên khuôn mặt
+                    (Feature base face recognition)
+              \item Nhận dạng dựa trên xét tổng thể khuôn mặt (Appearance based face
+                    recognition)
+          \end{itemize}
+
+    \item Ngoài ra còn một số phương pháp về loại sử dụng mô hình về khuôn mặt :
+          \begin{itemize}
+              \item Nhận dạng 2D :Elastics Bunch Graph, Active Appearance Model.
+              \item Nhận dạng 3D :3D Morphale Model
+          \end{itemize}
+\end{itemize}
+
+\section{Ưu nhược điểm của các phương pháp}
+\subsection{Nhận dạng dựa trên các đặc trưng của các phần tử trên khuôn mặt: }
+
+Đây là phương pháp nhận dạng khuôn mặt dựa trên viện xác định các đặc trưng hình
+học của các chi tiết trên một khuôn mặt (vị trí, diện tích, hình dạng của mắt,
+mũi, miệng, ...) và mối quan hệ giữa chúng (khoảng cách của hai mắt, khoảng cách
+của hai lông mày, ...).
+
+Ưu điểm của phương pháp này là nó gần với cách mà con người sử dụng để nhận biết
+khuôn mặt. Hơn nữa với việc xác định đặc tính cà mối quan hệ, phương pháp này có
+thể cho kết quả tốt trong các trường hợp ảnh có nhiều nhiễu như bị nghiêng, bị
+xoay hoặc ánh sáng thay đổi.
+
+Nhược điểm của phương pháp này là cài đặt thuật toán phức tạp do việc xác định
+mối quan hệ giữa các đặc tính sẽ khó phân biệt. Mặt khác, với các ảnh kích thước
+bé thì các đặc tính sẽ khó phân biệt.
+
+
+\subsection{Nhận dạng dựa trên xét tổng thể khuôn mặt:}
+
+Đây là phương pháp xem mỗi ảnh có kích thước RxC là một vector trong không gian
+RxC chiều. Ta sẽ xây dựng một không gian mới có chiều nhỏ hơn sao chi khi biểu diễn
+trong không gian có các đặc điểm chính của một khuôn mặt không bị mất đi.
+Trong không gian đó, các ảnh cùng một người sẽ được tập trung lại một nhóm
+gần nhau và cách xa các nhóm khác.
+
+Ưu điểm của phương pháp này là tìm được các đặc tính tiêu biểu của đối tượng cần nhận
+dạng mà không cần phải xác định các thành phần và mối quan hệ giữa các thành phần đó.
+Phương pháp sử dụng thuật toán có thể thực hiện tốt với các ảnh có độ phân giải cao,
+thu gọn ảnh thành một ảnh có kích thước nhỏ hơn. Có thể kết hợp các phương pháp khác
+như mạng Nơ-ron, Support Vector Machine.
+
+Nhược điểm của phương pháp này phân loại theo chiều phân bố lớn nhất của vector.
+Tuy nhiên, chiều phân bố lớn nhất không phải lúc nào cũng mang lại hiệu qua
+tốt nhất cho bài toán nhận dạng và đặc biệt là phương pháp này rất nhạy với nhiễu.
+
+\subsection{Kết luận}
+
+Vì kết quả nghiên cứu cuối cùng là ứng dụng với yêu cầu về độ chính xác cao, 
+khả năng thích ứng linh hoạt, hoạt động ổn định trong môi trường thực tế và 
+hoạt động với các camera với độ phân giải thấp. Tôi quyết định chọn phương pháp 
+nhận dạng dựạ trên xét tổng thể khuôn mặt (Appearance based face recognition).
+

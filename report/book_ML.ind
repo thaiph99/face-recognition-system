@@ -1,7 +1,7 @@
 \begin{theindex}
 
   \item cơ sở dữ liệu khuôn mặt Yale -- Yale face database, 
-		\hyperpage{23}
+		\hyperpage{28}
 
   \indexspace
 
@@ -10,7 +10,7 @@
 
   \indexspace
 
-  \item eigenface -- khuôn mặt riêng, \hyperpage{23}
+  \item eigenface -- khuôn mặt riêng, \hyperpage{28}
 
   \indexspace
 
@@ -25,7 +25,7 @@
 
   \indexspace
 
-  \item khuôn mặt riêng -- eigenface, \hyperpage{23}
+  \item khuôn mặt riêng -- eigenface, \hyperpage{28}
 
   \indexspace
 
@@ -33,11 +33,11 @@
 
   \indexspace
 
-  \item PCA, \hyperpage{6}
+  \item PCA, \hyperpage{11}
   \item phân tích thành phần chính -- principle component analysis, 
-		\hyperpage{6}
+		\hyperpage{11}
   \item principle component analysis -- phân tích thành phần chính, 
-		\hyperpage{6}
+		\hyperpage{11}
 
   \indexspace
 
@@ -47,6 +47,6 @@
   \indexspace
 
   \item Yale face database -- cơ sở dữ liệu khuôn mặt Yale, 
-		\hyperpage{23}
+		\hyperpage{28}
 
 \end{theindex}

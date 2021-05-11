@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.3.19)  10 MAY 2021 23:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.5.10)  11 MAY 2021 14:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/thai/Data2/face-recognition-system/report/book_ML.tex
-(/home/thai/Data2/face-recognition-system/report/book_ML.tex
+**/home/it/Data/thaiphData/face-recognition-system/report/book_ML.tex
+(/home/it/Data/thaiphData/face-recognition-system/report/book_ML.tex
 LaTeX2e <2020-02-02> patch level 2
-L3 programming layer <2020-02-14> (/home/thai/Data2/face-recognition-system/report/mysvmono2.cls (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+L3 programming layer <2020-02-14> (/home/it/Data/thaiphData/face-recognition-system/report/mysvmono2.cls (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2018/08/11 v1.3c Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
@@ -184,7 +184,7 @@ LaTeX Info: Redefining \today on input line 736.
 \@input{packages_book.aux}
 \openout2 = `packages_book.aux'.
 
-(/home/thai/Data2/face-recognition-system/report/packages_book.tex (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+(/home/it/Data/thaiphData/face-recognition-system/report/packages_book.tex (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2020/02/11 v2.0o Standard LaTeX package
  (/usr/share/texlive/texmf-dist/tex/latex/vntex/t5enc.def
 File: t5enc.def 2006/11/21 v1.4 Vietnamese T5 encoding
@@ -1101,7 +1101,7 @@ Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count395
 \l__pdf_internal_box=\box129
-) (/home/thai/Data2/face-recognition-system/report/book_ML.aux (/home/thai/Data2/face-recognition-system/report/Chapters/07_DimemsionalityReduction/27_pca2.aux))
+) (/home/it/Data/thaiphData/face-recognition-system/report/book_ML.aux (/home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/chap1.aux) (/home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/chap2.aux) (/home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/27_pca2.aux))
 \openout1 = `book_ML.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
@@ -1231,7 +1231,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 35.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (/home/thai/Data2/face-recognition-system/report/book_ML.toc
+) (/home/it/Data/thaiphData/face-recognition-system/report/book_ML.toc
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
 Make it at least 14.49998pt.
@@ -1246,30 +1246,20 @@ This may cause the page layout to be inconsistent, however.
 
 
 
-])
+] [2])
 \tf@toc=\write7
 \openout7 = `book_ML.toc'.
 
- (/home/thai/Data2/face-recognition-system/report/Chapters/dimred2.tex [2]
-Chương 1.
-
-LaTeX Font Warning: Font shape `T5/cmr/bx/sc' undefined
-(Font)              using `T5/cmr/bx/n' instead on input line 3.
-
-
-LaTeX Font Warning: Font shape `T5/cmr/bx/scit' undefined
-(Font)              using `T5/cmr/bx/it' instead on input line 3.
-
-) (/home/thai/Data2/face-recognition-system/report/Chapters/07_DimemsionalityReduction/dr_intro2.tex
+ (/home/it/Data/thaiphData/face-recognition-system/report/Chapters/dimred2.tex) (/home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/intro.tex [3]
 
 Package Fancyhdr Warning: \headheight is too small (14.49998pt): 
-Make it at least 17.97171pt.
+Make it at least 14.93912pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-[3
+[4
 
-] (/home/thai/Data2/face-recognition-system/report/Chapters/tableofnotation.tex
+] [5] (/home/it/Data/thaiphData/face-recognition-system/report/Chapters/tableofnotation.tex
 LaTeX Font Info:    Trying to load font information for T5+cmss on input line 8.
  (/usr/share/texlive/texmf-dist/tex/latex/vntex/t5cmss.fd
 File: t5cmss.fd 1999/05/25 v2.5h Standard LaTeX font definitions
@@ -1277,55 +1267,85 @@ File: t5cmss.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-)) [4] [5]
-\openout2 = `Chapters/07_DimemsionalityReduction/27_pca2.aux'.
+)) [6] [7]
+\openout2 = `Chapters/content/chap1.aux'.
 
- (/home/thai/Data2/face-recognition-system/report/Chapters/07_DimemsionalityReduction/27_pca2.tex
+ (/home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/chap1.tex
+Chương 1.
+
+LaTeX Font Warning: Font shape `T5/cmr/bx/sc' undefined
+(Font)              using `T5/cmr/bx/n' instead on input line 2.
+
+
+LaTeX Font Warning: Font shape `T5/cmr/bx/scit' undefined
+(Font)              using `T5/cmr/bx/it' instead on input line 2.
+
+[8
+
+
+]) [9]
+\openout2 = `Chapters/content/chap2.aux'.
+
+ (/home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/chap2.tex
 Chương 2.
 
 LaTeX Font Warning: Font shape `T5/cmr/bx/scit' undefined
 (Font)              using `T5/cmr/bx/it' instead on input line 2.
 
-<Chapters/07_DimemsionalityReduction/27_pca/latex/pca_diagvar.pdf, id=109, 271.04962pt x 145.72241pt>
-File: Chapters/07_DimemsionalityReduction/27_pca/latex/pca_diagvar.pdf Graphic file (type pdf)
-<use Chapters/07_DimemsionalityReduction/27_pca/latex/pca_diagvar.pdf>
-Package pdftex.def Info: Chapters/07_DimemsionalityReduction/27_pca/latex/pca_diagvar.pdf  used on input line 19.
-(pdftex.def)             Requested size: 240.97903pt x 129.55467pt.
-<Chapters/07_DimemsionalityReduction/27_pca/latex/pca_var0.pdf, id=110, 159.28609pt x 178.8562pt>
-File: Chapters/07_DimemsionalityReduction/27_pca/latex/pca_var0.pdf Graphic file (type pdf)
-<use Chapters/07_DimemsionalityReduction/27_pca/latex/pca_var0.pdf>
-Package pdftex.def Info: Chapters/07_DimemsionalityReduction/27_pca/latex/pca_var0.pdf  used on input line 24.
-(pdftex.def)             Requested size: 134.78645pt x 151.34892pt.
-[6
+) [10
+
 
 
 ]
-<Chapters/07_DimemsionalityReduction/27_pca/latex/pca_idea.pdf, id=118, 626.76057pt x 199.96909pt>
-File: Chapters/07_DimemsionalityReduction/27_pca/latex/pca_idea.pdf Graphic file (type pdf)
-<use Chapters/07_DimemsionalityReduction/27_pca/latex/pca_idea.pdf>
-Package pdftex.def Info: Chapters/07_DimemsionalityReduction/27_pca/latex/pca_idea.pdf  used on input line 72.
+\openout2 = `Chapters/content/27_pca2.aux'.
+
+ (/home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/27_pca2.tex
+Chương 3.
+
+LaTeX Font Warning: Font shape `T5/cmr/bx/scit' undefined
+(Font)              using `T5/cmr/bx/it' instead on input line 2.
+
+<Chapters/content/27_pca/latex/pca_diagvar.pdf, id=152, 271.04962pt x 145.72241pt>
+File: Chapters/content/27_pca/latex/pca_diagvar.pdf Graphic file (type pdf)
+<use Chapters/content/27_pca/latex/pca_diagvar.pdf>
+Package pdftex.def Info: Chapters/content/27_pca/latex/pca_diagvar.pdf  used on input line 19.
+(pdftex.def)             Requested size: 240.97903pt x 129.55467pt.
+<Chapters/content/27_pca/latex/pca_var0.pdf, id=153, 159.28609pt x 178.8562pt>
+File: Chapters/content/27_pca/latex/pca_var0.pdf Graphic file (type pdf)
+<use Chapters/content/27_pca/latex/pca_var0.pdf>
+Package pdftex.def Info: Chapters/content/27_pca/latex/pca_var0.pdf  used on input line 24.
+(pdftex.def)             Requested size: 134.78645pt x 151.34892pt.
+[11
+
+
+
+]
+<Chapters/content/27_pca/latex/pca_idea.pdf, id=166, 626.76057pt x 199.96909pt>
+File: Chapters/content/27_pca/latex/pca_idea.pdf Graphic file (type pdf)
+<use Chapters/content/27_pca/latex/pca_idea.pdf>
+Package pdftex.def Info: Chapters/content/27_pca/latex/pca_idea.pdf  used on input line 72.
 (pdftex.def)             Requested size: 412.56497pt x 131.62909pt.
- [7 </home/thai/Data2/face-recognition-system/report/Chapters/07_DimemsionalityReduction/27_pca/latex/pca_diagvar.pdf> </home/thai/Data2/face-recognition-system/report/Chapters/07_DimemsionalityReduction/27_pca/latex/pca_var0.pdf> </home/thai/Data2/face-recognition-system/report/Chapters/07_DimemsionalityReduction/27_pca/latex/pca_idea.pdf>] [8] [9]
-<Chapters/07_DimemsionalityReduction/27_pca/latex/pca_var.pdf, id=218, 184.87369pt x 310.31032pt>
-File: Chapters/07_DimemsionalityReduction/27_pca/latex/pca_var.pdf Graphic file (type pdf)
-<use Chapters/07_DimemsionalityReduction/27_pca/latex/pca_var.pdf>
-Package pdftex.def Info: Chapters/07_DimemsionalityReduction/27_pca/latex/pca_var.pdf  used on input line 234.
+ [12 </home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/27_pca/latex/pca_diagvar.pdf> </home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/27_pca/latex/pca_var0.pdf> </home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/27_pca/latex/pca_idea.pdf>] [13] [14]
+<Chapters/content/27_pca/latex/pca_var.pdf, id=267, 184.87369pt x 310.31032pt>
+File: Chapters/content/27_pca/latex/pca_var.pdf Graphic file (type pdf)
+<use Chapters/content/27_pca/latex/pca_var.pdf>
+Package pdftex.def Info: Chapters/content/27_pca/latex/pca_var.pdf  used on input line 234.
 (pdftex.def)             Requested size: 165.02347pt x 277.00865pt.
-File: Chapters/07_DimemsionalityReduction/27_pca/latex/pca_var.pdf Graphic file (type pdf)
-<use Chapters/07_DimemsionalityReduction/27_pca/latex/pca_var.pdf>
-Package pdftex.def Info: Chapters/07_DimemsionalityReduction/27_pca/latex/pca_var.pdf  used on input line 234.
+File: Chapters/content/27_pca/latex/pca_var.pdf Graphic file (type pdf)
+<use Chapters/content/27_pca/latex/pca_var.pdf>
+Package pdftex.def Info: Chapters/content/27_pca/latex/pca_var.pdf  used on input line 234.
 (pdftex.def)             Requested size: 165.02347pt x 277.00865pt.
-File: Chapters/07_DimemsionalityReduction/27_pca/latex/pca_var.pdf Graphic file (type pdf)
-<use Chapters/07_DimemsionalityReduction/27_pca/latex/pca_var.pdf>
-Package pdftex.def Info: Chapters/07_DimemsionalityReduction/27_pca/latex/pca_var.pdf  used on input line 234.
+File: Chapters/content/27_pca/latex/pca_var.pdf Graphic file (type pdf)
+<use Chapters/content/27_pca/latex/pca_var.pdf>
+Package pdftex.def Info: Chapters/content/27_pca/latex/pca_var.pdf  used on input line 234.
 (pdftex.def)             Requested size: 165.02347pt x 277.00865pt.
- [10 </home/thai/Data2/face-recognition-system/report/Chapters/07_DimemsionalityReduction/27_pca/latex/pca_var.pdf>]
-<Chapters/07_DimemsionalityReduction/27_pca/latex/pca_procedure.pdf, id=240, 493.06308pt x 396.00548pt>
-File: Chapters/07_DimemsionalityReduction/27_pca/latex/pca_procedure.pdf Graphic file (type pdf)
-<use Chapters/07_DimemsionalityReduction/27_pca/latex/pca_procedure.pdf>
-Package pdftex.def Info: Chapters/07_DimemsionalityReduction/27_pca/latex/pca_procedure.pdf  used on input line 356.
+ [15 </home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/27_pca/latex/pca_var.pdf>]
+<Chapters/content/27_pca/latex/pca_procedure.pdf, id=289, 493.06308pt x 396.00548pt>
+File: Chapters/content/27_pca/latex/pca_procedure.pdf Graphic file (type pdf)
+<use Chapters/content/27_pca/latex/pca_procedure.pdf>
+Package pdftex.def Info: Chapters/content/27_pca/latex/pca_procedure.pdf  used on input line 356.
 (pdftex.def)             Requested size: 412.56497pt x 331.37338pt.
- [11] [12 </home/thai/Data2/face-recognition-system/report/Chapters/07_DimemsionalityReduction/27_pca/latex/pca_procedure.pdf>] [13] [14] [15] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+ [16] [17 </home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/27_pca/latex/pca_procedure.pdf>] [18] [19] [20] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2019/09/10 1.8c listings language file
 )
 LaTeX Font Info:    Trying to load font information for T5+pcr on input line 554.
@@ -1334,108 +1354,107 @@ File: t5ucr.fd 2005/08/24 Fontinst v1.929 font definitions for T5/pcr.
 )
 LaTeX Font Info:    Font shape `T5/pcr/m/it' in size <9> not available
 (Font)              Font shape `T5/pcr/m/sl' tried instead on input line 559.
- [16]
-<Chapters/07_DimemsionalityReduction/27_pca/model.png, id=367, 1051.93pt x 453.695pt>
-File: Chapters/07_DimemsionalityReduction/27_pca/model.png Graphic file (type png)
-<use Chapters/07_DimemsionalityReduction/27_pca/model.png>
-Package pdftex.def Info: Chapters/07_DimemsionalityReduction/27_pca/model.png  used on input line 593.
+ [21]
+<Chapters/content/27_pca/model.png, id=415, 1051.93pt x 453.695pt>
+File: Chapters/content/27_pca/model.png Graphic file (type png)
+<use Chapters/content/27_pca/model.png>
+Package pdftex.def Info: Chapters/content/27_pca/model.png  used on input line 593.
 (pdftex.def)             Requested size: 412.56241pt x 177.93723pt.
- [17 </home/thai/Data2/face-recognition-system/report/Chapters/07_DimemsionalityReduction/27_pca/model.png>]
-<Chapters/07_DimemsionalityReduction/27_pca/imgg_origin.jpg, id=375, 1284.8pt x 855.195pt>
-File: Chapters/07_DimemsionalityReduction/27_pca/imgg_origin.jpg Graphic file (type jpg)
-<use Chapters/07_DimemsionalityReduction/27_pca/imgg_origin.jpg>
-Package pdftex.def Info: Chapters/07_DimemsionalityReduction/27_pca/imgg_origin.jpg  used on input line 635.
+ [22 </home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/27_pca/model.png>]
+<Chapters/content/27_pca/imgg_origin.jpg, id=423, 1284.8pt x 855.195pt>
+File: Chapters/content/27_pca/imgg_origin.jpg Graphic file (type jpg)
+<use Chapters/content/27_pca/imgg_origin.jpg>
+Package pdftex.def Info: Chapters/content/27_pca/imgg_origin.jpg  used on input line 635.
 (pdftex.def)             Requested size: 412.55592pt x 274.60754pt.
- [18 </home/thai/Data2/face-recognition-system/report/Chapters/07_DimemsionalityReduction/27_pca/imgg_origin.jpg>]
-<Chapters/07_DimemsionalityReduction/27_pca/imgg_extracted.jpg, id=396, 1284.8pt x 855.195pt>
-File: Chapters/07_DimemsionalityReduction/27_pca/imgg_extracted.jpg Graphic file (type jpg)
-<use Chapters/07_DimemsionalityReduction/27_pca/imgg_extracted.jpg>
-Package pdftex.def Info: Chapters/07_DimemsionalityReduction/27_pca/imgg_extracted.jpg  used on input line 683.
+ [23 </home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/27_pca/imgg_origin.jpg>]
+<Chapters/content/27_pca/imgg_extracted.jpg, id=445, 1284.8pt x 855.195pt>
+File: Chapters/content/27_pca/imgg_extracted.jpg Graphic file (type jpg)
+<use Chapters/content/27_pca/imgg_extracted.jpg>
+Package pdftex.def Info: Chapters/content/27_pca/imgg_extracted.jpg  used on input line 683.
 (pdftex.def)             Requested size: 412.55592pt x 274.60754pt.
- [19]
-<Chapters/07_DimemsionalityReduction/27_pca/cumsum.jpg, id=423, 722.7pt x 361.35pt>
-File: Chapters/07_DimemsionalityReduction/27_pca/cumsum.jpg Graphic file (type jpg)
-<use Chapters/07_DimemsionalityReduction/27_pca/cumsum.jpg>
-Package pdftex.def Info: Chapters/07_DimemsionalityReduction/27_pca/cumsum.jpg  used on input line 698.
+ [24]
+<Chapters/content/27_pca/cumsum.jpg, id=471, 722.7pt x 361.35pt>
+File: Chapters/content/27_pca/cumsum.jpg Graphic file (type jpg)
+<use Chapters/content/27_pca/cumsum.jpg>
+Package pdftex.def Info: Chapters/content/27_pca/cumsum.jpg  used on input line 698.
 (pdftex.def)             Requested size: 361.3491pt x 180.67456pt.
- [20 </home/thai/Data2/face-recognition-system/report/Chapters/07_DimemsionalityReduction/27_pca/imgg_extracted.jpg> </home/thai/Data2/face-recognition-system/report/Chapters/07_DimemsionalityReduction/27_pca/cumsum.jpg>]
-<Chapters/07_DimemsionalityReduction/27_pca/compare.png, id=431, 1224.575pt x 507.8975pt>
-File: Chapters/07_DimemsionalityReduction/27_pca/compare.png Graphic file (type png)
-<use Chapters/07_DimemsionalityReduction/27_pca/compare.png>
-Package pdftex.def Info: Chapters/07_DimemsionalityReduction/27_pca/compare.png  used on input line 713.
+ [25 </home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/27_pca/imgg_extracted.jpg> </home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/27_pca/cumsum.jpg>]
+<Chapters/content/27_pca/compare.png, id=479, 1224.575pt x 507.8975pt>
+File: Chapters/content/27_pca/compare.png Graphic file (type png)
+<use Chapters/content/27_pca/compare.png>
+Package pdftex.def Info: Chapters/content/27_pca/compare.png  used on input line 713.
 (pdftex.def)             Requested size: 412.55684pt x 171.10963pt.
- [21 </home/thai/Data2/face-recognition-system/report/Chapters/07_DimemsionalityReduction/27_pca/compare.png>]
-<Chapters/07_DimemsionalityReduction/27_pca/barplot.jpg, id=438, 722.7pt x 433.62pt>
-File: Chapters/07_DimemsionalityReduction/27_pca/barplot.jpg Graphic file (type jpg)
-<use Chapters/07_DimemsionalityReduction/27_pca/barplot.jpg>
-Package pdftex.def Info: Chapters/07_DimemsionalityReduction/27_pca/barplot.jpg  used on input line 726.
+ [26 </home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/27_pca/compare.png>]
+<Chapters/content/27_pca/barplot.jpg, id=486, 722.7pt x 433.62pt>
+File: Chapters/content/27_pca/barplot.jpg Graphic file (type jpg)
+<use Chapters/content/27_pca/barplot.jpg>
+Package pdftex.def Info: Chapters/content/27_pca/barplot.jpg  used on input line 726.
 (pdftex.def)             Requested size: 412.56082pt x 247.53648pt.
- [22 </home/thai/Data2/face-recognition-system/report/Chapters/07_DimemsionalityReduction/27_pca/barplot.jpg>]
-<Chapters/07_DimemsionalityReduction/28_pca2/latex/yaleb_exs.pdf, id=446, 1125.42552pt x 487.5806pt>
-File: Chapters/07_DimemsionalityReduction/28_pca2/latex/yaleb_exs.pdf Graphic file (type pdf)
-<use Chapters/07_DimemsionalityReduction/28_pca2/latex/yaleb_exs.pdf>
-Package pdftex.def Info: Chapters/07_DimemsionalityReduction/28_pca2/latex/yaleb_exs.pdf  used on input line 799.
+ [27 </home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/27_pca/barplot.jpg>]
+<Chapters/content/28_pca2/latex/yaleb_exs.pdf, id=494, 1125.42552pt x 487.5806pt>
+File: Chapters/content/28_pca2/latex/yaleb_exs.pdf Graphic file (type pdf)
+<use Chapters/content/28_pca2/latex/yaleb_exs.pdf>
+Package pdftex.def Info: Chapters/content/28_pca2/latex/yaleb_exs.pdf  used on input line 799.
 (pdftex.def)             Requested size: 412.56497pt x 178.73546pt.
- [23 </home/thai/Data2/face-recognition-system/report/Chapters/07_DimemsionalityReduction/28_pca2/latex/yaleb_exs.pdf>] [24]
-<Chapters/07_DimemsionalityReduction/28_pca2/latex/yaleb_eig.pdf, id=481, 1128.75902pt x 686.74971pt>
-File: Chapters/07_DimemsionalityReduction/28_pca2/latex/yaleb_eig.pdf Graphic file (type pdf)
-<use Chapters/07_DimemsionalityReduction/28_pca2/latex/yaleb_eig.pdf>
-Package pdftex.def Info: Chapters/07_DimemsionalityReduction/28_pca2/latex/yaleb_eig.pdf  used on input line 856.
+ [28 </home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/28_pca2/latex/yaleb_exs.pdf>] [29]
+<Chapters/content/28_pca2/latex/yaleb_eig.pdf, id=529, 1128.75902pt x 686.74971pt>
+File: Chapters/content/28_pca2/latex/yaleb_eig.pdf Graphic file (type pdf)
+<use Chapters/content/28_pca2/latex/yaleb_eig.pdf>
+Package pdftex.def Info: Chapters/content/28_pca2/latex/yaleb_eig.pdf  used on input line 856.
 (pdftex.def)             Requested size: 412.56497pt x 251.00212pt.
-<Chapters/07_DimemsionalityReduction/28_pca2/latex/yaleb_ori_res.pdf, id=483, 1128.75902pt x 459.12729pt>
-File: Chapters/07_DimemsionalityReduction/28_pca2/latex/yaleb_ori_res.pdf Graphic file (type pdf)
-<use Chapters/07_DimemsionalityReduction/28_pca2/latex/yaleb_ori_res.pdf>
-Package pdftex.def Info: Chapters/07_DimemsionalityReduction/28_pca2/latex/yaleb_ori_res.pdf  used on input line 873.
+<Chapters/content/28_pca2/latex/yaleb_ori_res.pdf, id=531, 1128.75902pt x 459.12729pt>
+File: Chapters/content/28_pca2/latex/yaleb_ori_res.pdf Graphic file (type pdf)
+<use Chapters/content/28_pca2/latex/yaleb_ori_res.pdf>
+Package pdftex.def Info: Chapters/content/28_pca2/latex/yaleb_ori_res.pdf  used on input line 873.
 (pdftex.def)             Requested size: 412.56497pt x 167.80774pt.
- [25] [26 </home/thai/Data2/face-recognition-system/report/Chapters/07_DimemsionalityReduction/28_pca2/latex/yaleb_eig.pdf> </home/thai/Data2/face-recognition-system/report/Chapters/07_DimemsionalityReduction/28_pca2/latex/yaleb_ori_res.pdf
+ [30] [31 </home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/28_pca2/latex/yaleb_eig.pdf> </home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/28_pca2/latex/yaleb_ori_res.pdf
 
-pdfTeX warning: pdflatex (file /home/thai/Data2/face-recognition-system/report/Chapters/07_DimemsionalityReduction/28_pca2/latex/yaleb_ori_res.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file /home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/28_pca2/latex/yaleb_ori_res.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<Chapters/07_DimemsionalityReduction/28_pca2/latex/abnormal.pdf, id=598, 173.2864pt x 119.97021pt>
-File: Chapters/07_DimemsionalityReduction/28_pca2/latex/abnormal.pdf Graphic file (type pdf)
-<use Chapters/07_DimemsionalityReduction/28_pca2/latex/abnormal.pdf>
-Package pdftex.def Info: Chapters/07_DimemsionalityReduction/28_pca2/latex/abnormal.pdf  used on input line 915.
+<Chapters/content/28_pca2/latex/abnormal.pdf, id=647, 173.2864pt x 119.97021pt>
+File: Chapters/content/28_pca2/latex/abnormal.pdf Graphic file (type pdf)
+<use Chapters/content/28_pca2/latex/abnormal.pdf>
+Package pdftex.def Info: Chapters/content/28_pca2/latex/abnormal.pdf  used on input line 915.
 (pdftex.def)             Requested size: 185.65297pt x 128.53526pt.
-File: Chapters/07_DimemsionalityReduction/28_pca2/latex/abnormal.pdf Graphic file (type pdf)
-<use Chapters/07_DimemsionalityReduction/28_pca2/latex/abnormal.pdf>
-Package pdftex.def Info: Chapters/07_DimemsionalityReduction/28_pca2/latex/abnormal.pdf  used on input line 915.
+File: Chapters/content/28_pca2/latex/abnormal.pdf Graphic file (type pdf)
+<use Chapters/content/28_pca2/latex/abnormal.pdf>
+Package pdftex.def Info: Chapters/content/28_pca2/latex/abnormal.pdf  used on input line 915.
 (pdftex.def)             Requested size: 185.65297pt x 128.53526pt.
-File: Chapters/07_DimemsionalityReduction/28_pca2/latex/abnormal.pdf Graphic file (type pdf)
-<use Chapters/07_DimemsionalityReduction/28_pca2/latex/abnormal.pdf>
-Package pdftex.def Info: Chapters/07_DimemsionalityReduction/28_pca2/latex/abnormal.pdf  used on input line 915.
+File: Chapters/content/28_pca2/latex/abnormal.pdf Graphic file (type pdf)
+<use Chapters/content/28_pca2/latex/abnormal.pdf>
+Package pdftex.def Info: Chapters/content/28_pca2/latex/abnormal.pdf  used on input line 915.
 (pdftex.def)             Requested size: 185.65297pt x 128.53526pt.
-) [27 </home/thai/Data2/face-recognition-system/report/Chapters/07_DimemsionalityReduction/28_pca2/latex/abnormal.pdf>] [28
+) [32 </home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/28_pca2/latex/abnormal.pdf>] (/home/it/Data/thaiphData/face-recognition-system/report/book_ML.bbl) (/home/it/Data/thaiphData/face-recognition-system/report/book_ML.ind [33
 
 
 
-] (/home/thai/Data2/face-recognition-system/report/book_ML.bbl) (/home/thai/Data2/face-recognition-system/report/book_ML.ind [29
 
-] [30
+] [34
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 45.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 45.
- (/home/thai/Data2/face-recognition-system/report/book_ML.aux (/home/thai/Data2/face-recognition-system/report/Chapters/07_DimemsionalityReduction/27_pca2.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 45.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 45.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 48.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 48.
+ (/home/it/Data/thaiphData/face-recognition-system/report/book_ML.aux (/home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/chap1.aux) (/home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/chap2.aux) (/home/it/Data/thaiphData/face-recognition-system/report/Chapters/content/27_pca2.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 48.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 48.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 32539 strings out of 481239
- 583954 string characters out of 5920377
- 1250966 words of memory out of 5000000
- 46962 multiletter control sequences out of 15000+600000
+ 32593 strings out of 481239
+ 583923 string characters out of 5920377
+ 1253239 words of memory out of 5000000
+ 46985 multiletter control sequences out of 15000+600000
  567835 words of font info for 93 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 64i,17n,100p,1060b,1396s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 64i,17n,100p,1068b,1396s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/vntex/t5.enc}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/urwvn/ucrb8v.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/urwvn/ucrr8v.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/urwvn/ucrro8v.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnti9.pfb>
-Output written on /home/thai/Data2/face-recognition-system/report/book_ML.pdf (30 pages, 2009833 bytes).
+Output written on /home/it/Data/thaiphData/face-recognition-system/report/book_ML.pdf (34 pages, 2020574 bytes).
 PDF statistics:
- 875 PDF objects out of 1000 (max. 8388607)
- 666 compressed objects within 7 object streams
- 199 named destinations out of 1000 (max. 500000)
- 312 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 961 PDF objects out of 1000 (max. 8388607)
+ 747 compressed objects within 8 object streams
+ 216 named destinations out of 1000 (max. 500000)
+ 416 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,13 +1,15 @@
 This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: book_ML.aux
-A level-1 auxiliary file: Chapters/07_DimemsionalityReduction/27_pca2.aux
+A level-1 auxiliary file: Chapters/content/chap1.aux
+A level-1 auxiliary file: Chapters/content/chap2.aux
+A level-1 auxiliary file: Chapters/content/27_pca2.aux
 The style file: alpha.bst
 Database file #1: refs.bib
 Warning--can't use both volume and number fields in lakhina2004diagnosing
 You've used 3 entries,
             2543 wiz_defined-function locations,
-            580 strings with 5138 characters,
+            582 strings with 5171 characters,
 and the built_in function-call counts, 1481 in all, are:
 = -- 151
 > -- 81
