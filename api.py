@@ -16,6 +16,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import Normalizer
 import pickle
 from math import log, e
+# import visualkeras
 # turn off gpu
 import os
 
@@ -24,6 +25,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 model = Facenet.loadModel()
 model.summary()
 print('name model :', model.name)
+# visualkeras.layered_view(model, to_file='output.png')
 
 
 class Model:

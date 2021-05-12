@@ -470,8 +470,38 @@ Facenet đã giải quyết cả 2 vấn đề trên bằng các hiệu chỉnh 
           Do đó hiệu quả hơn rất nhiều so với các phương pháp trước đây.
 \end{itemize}
 
-
+\newpage
 \subsection{Giới thiệu Mạng InceptionResnetV1}
+
+Mạng InceptionResnetV1 có là sự kết hợp giữa 2 mạng cơ sở là Inception Net hay còn gọi là GoogLe Net
+
+Nó được giới thiệu năm 2016 bởi các kĩ sư của Google, và cho thấy hiệu quả mạnh mẽ trên những tập dữ liệu ảnh lớn
+tiêu biểu là tập dữ liệu ImageNet.
+
+\begin{figure}
+    \begin{subfigure}{1.\textwidth}
+        \begin{center}
+            \includegraphics[width=1.\linewidth]{Chapters/items/chap2_19.jpg}
+        \end{center}
+        \label{fig:chap2_19}
+    \end{subfigure}
+    \caption{Cấu trúc tổng quan của InceptionResnetV1}
+\end{figure}
+
+InceptionResnetV1 là một mạng CNN kết hợp giữa các cấu trúc lớn với khoảng 23 triệu tham số trong mạng đồng nghĩa với
+mỗi khi cho ảnh đi qua mạng này phải thức hiện 23 triệu phép tính, còn chưa kể trong quá trình huẩn luyện
+mạng này phải thực hiện rất nhiều phép tính để thay đổi các tham số.
+
+Chính vì sự khổng lồ của nó nên đã gây ra sự khó khăn trong quá trình huấn luyện, với những điều kiện như:
+lượng dữ liệu cho huấn luyện phải thật sự lớn (lên tới hàng chục triệu ảnh với hàng triệu khuôn mặt),
+phần cứng hỗ trợ tính toán tốn kém, tài nguyên lưu trữ lớn, ...
+
+Rất may mắn rằng có các tổ chức với lợi thế về dữ liệu, tài nguyên phần cứng đã huấn luyện thành công
+các mạng này với những kết quả có độ chính xác cực cao.
+
+Nên tôi đã sử dụng InceptionResnetV1 làm mạng cơ sở cho hệ thống này
+
+\newpage
 \subsection{Kĩ thuật đánh giá bộ ba (Triplet loss)}
 Trong facenet, quá trình mã hóa của CNN đã giúp ta mã hóa bức ảnh về 128 chiều.
 Sau đó những vector này sẽ làm đầu vào cho hàm đánh giá bộ ba để đánh giá khoảng
@@ -486,30 +516,30 @@ cách giữa các vector.
     \end{subfigure}
     \caption{Mô hình sử dụng hàm đánh giá bộ ba}
 \end{figure}
-\newpage
+
 Mục tiêu của triplet loss là đảm bảo rằng:
 \begin{itemize}
     \item Hai ví dụ có cùng nhãn có các phần nhúng của chúng gần nhau trong không gian nhúng.
     \item Hai ví dụ với các nhãn khác nhau có các nhúng của chúng ở xa nhau.
 \end{itemize}
 
-Để áp dụng triple loss, chúng ta cần lấy ra 3 bức ảnh trong đó có một bức ảnh là anchor. 
-Trong 3 ảnh thì ảnh anchor được cố định trước. 
-Chúng ta sẽ lựa chọn 2 ảnh còn lại sao cho một ảnh là negative 
+Để áp dụng triple loss, chúng ta cần lấy ra 3 bức ảnh trong đó có một bức ảnh là anchor.
+Trong 3 ảnh thì ảnh anchor được cố định trước.
+Chúng ta sẽ lựa chọn 2 ảnh còn lại sao cho một ảnh là negative
 (của một người khác với anchor) và một ảnh là positive (cùng một người với anchor).
 
 Công thức --------------------------------------------------------------------
 
-Mục tiêu của hàm triplet loss là tối thiểu hóa khoảng cách giữa 2 ảnh khi chúng là 
-negative và tối đa hóa khoảng cách khi chúng là positive. 
+Mục tiêu của hàm triplet loss là tối thiểu hóa khoảng cách giữa 2 ảnh khi chúng là
+negative và tối đa hóa khoảng cách khi chúng là positive.
 Như vậy chúng ta cần lựa chọn các bộ 3 ảnh sao cho:
 \begin{itemize}
-    \item Ảnh Anchor và Positive khác nhau nhất: cần lựa chọn để khoảng cách d(A,P) lớn. 
-    Điều này cũng tương tự như bạn lựa chọn một ảnh của mình hồi nhỏ so với hiện tại để 
-    thuật toán học khó hơn. Nhưng nếu nhận biết được thì nó sẽ thông minh hơn.
-    \item Ảnh Anchor và Negative giống nhau nhất: cần lựa chọn để khoảng cách d(A,N) 
-    d(A,N) nhỏ. Điều này tương tự như việc thuật toán phân biệt được ảnh của một người 
-    anh em giống bạn.
+    \item Ảnh Anchor và Positive khác nhau nhất: cần lựa chọn để khoảng cách d(A,P) lớn.
+          Điều này cũng tương tự như bạn lựa chọn một ảnh của mình hồi nhỏ so với hiện tại để
+          thuật toán học khó hơn. Nhưng nếu nhận biết được thì nó sẽ thông minh hơn.
+    \item Ảnh Anchor và Negative giống nhau nhất: cần lựa chọn để khoảng cách d(A,N)
+          d(A,N) nhỏ. Điều này tương tự như việc thuật toán phân biệt được ảnh của một người
+          anh em giống bạn.
 \end{itemize}
 
 

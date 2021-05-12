@@ -1,26 +1,26 @@
 \begin{theindex}
 
-  \item Mạng neural tích chập -- Convolution neural network, 
-		\hyperpage{2}
+  \item dimensionality reduction -- giảm chiều dữ liệu, 
+		\hyperpage{3}
 
   \indexspace
 
   \item feature extraction -- trích chọn đặc trưng, 
-		\hyperpage{2}
-  \item feature selection -- lựa chọn đặc trưng, \hyperpage{2}
+		\hyperpage{3}
+  \item feature selection -- lựa chọn đặc trưng, \hyperpage{3}
 
   \indexspace
 
   \item giảm chiều dữ liệu -- dimensionality reduction, 
-		\hyperpage{2}
+		\hyperpage{3}
 
   \indexspace
 
-  \item lựa chọn đặc trưng -- feature selection, \hyperpage{2}
+  \item lựa chọn đặc trưng -- feature selection, \hyperpage{3}
 
   \indexspace
 
   \item trích chọn đặc trưng -- feature extraction, 
-		\hyperpage{2}
+		\hyperpage{3}
 
 \end{theindex}

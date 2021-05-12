@@ -1,51 +1,50 @@
-\contentsline {chapter}{MỞ ĐẦU}{3}{chapter*.2}%
-\contentsline {section}{\numberline {0.1}Lý do chọn đề tài}{3}{section.0.1}%
-\contentsline {section}{\numberline {0.2}Mục đích của đề tài}{4}{section.0.2}%
-\contentsline {section}{\numberline {0.3}Đối tượng và phạm vi nghiên cứu của đề tài}{4}{section.0.3}%
-\contentsline {subsection}{\numberline {0.3.1}Đối tượng}{4}{subsection.0.3.1}%
-\contentsline {subsection}{\numberline {0.3.2}Phạm vi nghiên cứu}{4}{subsection.0.3.2}%
-\contentsline {section}{\numberline {0.4}Kết cấu của đồ án}{5}{section.0.4}%
-\contentsline {section}{\numberline {0.5}Lời cảm ơn}{5}{section.0.5}%
-\contentsline {section}{\numberline {0.6}Bảng các ký hiệu}{6}{section.0.6}%
-\contentsline {chapter}{\numberline {1}Nghiên cứu tổng quan}{7}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Các phương pháp nghiên cứu}{7}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Ưu nhược điểm của các phương pháp}{7}{section.1.2}%
-\contentsline {subsection}{\numberline {1.2.1}Nhận dạng dựa trên các đặc trưng của các phần tử trên khuôn mặt: }{7}{subsection.1.2.1}%
-\contentsline {subsection}{\numberline {1.2.2}Nhận dạng dựa trên xét tổng thể khuôn mặt:}{8}{subsection.1.2.2}%
-\contentsline {subsection}{\numberline {1.2.3}Kết luận}{8}{subsection.1.2.3}%
-\contentsline {chapter}{\numberline {2}Cơ sở lý thuyết}{9}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Tổng quan về nhận diện khuôn mặt}{9}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Tìm hiểu về OpenCV và ngôn ngữ lập trình Python}{9}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Mô hình mạng neural tích chập (CNN - Convolutional neural network)}{11}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Lớp tích chập}{11}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Lớp phi tuyến}{14}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Lớp gộp}{15}{subsection.2.3.3}%
-\contentsline {subsection}{\numberline {2.3.4}Lớp kết nối đầy đủ}{16}{subsection.2.3.4}%
-\contentsline {section}{\numberline {2.4}Máy dò khuôn mặt (Face detector)}{17}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}MTCNN}{17}{subsection.2.4.1}%
-\contentsline {section}{\numberline {2.5}Các kĩ thuật làm giàu dữ liệu (Data agumentation)}{23}{section.2.5}%
-\contentsline {section}{\numberline {2.6}Các thuật toán học sâu sử dụng trong nhận diện khuôn mặt}{24}{section.2.6}%
-\contentsline {subsection}{\numberline {2.6.1}One-shot learning}{24}{subsection.2.6.1}%
-\contentsline {subsection}{\numberline {2.6.2}Learning similarity}{24}{subsection.2.6.2}%
-\contentsline {subsection}{\numberline {2.6.3}Siam learning}{25}{subsection.2.6.3}%
-\contentsline {section}{\numberline {2.7}Mô hình học sâu được huấn luyện trước (Pre-train model)}{27}{section.2.7}%
-\contentsline {subsection}{\numberline {2.7.1}Sử dụng mô hình được huấn luyện trước}{27}{subsection.2.7.1}%
-\contentsline {subsection}{\numberline {2.7.2}Giới thiệu Facenet}{27}{subsection.2.7.2}%
-\contentsline {subsection}{\numberline {2.7.3}Giới thiệu Mạng InceptionResnetV1}{28}{subsection.2.7.3}%
-\contentsline {subsection}{\numberline {2.7.4}Kĩ thuật đánh giá bộ ba (Triplet loss)}{28}{subsection.2.7.4}%
-\contentsline {chapter}{\numberline {3}Thiết kế và xây dựng hệ thống}{31}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Phân tích}{31}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Xây dựng}{31}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Thu thập dữ liệu khuôn mặt}{31}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Phát hiện khuôn mặt và gán nhãn dữ liệu}{32}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Làm giàu dữ liệu}{32}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Trích chọn các đặc trưng ảnh khuôn mặt}{32}{subsection.3.2.4}%
-\contentsline {subsection}{\numberline {3.2.5}Đưa các vector đặc trưng vào mô hình phân loại}{32}{subsection.3.2.5}%
-\contentsline {subsection}{\numberline {3.2.6}Nhận diện khuôn mặt và tiến hành điểm danh}{33}{subsection.3.2.6}%
-\contentsline {subsection}{\numberline {3.2.7}Kết quả thử nghiệm}{33}{subsection.3.2.7}%
-\contentsline {subsubsection}{Hiệu suất của chương trình}{33}{subsection.3.2.7}%
-\contentsline {chapter}{\numberline {4}Kết luận và hướng phát triển}{34}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Kết luận}{34}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Hướng phát triển}{34}{section.4.2}%
-\contentsline {chapter}{Tài liệu tham khảo}{37}{chapter*.21}%
-\contentsline {chapter}{Index}{38}{chapter*.22}%
+\contentsline {chapter}{MỞ ĐẦU}{4}{chapter*.2}%
+\contentsline {section}{\numberline {0.1}Lý do chọn đề tài}{4}{section.0.1}%
+\contentsline {section}{\numberline {0.2}Mục đích của đề tài}{5}{section.0.2}%
+\contentsline {section}{\numberline {0.3}Đối tượng và phạm vi nghiên cứu của đề tài}{5}{section.0.3}%
+\contentsline {subsection}{\numberline {0.3.1}Đối tượng}{5}{subsection.0.3.1}%
+\contentsline {subsection}{\numberline {0.3.2}Phạm vi nghiên cứu}{5}{subsection.0.3.2}%
+\contentsline {section}{\numberline {0.4}Kết cấu của đồ án}{6}{section.0.4}%
+\contentsline {section}{\numberline {0.5}Bảng các ký hiệu}{7}{section.0.5}%
+\contentsline {chapter}{\numberline {1}Nghiên cứu tổng quan}{8}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Các phương pháp nghiên cứu}{8}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Ưu nhược điểm của các phương pháp}{8}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Nhận dạng dựa trên các đặc trưng của các phần tử trên khuôn mặt: }{8}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Nhận dạng dựa trên xét tổng thể khuôn mặt:}{9}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Kết luận}{9}{subsection.1.2.3}%
+\contentsline {chapter}{\numberline {2}Cơ sở lý thuyết}{10}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Tổng quan về nhận diện khuôn mặt}{10}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Tìm hiểu về OpenCV và ngôn ngữ lập trình Python}{10}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Mô hình mạng neural tích chập (CNN - Convolutional neural network)}{12}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Lớp tích chập}{12}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Lớp phi tuyến}{15}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Lớp gộp}{16}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Lớp kết nối đầy đủ}{17}{subsection.2.3.4}%
+\contentsline {section}{\numberline {2.4}Máy dò khuôn mặt (Face detector)}{18}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}MTCNN}{18}{subsection.2.4.1}%
+\contentsline {section}{\numberline {2.5}Các kĩ thuật làm giàu dữ liệu (Data agumentation)}{24}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Các thuật toán học sâu sử dụng trong nhận diện khuôn mặt}{25}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}One-shot learning}{25}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.2}Learning similarity}{25}{subsection.2.6.2}%
+\contentsline {subsection}{\numberline {2.6.3}Siam learning}{26}{subsection.2.6.3}%
+\contentsline {section}{\numberline {2.7}Mô hình học sâu được huấn luyện trước (Pre-train model)}{28}{section.2.7}%
+\contentsline {subsection}{\numberline {2.7.1}Sử dụng mô hình được huấn luyện trước}{28}{subsection.2.7.1}%
+\contentsline {subsection}{\numberline {2.7.2}Giới thiệu Facenet}{28}{subsection.2.7.2}%
+\contentsline {subsection}{\numberline {2.7.3}Giới thiệu Mạng InceptionResnetV1}{30}{subsection.2.7.3}%
+\contentsline {subsection}{\numberline {2.7.4}Kĩ thuật đánh giá bộ ba (Triplet loss)}{31}{subsection.2.7.4}%
+\contentsline {chapter}{\numberline {3}Thiết kế và xây dựng hệ thống}{33}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Phân tích}{33}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Xây dựng}{33}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Thu thập dữ liệu khuôn mặt}{33}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Phát hiện khuôn mặt và gán nhãn dữ liệu}{34}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Làm giàu dữ liệu}{34}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Trích chọn các đặc trưng ảnh khuôn mặt}{34}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Đưa các vector đặc trưng vào mô hình phân loại}{34}{subsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.2.6}Nhận diện khuôn mặt và tiến hành điểm danh}{35}{subsection.3.2.6}%
+\contentsline {subsection}{\numberline {3.2.7}Kết quả thử nghiệm}{35}{subsection.3.2.7}%
+\contentsline {subsubsection}{Hiệu suất của chương trình}{35}{subsection.3.2.7}%
+\contentsline {chapter}{\numberline {4}Kết luận và hướng phát triển}{36}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Kết luận}{36}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Hướng phát triển}{36}{section.4.2}%
+\contentsline {chapter}{Tài liệu tham khảo}{39}{chapter*.22}%
+\contentsline {chapter}{Index}{40}{chapter*.23}%
