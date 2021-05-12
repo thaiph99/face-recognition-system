@@ -90,9 +90,16 @@ print(len(samples))
 print('entropy', entropy(yhat_prob[0]))
 print('yhat probabiliti', yhat_prob)
 
-print('similarity score', cal_similarity_score(samples[0], random_face_name[0]))
+print('similarity score', cal_similarity_score(
+    samples[0], random_face_name[0]))
 print('Predicted: %s (%.3f)' % (predict_names[0], class_probability))
 print('Expected: %s' % random_face_name[0])
+
+
+print('test norm : ')
+for emb in trainX:
+    print(norm(random_face_emb-emb, ord=2))
+
 
 # plot for fun
 pyplot.imshow(random_face_pixels)

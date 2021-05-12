@@ -15,18 +15,20 @@
 \contentsline {subsection}{\numberline {1.2.3}Kết luận}{8}{subsection.1.2.3}%
 \contentsline {chapter}{\numberline {2}Cơ sở lý thuyết}{9}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Tổng quan về nhận diện khuôn mặt}{9}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Tìm hiểu về OpenCV}{10}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Mô hình mạng neural tích chập (CNN - Convolutional neural network)}{10}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Máy dò khuôn mặt (Face detector)}{10}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Các kĩ thuật làm giàu dữ liệu (Data agumentation)}{10}{section.2.5}%
-\contentsline {section}{\numberline {2.6}Mô hình học sâu được huấn luyện trước (Pre-train model)}{10}{section.2.6}%
-\contentsline {subsection}{\numberline {2.6.1}Sử dụng mô hình được huấn luyện trước}{10}{subsection.2.6.1}%
-\contentsline {subsection}{\numberline {2.6.2}Giới thiệu Facenet}{10}{subsection.2.6.2}%
-\contentsline {subsection}{\numberline {2.6.3}Giới thiệu Mạng InceptionResnetV1}{10}{subsection.2.6.3}%
-\contentsline {subsection}{\numberline {2.6.4}Kĩ thuật đánh giá bộ ba (Triplet loss)}{10}{subsection.2.6.4}%
-\contentsline {chapter}{\numberline {3}Thiết kế và xây dựng hệ thống}{11}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Phân tích}{11}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Xây dựng}{11}{section.3.2}%
-\contentsline {chapter}{\numberline {4}Kết luận và hướng phát triển}{12}{chapter.4}%
-\contentsline {chapter}{Tài liệu tham khảo}{13}{chapter*.4}%
-\contentsline {chapter}{Index}{14}{chapter*.5}%
+\contentsline {section}{\numberline {2.2}Tìm hiểu về OpenCV và ngôn ngữ lập trình Python}{9}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Mô hình mạng neural tích chập (CNN - Convolutional neural network)}{11}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Lớp tích chập}{11}{subsection.2.3.1}%
+\contentsline {section}{\numberline {2.4}Máy dò khuôn mặt (Face detector)}{12}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Các kĩ thuật làm giàu dữ liệu (Data agumentation)}{12}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Mô hình học sâu được huấn luyện trước (Pre-train model)}{12}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}Sử dụng mô hình được huấn luyện trước}{12}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.2}Giới thiệu Facenet}{12}{subsection.2.6.2}%
+\contentsline {subsection}{\numberline {2.6.3}Giới thiệu Mạng InceptionResnetV1}{12}{subsection.2.6.3}%
+\contentsline {subsection}{\numberline {2.6.4}Kĩ thuật đánh giá bộ ba (Triplet loss)}{12}{subsection.2.6.4}%
+\contentsline {chapter}{\numberline {3}Thiết kế và xây dựng hệ thống}{13}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Phân tích}{13}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Xây dựng}{13}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Kết luận và hướng phát triển}{14}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Kết luận}{14}{section.4.1}%
+\contentsline {chapter}{Tài liệu tham khảo}{15}{chapter*.6}%
+\contentsline {chapter}{Index}{16}{chapter*.7}%
