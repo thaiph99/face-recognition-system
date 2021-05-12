@@ -17,7 +17,71 @@ Về cơ bản một hệ thống điểm danh bằng khuôn mặt gồm các b�
     \item Trích xuất các đặc trưng (sử dụng học sâu)
     \item Đưa các đặc trưng đã được gán nhãn vào thuật toán phân loại
     \item Lưu trữ các thông tin và kết quả phân loại đã được học
-    \item Nhận dạng khuôn mặt
+    \item Nhận dạng khuôn mặt và tiến hành điểm danh
 \end{itemize}
 
 \section{Xây dựng}
+
+\subsection{Thu thập dữ liệu khuôn mặt}
+Hệ thống thu thập hình ảnh dữ liệu khuôn mặt bằng cách sử dụng chính webcam
+của máy tính, hoặc có thể là hình ảnh từ nhiều nguồn khác.
+Các ảnh được thu thập cần đảm bảo các yếu tố như điều kiện ánh sáng,
+các góc độc khác nhau của khuôn mặt, tuổi tác,…
+Và khuôn mặt không nên có các vật cản như kính.
+
+Ngoài ra, để đảm bảo độ chính xác cho hệ thống, đối với mỗi người dùng
+cần thu thập một số lượng ảnh nhất định không quá ít, và mỗi bức ảnh chỉ
+chứa duy nhất một khuôn mặt.
+
+Bộ dữ liệu tôi sử dụng trong dự án này gồm 4815 ảnh của 10 sinh viên.
+Với số lượng ảnh của mỗi sinh viên là khác nhau dao động từ 200 đến 600
+ảnh cho mỗi sinh viên.
+\subsection{Phát hiện khuôn mặt và gán nhãn dữ liệu}
+Để trích chọn đặc trưng cho mỗi khuôn mặt, trước tiên ta cần tìm ra
+vị trí khuôn mặt trong bức hình. Vì bộ dữ liệu sẽ bao gồm nhiều ảnh
+có điều kiện ánh sáng cũng như các góc độ của khuôn mặt khác nhau,
+chính vì vậy việc lựa chọn face detector cũng rất quan trọng để đảm
+hiệu quả cao nhất cho hệ thống.
+
+Tôi sử dụng MTCNN thực hiện công việc này và tiến hành gán nhãn dữ liệu,
+yêu cầu người dùng nhập tên.
+
+hình ảnh minh họa --------------------------------------------------
+
+\subsection{Làm giàu dữ liệu}
+
+\subsection{Trích chọn các đặc trưng ảnh khuôn mặt}
+Trong hệ thống này tôi sử dụng 1 mô hình có sẵn với mạng cơ sở là InceptionResnetV1 được
+huẩn luyện trong tập dữ liệu với hàng triệu ảnh khuôn mặt khác nhau trong đó có cả người Việt Nam.
+
+Bộ dữ liệu khuôn mặt sẽ được chia theo từng thư mục tương ứng với hình ảnh
+của từng đối tượng (sinh viên). Hệ thống sẽ tiến hành quét qua toàn bộ ảnh
+trong các thư mục. Face detector sẽ tìm kiếm khuôn mặt có
+trong ảnh (mặc định mỗi ảnh sẽ chỉ chưa một khuôn mặt),
+cắt lấy khuôn mặt và đưa kích thước về 160x160 pixel.
+Sau đó FaceNet sẽ tiến hành trích rút đặc trưng của từng khuôn mặt,
+áp dụng mô hình học với thuật toán hàm đánh giá bộ ba và gắn nhãn cho từng
+khuôn mặt (nhãn sẽ được lấy theo tên thư mục chứa ảnh).
+
+\subsection{Đưa các vector đặc trưng vào mô hình phân loại}
+Sau khi đã có các vector đặc trưng của các khuôn mặt, tôi sẽ đưa các vector này
+vào một mô hình để thuật toán có thể học được cách phân loại các đối tượng đã đăng ký.
+
+Mô hình thuât toán phân loại mà tôi sử dụng là thuật toán SVM (Support vector machine)
+
+
+\subsection{Nhận diện khuôn mặt và tiến hành điểm danh}
+Khi hệ thống đã thực hiện huấn luyện xong các mô hình học sâu, tôi tiến hành thử nghiệm với một số ảnh có các khuôn mặt đã 
+đăng ký và chưa đăng ký.
+
+Hệ thống sẽ dò tìm các khuôn mặt trong ảnh, sau đó thực hiện việc mã hóa các khuôn mặt này thành các vector đặc trưng
+rồi đưa vào các mô hình phân loại đã được huấn luyện. 
+
+Kết quả cuối cùng hệ thống sẽ đưa ra hình ảnh các khuôn mặt và kém theo các tên của khuôn mặt đó
+nếu khuôn mặt này đã được đăng ký, ngược lại hệ thống sẽ đưa ra "unknown face" nếu khuôn mặt này
+chưa xuất hiện trong tập dữ liệu đã đăng ký 
+
+\subsection{Kết quả thử nghiệm}
+\subsubsection{Hiệu suất của chương trình}
+
+

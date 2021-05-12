@@ -18,17 +18,34 @@
 \contentsline {section}{\numberline {2.2}Tìm hiểu về OpenCV và ngôn ngữ lập trình Python}{9}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Mô hình mạng neural tích chập (CNN - Convolutional neural network)}{11}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Lớp tích chập}{11}{subsection.2.3.1}%
-\contentsline {section}{\numberline {2.4}Máy dò khuôn mặt (Face detector)}{12}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Các kĩ thuật làm giàu dữ liệu (Data agumentation)}{12}{section.2.5}%
-\contentsline {section}{\numberline {2.6}Mô hình học sâu được huấn luyện trước (Pre-train model)}{12}{section.2.6}%
-\contentsline {subsection}{\numberline {2.6.1}Sử dụng mô hình được huấn luyện trước}{12}{subsection.2.6.1}%
-\contentsline {subsection}{\numberline {2.6.2}Giới thiệu Facenet}{12}{subsection.2.6.2}%
-\contentsline {subsection}{\numberline {2.6.3}Giới thiệu Mạng InceptionResnetV1}{12}{subsection.2.6.3}%
-\contentsline {subsection}{\numberline {2.6.4}Kĩ thuật đánh giá bộ ba (Triplet loss)}{12}{subsection.2.6.4}%
-\contentsline {chapter}{\numberline {3}Thiết kế và xây dựng hệ thống}{13}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Phân tích}{13}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Xây dựng}{13}{section.3.2}%
-\contentsline {chapter}{\numberline {4}Kết luận và hướng phát triển}{14}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Kết luận}{14}{section.4.1}%
-\contentsline {chapter}{Tài liệu tham khảo}{15}{chapter*.6}%
-\contentsline {chapter}{Index}{16}{chapter*.7}%
+\contentsline {subsection}{\numberline {2.3.2}Lớp phi tuyến}{14}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Lớp gộp}{15}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Lớp kết nối đầy đủ}{16}{subsection.2.3.4}%
+\contentsline {section}{\numberline {2.4}Máy dò khuôn mặt (Face detector)}{17}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}MTCNN}{17}{subsection.2.4.1}%
+\contentsline {section}{\numberline {2.5}Các kĩ thuật làm giàu dữ liệu (Data agumentation)}{23}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Các thuật toán học sâu sử dụng trong nhận diện khuôn mặt}{24}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}One-shot learning}{24}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.2}Learning similarity}{24}{subsection.2.6.2}%
+\contentsline {subsection}{\numberline {2.6.3}Siam learning}{25}{subsection.2.6.3}%
+\contentsline {section}{\numberline {2.7}Mô hình học sâu được huấn luyện trước (Pre-train model)}{27}{section.2.7}%
+\contentsline {subsection}{\numberline {2.7.1}Sử dụng mô hình được huấn luyện trước}{27}{subsection.2.7.1}%
+\contentsline {subsection}{\numberline {2.7.2}Giới thiệu Facenet}{27}{subsection.2.7.2}%
+\contentsline {subsection}{\numberline {2.7.3}Giới thiệu Mạng InceptionResnetV1}{28}{subsection.2.7.3}%
+\contentsline {subsection}{\numberline {2.7.4}Kĩ thuật đánh giá bộ ba (Triplet loss)}{28}{subsection.2.7.4}%
+\contentsline {chapter}{\numberline {3}Thiết kế và xây dựng hệ thống}{31}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Phân tích}{31}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Xây dựng}{31}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Thu thập dữ liệu khuôn mặt}{31}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Phát hiện khuôn mặt và gán nhãn dữ liệu}{32}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Làm giàu dữ liệu}{32}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Trích chọn các đặc trưng ảnh khuôn mặt}{32}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Đưa các vector đặc trưng vào mô hình phân loại}{32}{subsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.2.6}Nhận diện khuôn mặt và tiến hành điểm danh}{33}{subsection.3.2.6}%
+\contentsline {subsection}{\numberline {3.2.7}Kết quả thử nghiệm}{33}{subsection.3.2.7}%
+\contentsline {subsubsection}{Hiệu suất của chương trình}{33}{subsection.3.2.7}%
+\contentsline {chapter}{\numberline {4}Kết luận và hướng phát triển}{34}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Kết luận}{34}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Hướng phát triển}{34}{section.4.2}%
+\contentsline {chapter}{Tài liệu tham khảo}{37}{chapter*.21}%
+\contentsline {chapter}{Index}{38}{chapter*.22}%

@@ -3,17 +3,37 @@
 \label{cha:chap4}
 
 \section{Kết luận}
-Trên cơ sở tìm hiểu về bài toán nhận diện mặt người trong ảnh, sử dụng pre-trained 
-model FaceNet được huấn luyện trước trên base-net là InceptionResnetV1 do 
-tiến sĩ khoa học máy tính David Sandberg cung cấp, tôi đã xây dựng thành công hệ 
+Trên cơ sở tìm hiểu về bài toán nhận diện mặt người trong ảnh, sử dụng pre-trained
+model FaceNet được huấn luyện trước trên base-net là InceptionResnetV1 do
+tiến sĩ khoa học máy tính David Sandberg cung cấp, tôi đã xây dựng thành công hệ
 thống điểm danh thông qua hình ảnh khuôn mặt.
 
-Về khả năng phát hiện khuôn mặt, kết quả phát hiện khá tốt hầu hết các trường hợp, 
+Về khả năng phát hiện khuôn mặt, kết quả phát hiện khá tốt hầu hết các trường hợp,
 kể cả trong điều kiện thiếu sáng, góc nghiêng, hay có vật che khuất như kính mắt,…
 
-Về khả năng nhận dạng, hệ thống đạt kết quả từ 80-95\% đối với các khuôn mặt thẳng 
-và điều kiện ánh sáng thích hợp, đạt 70-85\% đối với các khuôn mặt nghiêng hoặc 
+Về khả năng nhận dạng, hệ thống đạt kết quả từ 96-98\% đối với các khuôn mặt thẳng
+và điều kiện ánh sáng thích hợp, đạt 92-95\% đối với các khuôn mặt nghiêng hoặc
 thiếu sáng.
+
+Về khả năng loại trừ các khuôn mặt “unknown face”, kết quả đạt khoảng 85-90\% khuôn mặt lạ
+được phát hiện trong quá trình thử nghiệm.
+Hệ thống điểm danh hoạt động ổn định và mượt mà nhờ máy chủ viết bằng Python.
+Giao diện được xây dựng trên nền Web là một lợi thế vì tính đơn giản và tiện lợi.
+
+\section{Hướng phát triển}
+
+Tuy kết quả đạt được chưa quá cao, nhưng dựa trên những cơ sở sẵn có này thệ thống có thể được cải tiến trong
+tương lai bằng những phương pháp sau:
+
+\begin{itemize}
+    \item Cải thiện thời gian chạy của hệ thống, nâng cấp lên có thể chạy trong thời gian thực
+    \item Để cải thiện độ chính xác cho hệ thống, đầu tiên ta cần cải thiện bộ dữ liệu dựa trên các tiêu chí như tư thế chụp, góc chụp, hạn chế sự che khuất các bộ phận trên mặt, biểu cảm khuôn mặt, điều kiện ánh sáng, tuổi tác…
+    \item Thử nghiệm với nhiều pre-trained model và thuật toán huấn luyện khác nhau cho bộ dữ liệu của hệ thống.
+    \item Thay thế phương pháp loại bỏ khuôn mặt lạ, thử nghiệm và chọn ra ngưỡng cho phép phù hợp hơn.
+\end{itemize}
+
+Không chỉ dừng lại ở việc điểm danh, của hệ thống nhận dạng khuôn mặt có thể được sử dụng trong các 
+hệ thống mở khóa, thanh toán, hay truy tìm tội phạm,…
 
 
 
