@@ -22,6 +22,12 @@ Mỗi khuôn mặt đều có nhưng điểm mốc, những phần lồi lõm, h
 bộ phận trên khuôn mặt như mắt, mũi, miệng,... Các hệ thống nhận diện định
 nghĩa những điểm này là những điểm nút, và mỗi khuôn mặt có khoảng 80 nút như thế
 
+Ngày nay các mô hình học sâu đã phát triển một cách vượt trội, việc trích rút các đặc trưng của một
+khuôn mặt ngày một đơn giản và trở lên vô cùng chính xác. Mặc dù chúng ta không thể biết các đặc trưng đấy
+là những đặc trưng gì bởi cơ chế tự động học của các mô hình học sâu rất phức tạp. Nhưng chúng ta vẫn có thể
+kiểm tra độ chính xác bằng cách đưa những đặc trưng này vào các mô hình phân loại, xác nhận, ... sau đó
+tính toán độ chính xác trên những dữ liệu có được.
+
 
 \section{Tìm hiểu về OpenCV và ngôn ngữ lập trình Python}
 
@@ -141,7 +147,6 @@ tìm kiếm được đặc trưng nhất định thì tích chập đó sẽ ch
                         \caption{Bộ lọc phát hiện cạnh}
                     \end{figure}
           \end{itemize}
-          \newpage
     \item Các tham số : Kích thước bộ lọc, bước nhảy, lề
           \begin{itemize}
               \item Kích thước bộ lọc là một trong những tham số quan trọng nhất của lớp tích chập.
@@ -248,13 +253,24 @@ Ví dụ như các máy dò được tích hợp trong OpenCV (máy dò 5 điể
 tốt nhất có thể thì tôi sử dụng 1 máy dò có tên MTCNN (Multi-task Cascaded Convolutional Networks) được sử dụng phố biến
 trong các hệ thống đòi hỏi sự chính xác cao.
 
+\begin{figure}
+    \begin{subfigure}{1.\textwidth}
+        \begin{center}
+            \includegraphics[width=1.\linewidth]{Chapters/items/chap2_test.jpg}
+        \end{center}
+        \label{fig:chap2_test}
+    \end{subfigure}
+    \caption{Ví dụ máy dò khuôn mặt}
+\end{figure}
+
+\newpage
 \subsection{MTCNN}
 
 MTCNN là viết tắt của Multi-task Cascaded Convolutional Networks (Mạng đa năng xếp tầng đa tác vụ).
 Nó là bao gồm 3 mạng CNN xếp chồng và đồng thời hoạt động khi detect khuôn mặt.
 Mỗi mạng có cấu trúc khác nhau và đảm nhiệm vai trò khác nhau trong task.
 Đầu ra của MTCNN là vị trí khuôn mặt và 5 điểm trên mặt: mắt, mũi, miệng…
-\newpage
+
 MTCNN hoạt động theo 3 bước, mỗi bước có một mạng neural riêng lần lượt là: P-Net, R-Net và O-net
 
 \begin{figure}
@@ -327,11 +343,33 @@ tọa độ của các mốc trên khuôn mặt (vị trí mắt, mũi, miệng)
         \end{center}
         \label{fig:chap2_14}
     \end{subfigure}
-    \caption{Mô hình O-Net}
+    \caption{MTCNN xác định các khuôn mặt}
 \end{figure}
 
 \newpage
 \section{Các kĩ thuật làm giàu dữ liệu (Data agumentation)}
+
+Hiện nay các kĩ thuật làm giàu dữ liệu đang ngày các phát triển và phổ biến, khiến cho dữ liệu tăng lên
+mạnh mẽ mà vẫn dữ được tính đặc trưng
+
+Các kĩ thuật thường được sử dụng phổ biến là : Lật, xoay, phóng to, thu nhỏ, gây nhiễu, cắt, ...   
+
+Ngoài ra còn có các kĩ thuật nâng cao khác như là : sử dụng phép nội suy, GAN, đối xứng, bọc, ...
+
+Còn rất nhiều những kĩ thuật phức tạp khác nhau và học sâu lại được sử dụng để giải quyết vấn đề này
+
+
+\begin{figure}
+    \begin{subfigure}{1.\textwidth}
+        \begin{center}
+            \includegraphics[width=1.\linewidth]{Chapters/items/chap3_6.jpg}
+        \end{center}
+        \label{fig:chap3_6}
+    \end{subfigure}
+    \caption{Làm giàu dữ liệu 3D sử dụng học sâu}
+\end{figure}
+
+
 \newpage
 \section{Các thuật toán học sâu sử dụng trong nhận diện khuôn mặt}
 \subsection{One-shot learning}

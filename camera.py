@@ -101,7 +101,7 @@ class VideoCamera(object):
             for i in points:
                 x = i[0]
                 y = i[1]
-                cv2.circle(frame, (x, y), 2, color=(0, 0, 0), thickness=2)
+                # cv2.circle(frame, (x, y), 2, color=(0, 0, 0), thickness=2)
             # image = dlib.get_face_chip(frame_new, faces, size=320)
             # cv_bgr_img = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
 

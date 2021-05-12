@@ -326,15 +326,18 @@ class Model:
             if similarity_score >= 10:
                 name[i] = 'unknown'
 
+        fg, ax = plt.subplots(1, len(name))
+
         for i in range(len(name)):
             print('-----------------')
             print('name', name[i])
             print('probability', face_prob[i])
             # print('entropy', self.entropy(face_prob[i]))
-            plt.imshow(faces_test[i])
+            ax[i].imshow(faces_test[i])
             title = (str(name[i]))
-            plt.title(title)
-            plt.show()
+            ax[i].set_title(title)
+            ax[i].axis('off')
+        plt.show()
         list_name_predict += list(name)
         print('list name', list_name_predict)
         os.remove(path)

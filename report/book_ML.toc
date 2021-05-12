@@ -21,7 +21,7 @@
 \contentsline {subsection}{\numberline {2.3.3}Lớp gộp}{16}{subsection.2.3.3}%
 \contentsline {subsection}{\numberline {2.3.4}Lớp kết nối đầy đủ}{17}{subsection.2.3.4}%
 \contentsline {section}{\numberline {2.4}Máy dò khuôn mặt (Face detector)}{18}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}MTCNN}{18}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.1}MTCNN}{19}{subsection.2.4.1}%
 \contentsline {section}{\numberline {2.5}Các kĩ thuật làm giàu dữ liệu (Data agumentation)}{24}{section.2.5}%
 \contentsline {section}{\numberline {2.6}Các thuật toán học sâu sử dụng trong nhận diện khuôn mặt}{25}{section.2.6}%
 \contentsline {subsection}{\numberline {2.6.1}One-shot learning}{25}{subsection.2.6.1}%
@@ -34,17 +34,17 @@
 \contentsline {subsection}{\numberline {2.7.4}Kĩ thuật đánh giá bộ ba (Triplet loss)}{31}{subsection.2.7.4}%
 \contentsline {chapter}{\numberline {3}Thiết kế và xây dựng hệ thống}{33}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Phân tích}{33}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Xây dựng}{33}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Thu thập dữ liệu khuôn mặt}{33}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Phát hiện khuôn mặt và gán nhãn dữ liệu}{34}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Làm giàu dữ liệu}{34}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Trích chọn các đặc trưng ảnh khuôn mặt}{34}{subsection.3.2.4}%
-\contentsline {subsection}{\numberline {3.2.5}Đưa các vector đặc trưng vào mô hình phân loại}{34}{subsection.3.2.5}%
-\contentsline {subsection}{\numberline {3.2.6}Nhận diện khuôn mặt và tiến hành điểm danh}{35}{subsection.3.2.6}%
-\contentsline {subsection}{\numberline {3.2.7}Kết quả thử nghiệm}{35}{subsection.3.2.7}%
-\contentsline {subsubsection}{Hiệu suất của chương trình}{35}{subsection.3.2.7}%
-\contentsline {chapter}{\numberline {4}Kết luận và hướng phát triển}{36}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Kết luận}{36}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Hướng phát triển}{36}{section.4.2}%
-\contentsline {chapter}{Tài liệu tham khảo}{39}{chapter*.22}%
-\contentsline {chapter}{Index}{40}{chapter*.23}%
+\contentsline {section}{\numberline {3.2}Xây dựng}{34}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Thu thập dữ liệu khuôn mặt}{34}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Phát hiện khuôn mặt và gán nhãn dữ liệu}{35}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Làm giàu dữ liệu}{35}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Trích chọn các đặc trưng ảnh khuôn mặt}{36}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Đưa các vector đặc trưng vào mô hình phân loại}{36}{subsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.2.6}Nhận diện khuôn mặt và tiến hành điểm danh}{37}{subsection.3.2.6}%
+\contentsline {subsection}{\numberline {3.2.7}Kết quả thử nghiệm}{37}{subsection.3.2.7}%
+\contentsline {subsubsection}{Hiệu suất của chương trình}{37}{subsection.3.2.7}%
+\contentsline {chapter}{\numberline {4}Kết luận và hướng phát triển}{38}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Kết luận}{38}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Hướng phát triển}{38}{section.4.2}%
+\contentsline {chapter}{Tài liệu tham khảo}{41}{chapter*.29}%
+\contentsline {chapter}{Index}{42}{chapter*.30}%
