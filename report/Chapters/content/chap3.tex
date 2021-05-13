@@ -108,15 +108,6 @@ vào sự thành công của các mô hình học sâu.
 Trong hệ thống này tôi sử dụng 1 mô hình có sẵn với mạng cơ sở là InceptionResnetV1 được
 huẩn luyện trong tập dữ liệu với hàng triệu ảnh khuôn mặt khác nhau trong đó có cả người Việt Nam.
 
-Bộ dữ liệu khuôn mặt sẽ được chia theo từng thư mục tương ứng với hình ảnh
-của từng đối tượng (sinh viên). Hệ thống sẽ tiến hành quét qua toàn bộ ảnh
-trong các thư mục. máy dò khuôn mặt sẽ tìm kiếm khuôn mặt có
-trong ảnh (mặc định mỗi ảnh sẽ chỉ chưa một khuôn mặt),
-cắt lấy khuôn mặt và đưa kích thước về 160x160 pixel.
-Sau đó FaceNet sẽ tiến hành trích rút đặc trưng của từng khuôn mặt,
-áp dụng mô hình học với thuật toán hàm đánh giá bộ ba và gắn nhãn cho từng
-khuôn mặt (nhãn sẽ được lấy theo tên thư mục chứa ảnh).
-
 \begin{figure}
     \begin{subfigure}{0.4\textwidth}
         \includegraphics[width=1\linewidth]{Chapters/items/embed.png}
@@ -125,7 +116,19 @@ khuôn mặt (nhãn sẽ được lấy theo tên thư mục chứa ảnh).
     \caption{Mô tả nhúng ảnh khuôn mặt thành các vector đặc trưng}
 \end{figure}
 
-\newpage
+Bộ dữ liệu khuôn mặt sẽ được chia theo từng thư mục tương ứng với hình ảnh
+của từng đối tượng (sinh viên). Hệ thống sẽ tiến hành quét qua toàn bộ ảnh
+trong các thư mục. máy dò khuôn mặt sẽ tìm kiếm khuôn mặt có
+trong ảnh (mặc định mỗi ảnh sẽ chỉ chưa một khuôn mặt),
+cắt lấy khuôn mặt và đưa kích thước về 160x160 pixel.
+
+
+
+
+Sau đó FaceNet sẽ tiến hành trích rút đặc trưng của từng khuôn mặt,
+áp dụng mô hình học với thuật toán hàm đánh giá bộ ba và gắn nhãn cho từng
+khuôn mặt (nhãn sẽ được lấy theo tên thư mục chứa ảnh).
+
 \subsection{Đưa các vector đặc trưng vào mô hình phân loại}
 Sau khi đã có các vector đặc trưng của các khuôn mặt, tôi sẽ đưa các vector này
 vào một mô hình để thuật toán có thể học được cách phân loại các đối tượng đã đăng ký.
@@ -137,14 +140,14 @@ với các vector và nhãn đã đào tạo lại, nhằm mục đích huẩn l
 đăng ký.
 
 \begin{figure}
-    \begin{subfigure}{1\textwidth}
+    \begin{subfigure}{0.8\textwidth}
         \includegraphics[width=1\linewidth]{Chapters/items/svm3.jpg}
         \label{fig:svm}
     \end{subfigure}
     \caption{Mô tả cơ chế phân loại của SVM}
 \end{figure}
 
-
+\newpage
 \subsection{Nhận diện khuôn mặt và tiến hành điểm danh}
 Khi hệ thống đã thực hiện huấn luyện xong các mô hình học sâu, tôi tiến hành thử nghiệm với một số ảnh có các khuôn mặt đã
 đăng ký và chưa đăng ký.
@@ -152,7 +155,6 @@ Khi hệ thống đã thực hiện huấn luyện xong các mô hình học sâ
 Hệ thống sẽ dò tìm các khuôn mặt trong ảnh, sau đó thực hiện việc mã hóa các khuôn mặt này thành các vector đặc trưng
 rồi đưa vào các mô hình phân loại đã được huấn luyện.
 
-\newpage
 Kết quả cuối cùng hệ thống sẽ đưa ra hình ảnh các khuôn mặt và kém theo các tên của khuôn mặt đó
 nếu khuôn mặt này đã được đăng ký, ngược lại hệ thống sẽ đưa ra "unknown face" nếu khuôn mặt này
 chưa xuất hiện trong tập dữ liệu đã đăng ký
@@ -184,12 +186,13 @@ tái tạo kết quả. Mức trung bình có lẽ là một số liệu tốt h
 so sánh các cài đặt siêu tham số khác nhau.
 
 \begin{figure}
-    \begin{subfigure}{1\textwidth}
+    \begin{subfigure}{1.\textwidth}
         \includegraphics[width=1\linewidth]{Chapters/items/validate.png}
         \label{fig:validate}
     \end{subfigure}
     \caption{Đánh giá mất mát bằng Entropy chéo}
 \end{figure}
+
 \newpage
 Hình này cho thấy sự mất mát entropy chéo trong quá trình huấn luyện (đường liền nét) và xác nhận (đường đứt nét). Bộ xác nhận bao gồm khoảng 20000 hình ảnh và đánh giá được thực hiện sau mỗi 5 kỷ nguyên. Entropy chéo trong quá trình đào tạo được ghi lại ở mỗi bước đào tạo nhưng đã được lọc bằng bộ lọc trung bình trượt trên 500 bước. Từ điều này, rõ ràng là mô hình có lợi hơn một chút vì vậy có thể tốt nếu thử nghiệm thêm một chút với xác suất phân rã trọng lượng L2 và xác suất bỏ học.
 

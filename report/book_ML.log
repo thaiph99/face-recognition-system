@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.3.19)  14 MAY 2021 00:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.3.19)  14 MAY 2021 00:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1332,93 +1332,94 @@ File: Chapters/items/chap2_7.jpg Graphic file (type jpg)
 <use Chapters/items/chap2_7.jpg>
 Package pdftex.def Info: Chapters/items/chap2_7.jpg  used on input line 212.
 (pdftex.def)             Requested size: 441.01773pt x 206.22012pt.
-<Chapters/items/chap2_8.jpg, id=171, 853.1875pt x 378.41376pt>
+ [17 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap2_7.jpg>]
+<Chapters/items/chap2_8.jpg, id=177, 853.1875pt x 378.41376pt>
 File: Chapters/items/chap2_8.jpg Graphic file (type jpg)
 <use Chapters/items/chap2_8.jpg>
-Package pdftex.def Info: Chapters/items/chap2_8.jpg  used on input line 237.
+Package pdftex.def Info: Chapters/items/chap2_8.jpg  used on input line 238.
 (pdftex.def)             Requested size: 441.01773pt x 195.60991pt.
- [17 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap2_7.jpg>]
-<Chapters/items/chap2_test.jpg, id=181, 1692.3225pt x 800.9925pt>
+ [18 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap2_8.jpg>]
+<Chapters/items/chap2_test.jpg, id=186, 1692.3225pt x 800.9925pt>
 File: Chapters/items/chap2_test.jpg Graphic file (type jpg)
 <use Chapters/items/chap2_test.jpg>
-Package pdftex.def Info: Chapters/items/chap2_test.jpg  used on input line 259.
+Package pdftex.def Info: Chapters/items/chap2_test.jpg  used on input line 260.
 (pdftex.def)             Requested size: 441.01773pt x 208.7298pt.
- [18 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap2_8.jpg>]
-<Chapters/items/chap2_9.jpg, id=190, 853.1875pt x 758.835pt>
+ [19 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap2_test.jpg>]
+<Chapters/items/chap2_9.jpg, id=196, 853.1875pt x 758.835pt>
 File: Chapters/items/chap2_9.jpg Graphic file (type jpg)
 <use Chapters/items/chap2_9.jpg>
-Package pdftex.def Info: Chapters/items/chap2_9.jpg  used on input line 279.
+Package pdftex.def Info: Chapters/items/chap2_9.jpg  used on input line 280.
 (pdftex.def)             Requested size: 441.01773pt x 392.25754pt.
- [19 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap2_test.jpg>]
-<Chapters/items/chap2_10.jpg, id=199, 426.84468pt x 557.08125pt>
+ [20 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap2_9.jpg>]
+<Chapters/items/chap2_10.jpg, id=204, 426.84468pt x 557.08125pt>
 File: Chapters/items/chap2_10.jpg Graphic file (type jpg)
 <use Chapters/items/chap2_10.jpg>
-Package pdftex.def Info: Chapters/items/chap2_10.jpg  used on input line 294.
+Package pdftex.def Info: Chapters/items/chap2_10.jpg  used on input line 295.
 (pdftex.def)             Requested size: 264.61333pt x 345.36981pt.
- [20 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap2_9.jpg>]
-<Chapters/items/chap2_11.jpg, id=205, 374.14781pt x 594.72188pt>
+ [21 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap2_10.jpg>]
+<Chapters/items/chap2_11.jpg, id=210, 374.14781pt x 594.72188pt>
 File: Chapters/items/chap2_11.jpg Graphic file (type jpg)
 <use Chapters/items/chap2_11.jpg>
-Package pdftex.def Info: Chapters/items/chap2_11.jpg  used on input line 311.
+Package pdftex.def Info: Chapters/items/chap2_11.jpg  used on input line 312.
 (pdftex.def)             Requested size: 264.61333pt x 420.63112pt.
- [21 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap2_10.jpg>]
-<Chapters/items/chap2_12.jpg, id=211, 375.65344pt x 808.52063pt>
+ [22 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap2_11.jpg>]
+<Chapters/items/chap2_12.jpg, id=216, 375.65344pt x 808.52063pt>
 File: Chapters/items/chap2_12.jpg Graphic file (type jpg)
 <use Chapters/items/chap2_12.jpg>
-Package pdftex.def Info: Chapters/items/chap2_12.jpg  used on input line 327.
+Package pdftex.def Info: Chapters/items/chap2_12.jpg  used on input line 328.
 (pdftex.def)             Requested size: 242.5611pt x 522.07782pt.
-<Chapters/items/chap2_14.jpg, id=212, 1541.76pt x 1027.84pt>
+<Chapters/items/chap2_14.jpg, id=217, 1541.76pt x 1027.84pt>
 File: Chapters/items/chap2_14.jpg Graphic file (type jpg)
 <use Chapters/items/chap2_14.jpg>
-Package pdftex.def Info: Chapters/items/chap2_14.jpg  used on input line 342.
+Package pdftex.def Info: Chapters/items/chap2_14.jpg  used on input line 343.
 (pdftex.def)             Requested size: 441.01773pt x 294.00392pt.
- [22 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap2_11.jpg>] [23 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap2_12.jpg>]
-<Chapters/items/chap3_6.jpg, id=225, 681.54625pt x 362.35374pt>
+ [23 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap2_12.jpg>] [24 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap2_14.jpg>]
+<Chapters/items/chap3_6.jpg, id=229, 681.54625pt x 362.35374pt>
 File: Chapters/items/chap3_6.jpg Graphic file (type jpg)
 <use Chapters/items/chap3_6.jpg>
-Package pdftex.def Info: Chapters/items/chap3_6.jpg  used on input line 365.
+Package pdftex.def Info: Chapters/items/chap3_6.jpg  used on input line 366.
 (pdftex.def)             Requested size: 441.01773pt x 234.47662pt.
- [24 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap2_14.jpg>]
-<Chapters/items/chap2_15.jpg, id=231, 447.92343pt x 621.07031pt>
+ [25 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap3_6.jpg>]
+<Chapters/items/chap2_15.jpg, id=237, 447.92343pt x 621.07031pt>
 File: Chapters/items/chap2_15.jpg Graphic file (type jpg)
 <use Chapters/items/chap2_15.jpg>
-Package pdftex.def Info: Chapters/items/chap2_15.jpg  used on input line 394.
+Package pdftex.def Info: Chapters/items/chap2_15.jpg  used on input line 395.
 (pdftex.def)             Requested size: 220.50887pt x 305.73915pt.
- [25 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap3_6.jpg>] [26 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap2_15.jpg>]
-<Chapters/items/chap2_16.jpg, id=246, 841.1425pt x 298.11375pt>
+ [26]
+<Chapters/items/chap2_16.jpg, id=245, 841.1425pt x 298.11375pt>
 File: Chapters/items/chap2_16.jpg Graphic file (type jpg)
 <use Chapters/items/chap2_16.jpg>
-Package pdftex.def Info: Chapters/items/chap2_16.jpg  used on input line 429.
+Package pdftex.def Info: Chapters/items/chap2_16.jpg  used on input line 430.
 (pdftex.def)             Requested size: 441.01773pt x 156.30281pt.
- [27 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap2_16.jpg>]
+ [27 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap2_15.jpg> </home/thai/Data2/face-recognition-system/report/Chapters/items/chap2_16.jpg>]
 <Chapters/items/siam.png, id=252, 848.16875pt x 534.99875pt>
 File: Chapters/items/siam.png Graphic file (type png)
 <use Chapters/items/siam.png>
-Package pdftex.def Info: Chapters/items/siam.png  used on input line 446.
+Package pdftex.def Info: Chapters/items/siam.png  used on input line 447.
 (pdftex.def)             Requested size: 441.01773pt x 278.17645pt.
  [28 </home/thai/Data2/face-recognition-system/report/Chapters/items/siam.png (PNG copy)>]
 <Chapters/items/chap2_17.jpg, id=259, 987.69pt x 447.92343pt>
 File: Chapters/items/chap2_17.jpg Graphic file (type jpg)
 <use Chapters/items/chap2_17.jpg>
-Package pdftex.def Info: Chapters/items/chap2_17.jpg  used on input line 473.
+Package pdftex.def Info: Chapters/items/chap2_17.jpg  used on input line 474.
 (pdftex.def)             Requested size: 441.01773pt x 199.99852pt.
  [29 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap2_17.jpg>] [30]
 <Chapters/items/chap2_19.jpg, id=273, 625.33624pt x 291.0875pt>
 File: Chapters/items/chap2_19.jpg Graphic file (type jpg)
 <use Chapters/items/chap2_19.jpg>
-Package pdftex.def Info: Chapters/items/chap2_19.jpg  used on input line 529.
+Package pdftex.def Info: Chapters/items/chap2_19.jpg  used on input line 530.
 (pdftex.def)             Requested size: 441.01773pt x 205.2922pt.
  [31 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap2_19.jpg>]
 <Chapters/items/chap2_18.jpg, id=282, 687.56876pt x 530.98375pt>
 File: Chapters/items/chap2_18.jpg Graphic file (type jpg)
 <use Chapters/items/chap2_18.jpg>
-Package pdftex.def Info: Chapters/items/chap2_18.jpg  used on input line 558.
+Package pdftex.def Info: Chapters/items/chap2_18.jpg  used on input line 559.
 (pdftex.def)             Requested size: 441.01773pt x 340.58192pt.
  [32 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap2_18.jpg (PNG copy)>]
 <Chapters/items/fomura.png, id=289, 1610.015pt x 243.91125pt>
 File: Chapters/items/fomura.png Graphic file (type png)
 <use Chapters/items/fomura.png>
-Package pdftex.def Info: Chapters/items/fomura.png  used on input line 593.
+Package pdftex.def Info: Chapters/items/fomura.png  used on input line 594.
 (pdftex.def)             Requested size: 352.81552pt x 53.44849pt.
 ) [33 </home/thai/Data2/face-recognition-system/report/Chapters/items/fomura.png>]
 \openout2 = `Chapters/content/chap3.aux'.
@@ -1459,38 +1460,38 @@ Package pdftex.def Info: Chapters/items/chap3_4.jpg  used on input line 101.
 <Chapters/items/embed.png, id=322, 722.7pt x 542.025pt>
 File: Chapters/items/embed.png Graphic file (type png)
 <use Chapters/items/embed.png>
-Package pdftex.def Info: Chapters/items/embed.png  used on input line 122.
+Package pdftex.def Info: Chapters/items/embed.png  used on input line 113.
 (pdftex.def)             Requested size: 176.40439pt x 132.30518pt.
- [37 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap3_4.jpg>]
-<Chapters/items/svm3.jpg, id=330, 3613.5pt x 2409.0pt>
+ [37 </home/thai/Data2/face-recognition-system/report/Chapters/items/chap3_4.jpg> </home/thai/Data2/face-recognition-system/report/Chapters/items/embed.png>]
+<Chapters/items/svm3.jpg, id=332, 3613.5pt x 2409.0pt>
 File: Chapters/items/svm3.jpg Graphic file (type jpg)
 <use Chapters/items/svm3.jpg>
-Package pdftex.def Info: Chapters/items/svm3.jpg  used on input line 141.
-(pdftex.def)             Requested size: 441.01773pt x 293.99315pt.
- [38 </home/thai/Data2/face-recognition-system/report/Chapters/items/embed.png>]
-<Chapters/items/recog.png, id=339, 1027.84pt x 754.82pt>
+Package pdftex.def Info: Chapters/items/svm3.jpg  used on input line 144.
+(pdftex.def)             Requested size: 352.81552pt x 235.17981pt.
+ [38 </home/thai/Data2/face-recognition-system/report/Chapters/items/svm3.jpg>]
+<Chapters/items/recog.png, id=340, 1027.84pt x 754.82pt>
 File: Chapters/items/recog.png Graphic file (type png)
 <use Chapters/items/recog.png>
-Package pdftex.def Info: Chapters/items/recog.png  used on input line 162.
+Package pdftex.def Info: Chapters/items/recog.png  used on input line 164.
 (pdftex.def)             Requested size: 441.01773pt x 323.87523pt.
- [39 </home/thai/Data2/face-recognition-system/report/Chapters/items/svm3.jpg>]
-<Chapters/items/accuracy.png, id=346, 639.8304pt x 496.7358pt>
+ [39 </home/thai/Data2/face-recognition-system/report/Chapters/items/recog.png>]
+<Chapters/items/accuracy.png, id=348, 639.8304pt x 496.7358pt>
 File: Chapters/items/accuracy.png Graphic file (type png)
 <use Chapters/items/accuracy.png>
-Package pdftex.def Info: Chapters/items/accuracy.png  used on input line 174.
+Package pdftex.def Info: Chapters/items/accuracy.png  used on input line 176.
 (pdftex.def)             Requested size: 441.01773pt x 342.39182pt.
-<Chapters/items/validate.png, id=347, 632.6034pt x 474.0912pt>
+<Chapters/items/validate.png, id=349, 632.6034pt x 474.0912pt>
 File: Chapters/items/validate.png Graphic file (type png)
 <use Chapters/items/validate.png>
-Package pdftex.def Info: Chapters/items/validate.png  used on input line 188.
+Package pdftex.def Info: Chapters/items/validate.png  used on input line 190.
 (pdftex.def)             Requested size: 441.01773pt x 330.5088pt.
- [40 </home/thai/Data2/face-recognition-system/report/Chapters/items/recog.png>] [41 </home/thai/Data2/face-recognition-system/report/Chapters/items/accuracy.png (PNG copy)>]
-<Chapters/items/dataset.png, id=360, 512.91624pt x 310.15875pt>
+ [40 </home/thai/Data2/face-recognition-system/report/Chapters/items/accuracy.png (PNG copy)>] [41 </home/thai/Data2/face-recognition-system/report/Chapters/items/validate.png (PNG copy)>]
+<Chapters/items/dataset.png, id=361, 512.91624pt x 310.15875pt>
 File: Chapters/items/dataset.png Graphic file (type png)
 <use Chapters/items/dataset.png>
-Package pdftex.def Info: Chapters/items/dataset.png  used on input line 204.
+Package pdftex.def Info: Chapters/items/dataset.png  used on input line 207.
 (pdftex.def)             Requested size: 264.61333pt x 160.01039pt.
-) [42 </home/thai/Data2/face-recognition-system/report/Chapters/items/validate.png (PNG copy)>] [43 </home/thai/Data2/face-recognition-system/report/Chapters/items/dataset.png>]
+) [42 </home/thai/Data2/face-recognition-system/report/Chapters/items/dataset.png>]
 \openout2 = `Chapters/content/chap4.aux'.
 
  (/home/thai/Data2/face-recognition-system/report/Chapters/content/chap4.tex
@@ -1499,11 +1500,11 @@ Chương 4.
 LaTeX Font Warning: Font shape `T5/cmr/bx/scit' undefined
 (Font)              using `T5/cmr/bx/it' instead on input line 2.
 
-[44
+[43
 
 
 
-]) [45] (/home/thai/Data2/face-recognition-system/report/book_ML.bbl) [46
+]) [44] (/home/thai/Data2/face-recognition-system/report/book_ML.bbl) [45
 
 
 
@@ -1520,18 +1521,18 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 32029 strings out of 481239
- 578534 string characters out of 5920377
- 880867 words of memory out of 5000000
+ 32028 strings out of 481239
+ 578527 string characters out of 5920377
+ 880868 words of memory out of 5000000
  46493 multiletter control sequences out of 15000+600000
  561597 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  64i,17n,100p,1060b,870s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnti9.pfb>
-Output written on /home/thai/Data2/face-recognition-system/report/book_ML.pdf (46 pages, 4893796 bytes).
+Output written on /home/thai/Data2/face-recognition-system/report/book_ML.pdf (45 pages, 4893360 bytes).
 PDF statistics:
- 553 PDF objects out of 1000 (max. 8388607)
- 439 compressed objects within 5 object streams
- 138 named destinations out of 1000 (max. 500000)
+ 549 PDF objects out of 1000 (max. 8388607)
+ 436 compressed objects within 5 object streams
+ 137 named destinations out of 1000 (max. 500000)
  373 words of extra memory for PDF output out of 10000 (max. 10000000)
 

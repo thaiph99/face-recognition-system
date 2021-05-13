@@ -162,7 +162,7 @@ tìm kiếm được đặc trưng nhất định thì tích chập đó sẽ ch
                         \end{subfigure}
                         \caption{Cách hoạt động của bộ lọc (filter)}
                     \end{figure}
-              \item Kích thước filter nhỏ được ưu tiên lựa chọn thay kích thước lớn vì những lý do sau đây: 
+              \item Kích thước filter nhỏ được ưu tiên lựa chọn thay kích thước lớn vì những lý do sau đây:
                     \begin{itemize}
                         \item Cho phép nhìn được các vùng nhỏ
                         \item Trích rút được những đặc trưng có tính cục bộ cao
@@ -221,6 +221,7 @@ còn cần cần thiết, thay vào đó vị trí tương đối giữ các đ�
 Hơn giảm tầng pooling có khả năng giảm chiều cực kì nhiều, làm hạn chế overfit,
 và giảm thời gian huấn luyện tốt.
 
+\newpage
 \subsection{Lớp kết nối đầy đủ}
 
 Lớp cuối cùng của mô hình CNN trong bài toán phân loại ảnh là lớp kết nối đầy đủ.
@@ -332,7 +333,7 @@ O-Net lấy các bounding boxes từ R-Net làm đầu vào và đánh dấu cá
 \end{figure}
 
 
-Ở bước này, thuật toán đưa ra 3 kết quả đầu ra khác nhau bao gồm: 
+Ở bước này, thuật toán đưa ra 3 kết quả đầu ra khác nhau bao gồm:
 xác suất của khuôn mặt nằm trong bounding box, tọa độ của bounding box và
 tọa độ của các mốc trên khuôn mặt (vị trí mắt, mũi, miệng)
 
@@ -490,7 +491,7 @@ càng nhỏ, mức độ tương đồng giữa chúng càng lớn.
 
 Hầu hết các thuật toán nhận diện khuôn mặt trước facenet đều tìm cách biểu diễn
 khuôn mặt bằng một vector nhúng (embedding) thông qua một layer bottle neck có tác dụng
-giảm chiều dữ liệu: 
+giảm chiều dữ liệu:
 
 \begin{itemize}
     \item Tuy nhiên hạn chế của các thuật toán này đó là số lượng chiều embedding
@@ -504,7 +505,7 @@ giảm chiều dữ liệu:
           lượt huấn luyện.
 \end{itemize}
 
-Facenet đã giải quyết cả 2 vấn đề trên bằng các hiệu chỉnh nhỏ nhưng mang lại hiệu quả lớn: 
+Facenet đã giải quyết cả 2 vấn đề trên bằng các hiệu chỉnh nhỏ nhưng mang lại hiệu quả lớn:
 
 \begin{itemize}
     \item Base network áp dụng một mạng convolutional neural network và giảm chiều dữ
@@ -537,7 +538,7 @@ InceptionResnetV1 là một mạng CNN kết hợp giữa các cấu trúc lớn
 mỗi khi cho ảnh đi qua mạng này phải thức hiện 23 triệu phép tính, còn chưa kể trong quá trình huẩn luyện
 mạng này phải thực hiện rất nhiều phép tính để thay đổi các tham số.
 
-Chính vì sự khổng lồ của nó nên đã gây ra sự khó khăn trong quá trình huấn luyện, với những điều kiện như: 
+Chính vì sự khổng lồ của nó nên đã gây ra sự khó khăn trong quá trình huấn luyện, với những điều kiện như:
 lượng dữ liệu cho huấn luyện phải thật sự lớn (lên tới hàng chục triệu ảnh với hàng triệu khuôn mặt),
 phần cứng hỗ trợ tính toán tốn kém, tài nguyên lưu trữ lớn, ...
 
@@ -562,7 +563,7 @@ cách giữa các vector.
     \caption{Mô hình sử dụng hàm đánh giá bộ ba}
 \end{figure}
 
-Mục tiêu của triplet loss là đảm bảo rằng: 
+Mục tiêu của triplet loss là đảm bảo rằng:
 \begin{itemize}
     \item Hai ví dụ có cùng nhãn có các phần nhúng của chúng gần nhau trong không gian nhúng.
     \item Hai ví dụ với các nhãn khác nhau có các nhúng của chúng ở xa nhau.
@@ -577,7 +578,7 @@ Công thức -------------------------------------------------------------------
 
 Mục tiêu của hàm triplet loss là tối thiểu hóa khoảng cách giữa 2 ảnh khi chúng là
 negative và tối đa hóa khoảng cách khi chúng là positive.
-Như vậy chúng ta cần lựa chọn các bộ 3 ảnh sao cho: 
+Như vậy chúng ta cần lựa chọn các bộ 3 ảnh sao cho:
 \begin{itemize}
     \item Ảnh Anchor và Positive khác nhau nhất: cần lựa chọn để khoảng cách d(A,P) lớn.
           Điều này cũng tương tự như bạn lựa chọn một ảnh của mình hồi nhỏ so với hiện tại để
