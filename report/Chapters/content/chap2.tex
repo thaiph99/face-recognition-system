@@ -1,6 +1,6 @@
 %!TEX root = ../../book_ML.tex
 \chapter{Cơ sở lý thuyết}
-\label{cha:chap2}
+\label{cha: chap2}
 % \index{principal component analysis}
 % \index{PCA -- \textit{xem} principle component analysis}
 % \index{PCA}
@@ -16,11 +16,11 @@ hoặc nhận dạng một người nào đó từ một bức hình ảnh kỹ 
 hình.
 
 Nhận diện khuôn mặt là một bài toán phức tạp, đòi hỏi cần phải xử lý một
-loạt các vấn đề .
+loạt các vấn đề.
 
 Mỗi khuôn mặt đều có nhưng điểm mốc, những phần lồi lõm, hình dáng của các
 bộ phận trên khuôn mặt như mắt, mũi, miệng,... Các hệ thống nhận diện định
-nghĩa những điểm này là những điểm nút, và mỗi khuôn mặt có khoảng 80 nút như thế
+nghĩa những điểm này là những điểm nút, và mỗi khuôn mặt có khoảng 80 nút như thế.
 
 Ngày nay các mô hình học sâu đã phát triển một cách vượt trội, việc trích rút các đặc trưng của một
 khuôn mặt ngày một đơn giản và trở lên vô cùng chính xác. Mặc dù chúng ta không thể biết các đặc trưng đấy
@@ -40,11 +40,11 @@ GPU tốc độ cao dựa trên CUDA và OpenCL cũng đang được phát tri�
 Cấu trúc tổng quan của OpenCV bao gồm 5 phần chính. 4 trong 5 phần đó được chỉ ra
 trong hình vẽ dưới.
 
-\begin{figure}[t]
+\begin{figure}
     \begin{subfigure}{0.7\textwidth}
         \includegraphics[width=0.99\linewidth]{Chapters/items/chap2_1.jpg}
         \caption{}
-        \label{fig:chap2_1}
+        \label{fig: chap2_1}
     \end{subfigure}
     \caption{Cấu trúc các phần của OpenCV.}
 \end{figure}
@@ -81,18 +81,18 @@ như SciPy và Matplotlib.
 
 \section{Mô hình mạng neural tích chập (CNN - Convolutional neural network)}
 
-Mạng neural tích chập (CNN) là một trong những mô hình học sâu tiên tiến phổ biến nhất và
+Mạng neural tích chập (CNN) là một trong những mô hình học sâu\cite{repec} tiên tiến phổ biến nhất và
 có ảnh hưởng nhất với cộng đồng thị giác máy tính (Computer vision). CNN thường được dùng
 trong các bài toán nhận dạng ảnh, phân tích ảnh, xử lý ngôn ngữ tự nhiên dưới dạng ảnh các bước sóng.
 Và hầu hết đều cho hiệu quả tốt đến rất tốt.
 
 CNN là một kiến trúc mạng neural sinh ra để xử lý các dữ liệu phi cấu trúc dạng ảnh. Có 2 loại lớp
-chính trong CNN : lớp tích chập (Convolutional layer) và lớp gộp (Pooling layer)
+chính trong CNN: lớp tích chập (Convolutional layer) và lớp gộp (Pooling layer)
 
 \begin{figure}
     \begin{subfigure}{1.\textwidth}
         \includegraphics[width=1.\linewidth]{Chapters/items/cnn2_1.jpg}
-        \label{fig:chap2_2}
+        \label{fig: chap2_2}
     \end{subfigure}
     \caption{CNN cho bài toán nhận diện chữ số.}
 \end{figure}
@@ -127,7 +127,7 @@ tìm kiếm được đặc trưng nhất định thì tích chập đó sẽ ch
                             \begin{center}
                                 \includegraphics[width=0.6\linewidth]{Chapters/items/chap2_3.jpg}
                             \end{center}
-                            \label{fig:chap2_3}
+                            \label{fig: chap2_3}
                         \end{subfigure}
                         \caption{Bộ lọc phát hiện cạnh}
                     \end{figure}
@@ -142,12 +142,12 @@ tìm kiếm được đặc trưng nhất định thì tích chập đó sẽ ch
                             \begin{center}
                                 \includegraphics[width=1.\linewidth]{Chapters/items/chap2_4.jpg}
                             \end{center}
-                            \label{fig:chap2_4}
+                            \label{fig: chap2_4}
                         \end{subfigure}
                         \caption{Bộ lọc phát hiện cạnh}
                     \end{figure}
           \end{itemize}
-    \item Các tham số : Kích thước bộ lọc, bước nhảy, lề
+    \item Các tham số: Kích thước bộ lọc, bước nhảy, lề
           \begin{itemize}
               \item Kích thước bộ lọc là một trong những tham số quan trọng nhất của lớp tích chập.
                     Kích thước này tỉ lệ thuận với số tham số cần học tại mỗi lớp tích chập và
@@ -158,11 +158,11 @@ tìm kiếm được đặc trưng nhất định thì tích chập đó sẽ ch
                             \begin{center}
                                 \includegraphics[width=1.\linewidth]{Chapters/items/chap2_5.jpg}
                             \end{center}
-                            \label{fig:chap2_5}
+                            \label{fig: chap2_5}
                         \end{subfigure}
                         \caption{Cách hoạt động của bộ lọc (filter)}
                     \end{figure}
-              \item Kích thước filter nhỏ được ưu tiên lựa chọn thay kích thước lớn vì những lý do sau đây:
+              \item Kích thước filter nhỏ được ưu tiên lựa chọn thay kích thước lớn vì những lý do sau đây: 
                     \begin{itemize}
                         \item Cho phép nhìn được các vùng nhỏ
                         \item Trích rút được những đặc trưng có tính cục bộ cao
@@ -193,7 +193,7 @@ nếu chúng ta không khởi tạo trọng số cẩn thận, hoặc khởi t�
         \begin{center}
             \includegraphics[width=1.\linewidth]{Chapters/items/chap2_6.jpg}
         \end{center}
-        \label{fig:chap2_6}
+        \label{fig: chap2_6}
     \end{subfigure}
     \caption{Một số hàm kích hoạt thường được sử dụng}
 \end{figure}
@@ -211,7 +211,7 @@ hay trung bình cho vùng ảnh đó.
         \begin{center}
             \includegraphics[width=1.\linewidth]{Chapters/items/chap2_7.jpg}
         \end{center}
-        \label{fig:chap2_7}
+        \label{fig: chap2_7}
     \end{subfigure}
     \caption{Ví dụ về max-pooling}
 \end{figure}
@@ -236,7 +236,7 @@ mô hình khác. Cần có hàm đánh giá mất mát để tính sai số gi�
         \begin{center}
             \includegraphics[width=1.\linewidth]{Chapters/items/chap2_8.jpg}
         \end{center}
-        \label{fig:chap2_8}
+        \label{fig: chap2_8}
     \end{subfigure}
     \caption{Một CNN đơn giản với đầy đủ các lớp}
 \end{figure}
@@ -244,10 +244,10 @@ mô hình khác. Cần có hàm đánh giá mất mát để tính sai số gi�
 \newpage
 \section{Máy dò khuôn mặt (Face detector)}
 
-Để xác định các khuôn mặt trong các ảnh chứa nhiều yếu tố ngoại cảnh, và trích xuất các khuôn mặt đưa vào các
+Để xác định các khuôn mặt\cite{detectface} trong các ảnh chứa nhiều yếu tố ngoại cảnh, và trích xuất các khuôn mặt đưa vào các
 mô hình học sâu tiến hành trích xuất các đặc trưng của các khuôn mặt này thì phải dùng các máy dò khuôn mặt.
 
-Hiện này có rất nhiều các máy dò khuôn mặt được thiết kế bằng các mô hình học sâu khác nhau, ngay cả những máy dò được
+Hiện này có rất nhiều các máy dò khuôn mặt\cite{detectface1} được thiết kế bằng các mô hình học sâu khác nhau, ngay cả những máy dò được
 thiết kế bằng các thuật toán xử lý ảnh thông thường cũng đã được phát triển và đạt hiệu quả tốt.
 Ví dụ như các máy dò được tích hợp trong OpenCV (máy dò 5 điểm, 9 điểm, 68 điểm trên khuôn mặt). Nhưng để đạt được hiệu quả
 tốt nhất có thể thì tôi sử dụng 1 máy dò có tên MTCNN (Multi-task Cascaded Convolutional Networks) được sử dụng phố biến
@@ -258,7 +258,7 @@ trong các hệ thống đòi hỏi sự chính xác cao.
         \begin{center}
             \includegraphics[width=1.\linewidth]{Chapters/items/chap2_test.jpg}
         \end{center}
-        \label{fig:chap2_test}
+        \label{fig: chap2_test}
     \end{subfigure}
     \caption{Ví dụ máy dò khuôn mặt}
 \end{figure}
@@ -266,7 +266,7 @@ trong các hệ thống đòi hỏi sự chính xác cao.
 \newpage
 \subsection{MTCNN}
 
-MTCNN là viết tắt của Multi-task Cascaded Convolutional Networks (Mạng đa năng xếp tầng đa tác vụ).
+MTCNN\cite{mtcnn} là viết tắt của Multi-task Cascaded Convolutional Networks (Mạng đa năng xếp tầng đa tác vụ).
 Nó là bao gồm 3 mạng CNN xếp chồng và đồng thời hoạt động khi detect khuôn mặt.
 Mỗi mạng có cấu trúc khác nhau và đảm nhiệm vai trò khác nhau trong task.
 Đầu ra của MTCNN là vị trí khuôn mặt và 5 điểm trên mặt: mắt, mũi, miệng…
@@ -278,7 +278,7 @@ MTCNN hoạt động theo 3 bước, mỗi bước có một mạng neural riên
         \begin{center}
             \includegraphics[width=1.\linewidth]{Chapters/items/chap2_9.jpg}
         \end{center}
-        \label{fig:chap2_9}
+        \label{fig: chap2_9}
     \end{subfigure}
     \caption{Các mạng neural trong MTCNN}
 \end{figure}
@@ -293,7 +293,7 @@ Tại P-Net, thuật toán sử dụng 1 kernel 12x12 chạy qua mỗi bức hì
         \begin{center}
             \includegraphics[width=0.6\linewidth]{Chapters/items/chap2_10.jpg}
         \end{center}
-        \label{fig:chap2_10}
+        \label{fig: chap2_10}
     \end{subfigure}
     \caption{Mô hình P-Net}
 \end{figure}
@@ -310,7 +310,7 @@ Tại đây, network sẽ sử dụng các bounding boxes được cung cấp t�
         \begin{center}
             \includegraphics[width=0.6\linewidth]{Chapters/items/chap2_11.jpg}
         \end{center}
-        \label{fig:chap2_11}
+        \label{fig: chap2_11}
     \end{subfigure}
     \caption{Mô hình R-Net}
 \end{figure}
@@ -326,13 +326,13 @@ O-Net lấy các bounding boxes từ R-Net làm đầu vào và đánh dấu cá
         \begin{center}
             \includegraphics[width=0.55\linewidth]{Chapters/items/chap2_12.jpg}
         \end{center}
-        \label{fig:chap2_12}
+        \label{fig: chap2_12}
     \end{subfigure}
     \caption{Mô hình O-Net}
 \end{figure}
 
 
-Ở bước này, thuật toán đưa ra 3 kết quả đầu ra khác nhau bao gồm:
+Ở bước này, thuật toán đưa ra 3 kết quả đầu ra khác nhau bao gồm: 
 xác suất của khuôn mặt nằm trong bounding box, tọa độ của bounding box và
 tọa độ của các mốc trên khuôn mặt (vị trí mắt, mũi, miệng)
 
@@ -341,7 +341,7 @@ tọa độ của các mốc trên khuôn mặt (vị trí mắt, mũi, miệng)
         \begin{center}
             \includegraphics[width=1.\linewidth]{Chapters/items/chap2_14.jpg}
         \end{center}
-        \label{fig:chap2_14}
+        \label{fig: chap2_14}
     \end{subfigure}
     \caption{MTCNN xác định các khuôn mặt}
 \end{figure}
@@ -349,12 +349,12 @@ tọa độ của các mốc trên khuôn mặt (vị trí mắt, mũi, miệng)
 \newpage
 \section{Các kĩ thuật làm giàu dữ liệu (Data agumentation)}
 
-Hiện nay các kĩ thuật làm giàu dữ liệu đang ngày các phát triển và phổ biến, khiến cho dữ liệu tăng lên
+Hiện nay các kĩ thuật làm giàu dữ liệu\cite{Augmentation} đang ngày các phát triển và phổ biến, khiến cho dữ liệu tăng lên
 mạnh mẽ mà vẫn dữ được tính đặc trưng
 
-Các kĩ thuật thường được sử dụng phổ biến là : Lật, xoay, phóng to, thu nhỏ, gây nhiễu, cắt, ...   
+Các kĩ thuật thường được sử dụng phổ biến là: Lật, xoay, phóng to, thu nhỏ, gây nhiễu, cắt, ...
 
-Ngoài ra còn có các kĩ thuật nâng cao khác như là : sử dụng phép nội suy, GAN, đối xứng, bọc, ...
+Ngoài ra còn có các kĩ thuật nâng cao khác như là: sử dụng phép nội suy, GAN, đối xứng, bọc, ...
 
 Còn rất nhiều những kĩ thuật phức tạp khác nhau và học sâu lại được sử dụng để giải quyết vấn đề này
 
@@ -364,7 +364,7 @@ Còn rất nhiều những kĩ thuật phức tạp khác nhau và học sâu l�
         \begin{center}
             \includegraphics[width=1.\linewidth]{Chapters/items/chap3_6.jpg}
         \end{center}
-        \label{fig:chap3_6}
+        \label{fig: chap3_6}
     \end{subfigure}
     \caption{Làm giàu dữ liệu 3D sử dụng học sâu}
 \end{figure}
@@ -393,7 +393,7 @@ nhỏ nhất và nếu không thuộc thì khoảng cách sẽ lớn hơn.
         \begin{center}
             \includegraphics[width=0.5\linewidth]{Chapters/items/chap2_15.jpg}
         \end{center}
-        \label{fig:chap2_15}
+        \label{fig: chap2_15}
     \end{subfigure}
     \caption{Learning similarity}
 \end{figure}
@@ -428,7 +428,7 @@ Thông thường hàm loss function là một hàm chuẩn bậc 2.
         \begin{center}
             \includegraphics[width=1.\linewidth]{Chapters/items/chap2_16.jpg}
         \end{center}
-        \label{fig:chap2_16}
+        \label{fig: chap2_16}
     \end{subfigure}
     \caption{Siam learing}
 \end{figure}
@@ -440,10 +440,16 @@ Hàm f(x) có tác dụng tương tự như một phép biến đổi qua layer 
 trong mạng neural network để tạo tính phi tuyến và giảm chiều dữ liệu về các kích thước nhỏ.
 Thông thường là 128 đối đối với các mô hình pretrain.
 
+\begin{figure}
+    \begin{subfigure}{1.\textwidth}
+        \begin{center}
+            \includegraphics[width=1.\linewidth]{Chapters/items/siam.png}
+        \end{center}
+        \label{fig: siam}
+    \end{subfigure}
+    \caption{Siam network trong bài toán nhận dạng chữ ký}
+\end{figure}
 
-\begin{equation}
-    d(x1, x2) = ||f(x1)-f(x2)||^2
-\end{equation}
 
 \newpage
 \section{Mô hình học sâu được huấn luyện trước (Pre-train model)}
@@ -458,7 +464,7 @@ nhưng nó giúp tiết kiệm thời gian và công sức.
 
 \subsection{Giới thiệu Facenet}
 
-FaceNet là một mạng lưới thần kinh sâu được sử dụng để trích xuất các tính năng từ
+FaceNet\cite{FaceNet} là một mạng lưới thần kinh sâu được sử dụng để trích xuất các tính năng từ
 hình ảnh của một mặt người. Nó được xuất bản vào năm 2015 bởi các nhà nghiên cứu của Google.
 
 \begin{figure}
@@ -466,7 +472,7 @@ hình ảnh của một mặt người. Nó được xuất bản vào năm 2015
         \begin{center}
             \includegraphics[width=1.\linewidth]{Chapters/items/chap2_17.jpg}
         \end{center}
-        \label{fig:chap2_17}
+        \label{fig: chap2_17}
     \end{subfigure}
     \caption{Facenet mã hóa hình ảnh khuôn mặt thành vector 128 chiều}
 \end{figure}
@@ -484,7 +490,7 @@ càng nhỏ, mức độ tương đồng giữa chúng càng lớn.
 
 Hầu hết các thuật toán nhận diện khuôn mặt trước facenet đều tìm cách biểu diễn
 khuôn mặt bằng một vector nhúng (embedding) thông qua một layer bottle neck có tác dụng
-giảm chiều dữ liệu:
+giảm chiều dữ liệu: 
 
 \begin{itemize}
     \item Tuy nhiên hạn chế của các thuật toán này đó là số lượng chiều embedding
@@ -498,7 +504,7 @@ giảm chiều dữ liệu:
           lượt huấn luyện.
 \end{itemize}
 
-Facenet đã giải quyết cả 2 vấn đề trên bằng các hiệu chỉnh nhỏ nhưng mang lại hiệu quả lớn:
+Facenet đã giải quyết cả 2 vấn đề trên bằng các hiệu chỉnh nhỏ nhưng mang lại hiệu quả lớn: 
 
 \begin{itemize}
     \item Base network áp dụng một mạng convolutional neural network và giảm chiều dữ
@@ -512,7 +518,7 @@ Facenet đã giải quyết cả 2 vấn đề trên bằng các hiệu chỉnh 
 \newpage
 \subsection{Giới thiệu Mạng InceptionResnetV1}
 
-Mạng InceptionResnetV1 có là sự kết hợp giữa 2 mạng cơ sở là Inception Net hay còn gọi là GoogLe Net
+Mạng InceptionResnetV1\cite{resnet} có là sự kết hợp giữa 2 mạng cơ sở là Inception Net hay còn gọi là GoogLe Net
 
 Nó được giới thiệu năm 2016 bởi các kĩ sư của Google, và cho thấy hiệu quả mạnh mẽ trên những tập dữ liệu ảnh lớn
 tiêu biểu là tập dữ liệu ImageNet.
@@ -522,7 +528,7 @@ tiêu biểu là tập dữ liệu ImageNet.
         \begin{center}
             \includegraphics[width=1.\linewidth]{Chapters/items/chap2_19.jpg}
         \end{center}
-        \label{fig:chap2_19}
+        \label{fig: chap2_19}
     \end{subfigure}
     \caption{Cấu trúc tổng quan của InceptionResnetV1}
 \end{figure}
@@ -531,7 +537,7 @@ InceptionResnetV1 là một mạng CNN kết hợp giữa các cấu trúc lớn
 mỗi khi cho ảnh đi qua mạng này phải thức hiện 23 triệu phép tính, còn chưa kể trong quá trình huẩn luyện
 mạng này phải thực hiện rất nhiều phép tính để thay đổi các tham số.
 
-Chính vì sự khổng lồ của nó nên đã gây ra sự khó khăn trong quá trình huấn luyện, với những điều kiện như:
+Chính vì sự khổng lồ của nó nên đã gây ra sự khó khăn trong quá trình huấn luyện, với những điều kiện như: 
 lượng dữ liệu cho huấn luyện phải thật sự lớn (lên tới hàng chục triệu ảnh với hàng triệu khuôn mặt),
 phần cứng hỗ trợ tính toán tốn kém, tài nguyên lưu trữ lớn, ...
 
@@ -551,12 +557,12 @@ cách giữa các vector.
         \begin{center}
             \includegraphics[width=1.\linewidth]{Chapters/items/chap2_18.jpg}
         \end{center}
-        \label{fig:chap2_18}
+        \label{fig: chap2_18}
     \end{subfigure}
     \caption{Mô hình sử dụng hàm đánh giá bộ ba}
 \end{figure}
 
-Mục tiêu của triplet loss là đảm bảo rằng:
+Mục tiêu của triplet loss là đảm bảo rằng: 
 \begin{itemize}
     \item Hai ví dụ có cùng nhãn có các phần nhúng của chúng gần nhau trong không gian nhúng.
     \item Hai ví dụ với các nhãn khác nhau có các nhúng của chúng ở xa nhau.
@@ -571,7 +577,7 @@ Công thức -------------------------------------------------------------------
 
 Mục tiêu của hàm triplet loss là tối thiểu hóa khoảng cách giữa 2 ảnh khi chúng là
 negative và tối đa hóa khoảng cách khi chúng là positive.
-Như vậy chúng ta cần lựa chọn các bộ 3 ảnh sao cho:
+Như vậy chúng ta cần lựa chọn các bộ 3 ảnh sao cho: 
 \begin{itemize}
     \item Ảnh Anchor và Positive khác nhau nhất: cần lựa chọn để khoảng cách d(A,P) lớn.
           Điều này cũng tương tự như bạn lựa chọn một ảnh của mình hồi nhỏ so với hiện tại để
@@ -581,5 +587,14 @@ Như vậy chúng ta cần lựa chọn các bộ 3 ảnh sao cho:
           anh em giống bạn.
 \end{itemize}
 
+\begin{figure}
+    \begin{subfigure}{0.8\textwidth}
+        \begin{center}
+            \includegraphics[width=1.\linewidth]{Chapters/items/fomura.png}
+        \end{center}
+        \label{fig: fomura}
+    \end{subfigure}
+    \caption{Công thức của hàm đánh giá bộ ba}
+\end{figure}
 
 

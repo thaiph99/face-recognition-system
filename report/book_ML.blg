@@ -5,48 +5,46 @@ A level-1 auxiliary file: Chapters/content/chap1.aux
 A level-1 auxiliary file: Chapters/content/chap2.aux
 A level-1 auxiliary file: Chapters/content/chap3.aux
 A level-1 auxiliary file: Chapters/content/chap4.aux
-The style file: alpha.bst
-I found no \citation commands---while reading file book_ML.aux
+The style file: abbrv.bst
 Database file #1: refs.bib
-You've used 0 entries,
-            2543 wiz_defined-function locations,
-            562 strings with 4541 characters,
-and the built_in function-call counts, 24 in all, are:
-= -- 0
-> -- 0
-< -- 0
-+ -- 0
-- -- 0
-* -- 2
-:= -- 10
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
+You've used 7 entries,
+            2118 wiz_defined-function locations,
+            551 strings with 5031 characters,
+and the built_in function-call counts, 2354 in all, are:
+= -- 229
+> -- 111
+< -- 3
++ -- 44
+- -- 36
+* -- 160
+:= -- 398
+add.period$ -- 23
+call.type$ -- 7
+change.case$ -- 39
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 2
-int.to.chr$ -- 1
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 3
-num.names$ -- 0
-pop$ -- 0
+cite$ -- 7
+duplicate$ -- 92
+empty$ -- 181
+format.name$ -- 36
+if$ -- 498
+int.to.chr$ -- 0
+int.to.str$ -- 7
+missing$ -- 7
+newline$ -- 39
+num.names$ -- 14
+pop$ -- 34
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 32
 quote$ -- 0
-skip$ -- 2
+skip$ -- 72
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
-text.length$ -- 0
+substring$ -- 120
+swap$ -- 22
+text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
+type$ -- 28
 warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 2
-(There was 1 error message)
+while$ -- 21
+width$ -- 8
+write$ -- 82

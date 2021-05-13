@@ -36,7 +36,7 @@
 
 
 \usepackage{graphicx}        % standard LaTeX graphics tool
-                             % when including figure files
+% when including figure files
 \usepackage{multicol}        % used for the two-column index
 \usepackage[bottom]{footmisc}% places footnotes at page bottom
 % etc.
@@ -54,8 +54,8 @@
 %%%%%%%%%%
 \usepackage{makeidx}         % allows index generation
 \makeindex             % used for the subject index
-                       % please use the style svind.ist with
-                       % your makeindex program
+% please use the style svind.ist with
+% your makeindex program
 
 
 \usepackage{silence}
@@ -68,8 +68,8 @@
 % \urlstyle{rm}
 % \usepackage[unicode]{hyperref}
 \usepackage[unicode, pdftex,
-            pdfauthor={Pham Hong Thai},
-            pdftitle={Phan tich thanh phan chinh}]{hyperref}
+    pdfauthor={Pham Hong Thai},
+    pdftitle={Face recognition report}]{hyperref}
 \renewcommand\UrlFont{\sffamily}
 \hypersetup{
     colorlinks=black,
@@ -145,28 +145,28 @@
 \usepackage{courier}
 
 \lstdefinestyle{mystyle}{
-  backgroundcolor=\color{backcolour},  
-  commentstyle=\color{codegray} \itshape,
-  keywordstyle=\color{codekey} \bfseries,
-  numberstyle=\tiny\color{codekey},
-  stringstyle=\color{codepurple},
-  basicstyle=\ttfamily\footnotesize\color{codekey},
-  % basewidth  = {.5em,0.5em},
-  % basicstyle=\ttfamily,
-  breakatwhitespace=false,         
-  breaklines=true,                 
-  captionpos=b,                    
-  keepspaces=true,                 
-  numbers=none,                    
-  numbersep=5pt,                  
-  showspaces=false,                
-  showstringspaces=false,
-  showtabs=false,                  
-  tabsize=4, 
-  frame = single,
-  framesep = 7pt,
-  % columns = flexible, 
-  % keepspaces = false
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegray} \itshape,
+    keywordstyle=\color{codekey} \bfseries,
+    numberstyle=\tiny\color{codekey},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize\color{codekey},
+    % basewidth  = {.5em,0.5em},
+    % basicstyle=\ttfamily,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=none,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+    frame = single,
+    framesep = 7pt,
+    % columns = flexible, 
+    % keepspaces = false
 }
 
 %"mystyle" code listing set
@@ -193,16 +193,16 @@
 
 % % Python style for highlighting
 \newcommand\pythonstyle{\lstset{
-language=Python,
-basicstyle=\ttm,
-otherkeywords={self},             % Add keywords here
-keywordstyle=\ttb\color{deepblue},
-emph={MyClass,__init__},          % Custom highlighting
-emphstyle=\ttb\color{deepred},    % Custom highlighting style
-stringstyle=\color{deepgreen},
-frame=tb,                         % Any extra options here
-showstringspaces=false            %
-}}
+        language=Python,
+        basicstyle=\ttm,
+        otherkeywords={self},             % Add keywords here
+        keywordstyle=\ttb\color{deepblue},
+        emph={MyClass,__init__},          % Custom highlighting
+        emphstyle=\ttb\color{deepred},    % Custom highlighting style
+        stringstyle=\color{deepgreen},
+        frame=tb,                         % Any extra options here
+        showstringspaces=false            %
+    }}
 
 
 \usepackage{colortbl}
@@ -212,11 +212,11 @@ showstringspaces=false            %
 \usepackage{wrapfig}
 \newtcolorbox{mybox}[3][]
 {
-  colframe = #2!25,
-  colback  = #2!10,
-  coltitle = blue,  
-  title    = \textbf{#3},
-  #1,
+    colframe = #2!25,
+    colback  = #2!10,
+    coltitle = blue,
+    title    = \textbf{#3},
+    #1,
 }
 
 
@@ -236,7 +236,7 @@ showstringspaces=false            %
     \setlength\mylenA{\the\wd\myboxA}%   calc width diff
     \addtolength\mylenA{-\the\wd\myboxB}%
     \ifdim\wd\myboxB<\wd\myboxA%
-       \rlap{\hskip 0.5\mylenA\usebox\myboxB}{\usebox\myboxA}%
+        \rlap{\hskip 0.5\mylenA\usebox\myboxB}{\usebox\myboxA}%
     \else
         \hskip -0.3\mylenA\rlap{\usebox\myboxA}{\hskip 0.3\mylenA\usebox\myboxB}%
     \fi}
@@ -258,65 +258,66 @@ showstringspaces=false            %
 \newtcbtheorem[number within=chapter]{myalg}{Thuật toán}{colback=white,colframe=gray,fonttitle=\bfseries, fontupper = \itshape}{alg}
 
 % \newenvironment{myalg}
-    % {
-    % \begin{tcolorbox}[colback = blue!5, colframe=gray, title = Thuật toán,fonttitle=\bfseries]
-    % \it
-    % }
-    % {
-    % \end{tcolorbox}
-    % }
+% {
+% \begin{tcolorbox}[colback = blue!5, colframe=gray, title = Thuật toán,fonttitle=\bfseries]
+% \it
+% }
+% {
+% \end{tcolorbox}
+% }
 
 \newenvironment{mydeff}
-    {
+{
     \begin{tcolorbox}[colback=white,colframe=gray, title = Chú ý,fonttitle=\bfseries]
-    \it
-    }
-    {
+        \it
+        }
+        {
     \end{tcolorbox}
-    }
- 
+}
+
 \newenvironment{mynote}
-    {
+{
     \begin{tcolorbox}[colback = white!5, colframe=gray, title =,fonttitle=\bfseries]
-    \it
-    }
-    {
+        \it
+        }
+        {
     \end{tcolorbox}
-    }
+}
 
 \newcommand{\newnote}[2]{
     % 1: title, 2: content 
     \begin{tcolorbox}[colback = white, leftrule = .3mm, rightrule = .3mm, toprule = .3mm, bottomrule = .3mm, colframe=black, title =#1,fonttitle=\bfseries]
-    \it
-    #2    
+        \it
+        #2
     \end{tcolorbox}
 }
 
 \newcommand{\myeqnbox}[1]{
     % 1: content 
-    \begin{tcolorbox}[toptitle = 0mm, leftrule = .3mm, rightrule = .3mm, toprule = .3mm, bottomrule = .3mm, colback = white, colframe=black, sharp corners]    
-    \abovedisplayskip=-10pt
-    \belowdisplayskip=-30pt
-    #1
+    \begin{tcolorbox}[toptitle = 0mm, leftrule = .3mm, rightrule = .3mm, toprule = .3mm, bottomrule = .3mm, colback = white, colframe=black, sharp corners]
+        \abovedisplayskip=-10pt
+        \belowdisplayskip=-30pt
+        #1
     \end{tcolorbox}
 }
 
+\renewcommand{\baselinestretch}{1.50}\normalsize
 
 \newenvironment{myfr}
-    {\begin{center} \it
-    \begin{tcolorbox}[colback = yellow!20, colframe=yellow!45!black]
-    % \includegraphics[width = 2cm]{logo.png}
-    \begin{wrapfigure}{L}{0.1\textwidth}
-    \vspace{-100pt}
-    \href{https://google.com}{
-    \includegraphics[width=\textwidth]{pgfs/logofundaml.pdf}}
-    \vspace{-30pt}
-    \end{wrapfigure}
-    }
-    {
-    \end{tcolorbox}
+{\begin{center} \it
+        \begin{tcolorbox}[colback = yellow!20, colframe=yellow!45!black]
+            % \includegraphics[width = 2cm]{logo.png}
+            \begin{wrapfigure}{L}{0.1\textwidth}
+                \vspace{-100pt}
+                \href{https://google.com}{
+                    \includegraphics[width=\textwidth]{pgfs/logofundaml.pdf}}
+                \vspace{-30pt}
+            \end{wrapfigure}
+            }
+            {
+        \end{tcolorbox}
     \end{center}
-    }
+}
 % END custom environments
 % ******************************************************************************
 
@@ -364,17 +365,17 @@ showstringspaces=false            %
 \def\bzero{\mathbf{0}}
 \def\bone{\mathbf{1}}
 \def\R{\mathbb{R}}
-\def\L{\mathcal{L}} 
-\def\S{\mathcal{S}} 
+\def\L{\mathcal{L}}
+\def\S{\mathcal{S}}
 
 
 \def\bmt{\left[\begin{matrix}}
-\def\bmt{\end{matrix}\right]}
+            \def\bmt{\end{matrix}\right]}
 
 \def\diag{\text{diag}}
 
 \def\bmt{\left[\begin{matrix}}
-\def\emt{\end{matrix}\right]}
+            \def\emt{\end{matrix}\right]}
 
 \def\blambda{\boldsymbol{\lambda}}
 \def\bxi{\boldsymbol{\xi}}
@@ -403,14 +404,14 @@ showstringspaces=false            %
 % Python environment
 \lstnewenvironment{python}[1][]
 {
-\pythonstyle
-\lstset{#1}
+    \pythonstyle
+    \lstset{#1}
 }
 {}
 % Python for external files
 \newcommand\pythonexternal[2][]{{
-\pythonstyle
-\lstinputlisting[#1]{#2}}}
+            \pythonstyle
+            \lstinputlisting[#1]{#2}}}
 % Python for inline
 \newcommand\pythoninline[1]{{\color{deepred}\pythonstyle\lstinline!#1!}}
 
@@ -422,16 +423,19 @@ showstringspaces=false            %
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[RE,RO]{\nouppercase\leftmark}
+% \fancyhead[RE,RO]{\nouppercase\leftmark}
+% \fancyhead[RE,RO]{\thepage}
+\chead{\thepage}
 % \fancyhead[RE,LO]{\thepage}
 % \fancyfoot[RE,LO]{}
 % \fancyfoot[LE,RO]{Trang \thepage}
 
-\rfoot{Trang \thepage}
+% \rfoot{Trang \thepage}
+% \rfoot{\nouppercase\leftmark}
 
 \fancypagestyle{plain}{%
-\fancyhf{}
-\renewcommand{\headrulewidth}{0pt}
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
 }
 
 
@@ -452,8 +456,8 @@ showstringspaces=false            %
 \makeatletter
 \def\thickhrulefill{\leavevmode \leaders \hrule height 1.2ex \hfill \kern \z@}
 \def\@makechapterhead#1{
-  \vspace*{10\p@}%
-  {\parindent \z@ \centering \reset@font
+    \vspace*{10\p@}%
+    {\parindent \z@ \centering \reset@font
         \thickhrulefill\quad
         \scshape\bfseries\textit{\@chapapp{}  \thechapter}
         % \scshape\bfseries{\Large CHƯƠNG  \thechapter}
@@ -468,7 +472,7 @@ showstringspaces=false            %
         \vspace*{10\p@}%
         \hrule
         \vskip 100\p@
-  }}
+    }}
 % ******************************************************************************
 
 
@@ -476,13 +480,13 @@ showstringspaces=false            %
 % ******************************************************************************
 % title 
 \title{
-% {\centering \bf Machine Learning cơ bản}\\
-\\
+    % {\centering \bf Machine Learning cơ bản}\\
+    \\
 
-\\
-% {\small First Edition}
-% Lần cập nhật gần nhất:
-\vspace{-1.2cm}
+    \\
+    % {\small First Edition}
+    % Lần cập nhật gần nhất:
+    \vspace{-1.2cm}
 }
 
 
@@ -503,32 +507,32 @@ showstringspaces=false            %
 \newcommand{\hatchcolor}{}
 % declaring the keys in tikz
 \tikzset{hatchspread/.code={\setlength{\hatchspread}{#1}},
-         hatchthickness/.code={\setlength{\hatchthickness}{#1}},
-         hatchshift/.code={\setlength{\hatchshift}{#1}},% must be >= 0
-         hatchcolor/.code={\renewcommand{\hatchcolor}{#1}}}
+    hatchthickness/.code={\setlength{\hatchthickness}{#1}},
+    hatchshift/.code={\setlength{\hatchshift}{#1}},% must be >= 0
+    hatchcolor/.code={\renewcommand{\hatchcolor}{#1}}}
 % setting the default values
 \tikzset{hatchspread=6pt,
-         hatchthickness=0.15pt,
-         hatchshift=0pt,% must be >= 0
-         hatchcolor=black}
+    hatchthickness=0.15pt,
+    hatchshift=0pt,% must be >= 0
+    hatchcolor=black}
 % declaring the pattern
 \pgfdeclarepatternformonly[\hatchspread,\hatchthickness,\hatchshift,\hatchcolor]% variables
-   {custom north west lines}% name
-   {\pgfqpoint{\dimexpr-2\hatchthickness}{\dimexpr-2\hatchthickness}}% lower left corner
-   {\pgfqpoint{\dimexpr\hatchspread+2\hatchthickness}{\dimexpr\hatchspread+2\hatchthickness}}% upper right corner
-   {\pgfqpoint{\dimexpr\hatchspread}{\dimexpr\hatchspread}}% tile size
-   {% shape description
+{custom north west lines}% name
+{\pgfqpoint{\dimexpr-2\hatchthickness}{\dimexpr-2\hatchthickness}}% lower left corner
+{\pgfqpoint{\dimexpr\hatchspread+2\hatchthickness}{\dimexpr\hatchspread+2\hatchthickness}}% upper right corner
+{\pgfqpoint{\dimexpr\hatchspread}{\dimexpr\hatchspread}}% tile size
+{% shape description
     \pgfsetlinewidth{\hatchthickness}
     \pgfpathmoveto{\pgfqpoint{0pt}{\dimexpr\hatchspread+\hatchshift}}
     \pgfpathlineto{\pgfqpoint{\dimexpr\hatchspread+0.15pt+\hatchshift}{-0.15pt}}
     \ifdim \hatchshift > 0pt
-      \pgfpathmoveto{\pgfqpoint{0pt}{\hatchshift}}
-      \pgfpathlineto{\pgfqpoint{\dimexpr0.15pt+\hatchshift}{-0.15pt}}
+        \pgfpathmoveto{\pgfqpoint{0pt}{\hatchshift}}
+        \pgfpathlineto{\pgfqpoint{\dimexpr0.15pt+\hatchshift}{-0.15pt}}
     \fi
     \pgfsetstrokecolor{\hatchcolor}
-%    \pgfsetdash{{1pt}{1pt}}{0pt}% dashing cannot work correctly in all situation this way
+    %    \pgfsetdash{{1pt}{1pt}}{0pt}% dashing cannot work correctly in all situation this way
     \pgfusepath{stroke}
-   }
+}
 
 
 \tikzstyle{shaded}=[pattern = custom north west lines]
