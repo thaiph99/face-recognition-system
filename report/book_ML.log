@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.3.19)  14 MAY 2021 00:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.3.19)  14 MAY 2021 01:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1529,7 +1529,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  64i,17n,100p,1060b,870s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnti9.pfb>
-Output written on /home/thai/Data2/face-recognition-system/report/book_ML.pdf (45 pages, 4893360 bytes).
+Output written on /home/thai/Data2/face-recognition-system/report/book_ML.pdf (45 pages, 4893359 bytes).
 PDF statistics:
  549 PDF objects out of 1000 (max. 8388607)
  436 compressed objects within 5 object streams
