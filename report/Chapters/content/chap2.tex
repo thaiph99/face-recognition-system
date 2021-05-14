@@ -117,10 +117,10 @@ tìm kiếm được đặc trưng nhất định thì tích chập đó sẽ ch
           \begin{itemize}
               \item Lớp tích chập có chức năng chính là phát hiện đặc trưng cụ thể của bức ảnh.
                     Những đặc trưng này bao gồm đặc trưng cơ bản là góc, cạnh, màu sắc, hoặc đặc trưng
-                    phức tạp hơn như texture của ảnh. Vì bộ filter quét qua toàn bộ bức ảnh, nên những
+                    phức tạp hơn như texture của ảnh. Vì bộ lọc quét qua toàn bộ bức ảnh, nên những
                     đặc trưng này có thể nằm ở vị trí bất kì trong bức ảnh, cho dù ảnh bị xoáy trái/phải
                     thì những đặc trưng này vẫn bị phát hiện.
-              \item Ở minh họa dưới, có một filter 5x5 dùng để phát hiện góc/cạnh, với filter này
+              \item Ở minh họa dưới, có một bộ lọc 5x5 dùng để phát hiện góc/cạnh, với bộ lọc này
                     chỉ có giá trị một tại các điểm tương ứng một góc cong.
                     \begin{figure}
                         \begin{subfigure}{0.6\textwidth}
@@ -162,7 +162,7 @@ tìm kiếm được đặc trưng nhất định thì tích chập đó sẽ ch
                         \end{subfigure}
                         \caption{Cách hoạt động của bộ lọc (filter)}
                     \end{figure}
-              \item Kích thước filter nhỏ được ưu tiên lựa chọn thay kích thước lớn vì những lý do sau đây:
+              \item Kích thước bộ lọc nhỏ được ưu tiên lựa chọn thay kích thước lớn vì những lý do sau đây:
                     \begin{itemize}
                         \item Cho phép nhìn được các vùng nhỏ
                         \item Trích rút được những đặc trưng có tính cục bộ cao
@@ -186,7 +186,7 @@ Hiện nay hàm kích hoạt được sử dụng phổ biến nhất là hàm R
 ReLU cũng như những hàm kích hoạt khác, được đặt ngay sau tầng convolution, ReLU sẽ gán những giá trị âm bằng 0 và giữ nguyên giá trị của đầu vào khi lớn hơn 0.
 
 ReLU cũng có một số vấn đề tiềm ẩn như không có đạo hàm tại điểm 0, giá trị của hàm ReLU có thể lớn đến vô cùng và
-nếu chúng ta không khởi tạo trọng số cẩn thận, hoặc khởi tạo learning rate quá lớn thì những neuron ở tầng này sẽ rơi vào trạng thái chết, tức là luôn có giá trị < 0.
+nếu chúng ta không khởi tạo trọng số cẩn thận, hoặc khởi tạo tỉ lệ học (learning rate) quá lớn thì những neuron ở tầng này sẽ rơi vào trạng thái chết, tức là luôn có giá trị < 0.
 
 \begin{figure}
     \begin{subfigure}{1.\textwidth}
@@ -390,7 +390,7 @@ mức chuẩn L1 hoặc L2 sao cho nếu 2 bức ảnh thuộc cùng một ngư�
 nhỏ nhất và nếu không thuộc thì khoảng cách sẽ lớn hơn.
 
 \begin{figure}
-    \begin{subfigure}{1.\textwidth}
+    \begin{subfigure}{0.8\textwidth}
         \begin{center}
             \includegraphics[width=0.5\linewidth]{Chapters/items/chap2_15.jpg}
         \end{center}
@@ -398,12 +398,12 @@ nhỏ nhất và nếu không thuộc thì khoảng cách sẽ lớn hơn.
     \end{subfigure}
     \caption{Learning similarity}
 \end{figure}
+\newpage
+Learning similarity có thể trả ra nhiều hơn một ảnh là cùng loại với ảnh đầu vào tùy theo ngưỡng (threshold).
 
-Learning similarity có thể trả ra nhiều hơn một ảnh là cùng loại với ảnh đầu vào tùy theo ngưỡng threshold.
-
-Ngoài ra phương pháp này không bị phụ thuộc vào số lượng classes.
+Ngoài ra phương pháp này không bị phụ thuộc vào số lượng lớp (classes).
 Do đó không cần phải huấn luyện lại khi xuất hiện class mới.
-Điểm mấu chốt là cần xây dựng được một model encoding đủ tốt để chiếu các bức
+Điểm mấu chốt là cần xây dựng được một mô hình mã hóa (model encoding) đủ tốt để chiếu các bức
 ảnh lên một không gian eucledean n chiều. Sau đó sử dụng khoảng cách để quyết
 định nhãn của chúng.
 
@@ -417,12 +417,12 @@ Kiến trúc siam network sẽ giúp chúng ta thực hiện điều này một 
 Những kiến trúc mạng mà khi bạn đưa vào 2 bức ảnh và mô hình sẽ trả lời chúng thuộc về
 cùng 1 người hay không được gọi chung là Siam network.
 
-Kiến trúc của Siam network dựa trên base network là một Convolutional neural network
-đã được loại bỏ output layer có tác dụng encoding ảnh thành vector embedding.
+Kiến trúc của Siam network dựa trên mạng cơ sở (base network) là một mạng neural tích chập (Convolutional neural network)
+đã được loại bỏ các lớp đầu ra (output layer) có tác dụng mã hóa (encoding) ảnh thành vector nhúng (embedding).
 Đầu vào của mạng siam network là 2 bức ảnh bất kì được lựa chọn ngẫu nhiên từ dữ liệu ảnh.
-Output của Siam network là 2 vector tương ứng với biểu diễn của 2 ảnh input.
-Sau đó đưa 2 vector vào hàm loss function để đo lường sự khác biệt giữa chúng.
-Thông thường hàm loss function là một hàm chuẩn bậc 2.
+Output của Siam network là 2 vector tương ứng với biểu diễn của 2 ảnh đầu vào.
+Sau đó đưa 2 vector vào hàm đánh giá mấy mát (loss function) để đo lường sự khác biệt giữa chúng.
+Thông thường hàm đánh giá mất mát là một hàm chuẩn bậc 2.
 
 \begin{figure}
     \begin{subfigure}{1.\textwidth}
@@ -435,11 +435,11 @@ Thông thường hàm loss function là một hàm chuẩn bậc 2.
 \end{figure}
 
 \newpage
-Từ mô hình Convolutional neural network, mô hình trả ra 2 vector encoding là x1 và x2
+Từ mô hình CNN, mô hình trả ra 2 vector mã hóa (encoding) là x1 và x2
 biểu diễn cho lần lượt ảnh 1 và 2. x1 và x2 có cùng số chiều.
-Hàm f(x) có tác dụng tương tự như một phép biến đổi qua layer fully connected
-trong mạng neural network để tạo tính phi tuyến và giảm chiều dữ liệu về các kích thước nhỏ.
-Thông thường là 128 đối đối với các mô hình pretrain.
+Hàm f(x) có tác dụng tương tự như một phép biến đổi qua lớp kết nối đầy đủ (layer fully connected)
+trong mạng neural để tạo tính phi tuyến và giảm chiều dữ liệu về các kích thước nhỏ.
+Thông thường là 128 đối đối với các mô hình đã được các nhà khoa học huấn luyện từ trước.
 
 \begin{figure}
     \begin{subfigure}{1.\textwidth}
@@ -460,8 +460,8 @@ Mô hình huấn luyện trước là một mô hình được đào tạo bởi
 một vấn đề tương tự. Thay vì xây dựng một mô hình từ đầu để giải quyết một vấn đề tương tự,
 ta sử dụng mô hình được đào tạo về vấn đề khác làm điểm khởi đầu.
 Thường thì những mô hình này là những mô hình rất lớn khó khăn trong việc huấn luyện
-Một mô hình được đào tạo trước có thể không chính xác 100\%,
-nhưng nó giúp tiết kiệm thời gian và công sức.
+một mô hình được đào tạo trước có thể không chính xác 100\%,
+nhưng nó giúp tiết kiệm rất nhiều thời gian và công sức.
 
 \subsection{Giới thiệu Facenet}
 
@@ -494,24 +494,24 @@ khuôn mặt bằng một vector nhúng (embedding) thông qua một layer bottl
 giảm chiều dữ liệu:
 
 \begin{itemize}
-    \item Tuy nhiên hạn chế của các thuật toán này đó là số lượng chiều embedding
+    \item Tuy nhiên hạn chế của các thuật toán này đó là số lượng chiều vector nhúng (embedding)
           tương đối lớn (thường >= 1000) và ảnh hưởng tới tốc độ của thuật toán.
           Thường chúng ta phải áp dụng thêm thuật toán PCA để giảm chiều dữ liệu để giảm
           tốc độ tính toán.
-    \item Hàm loss function chỉ đo lường khoảng cách giữa 2 bức ảnh.
+    \item Hàm đánh giá mất mát (loss function) chỉ đo lường khoảng cách giữa 2 bức ảnh.
           Như vậy trong một đầu vào huấn luyện chỉ học được một trong hai khả năng
-          là sự giống nhau nếu chúng cùng 1 class hoặc sự khác nhau nếu chúng khác
-          class mà không học được cùng lúc sự giống nhau và khác nhau trên cùng một
+          là sự giống nhau nếu chúng cùng 1 lớp hoặc sự khác nhau nếu chúng khác
+          lớp mà không học được cùng lúc sự giống nhau và khác nhau trên cùng một
           lượt huấn luyện.
 \end{itemize}
 
 Facenet đã giải quyết cả 2 vấn đề trên bằng các hiệu chỉnh nhỏ nhưng mang lại hiệu quả lớn:
 
 \begin{itemize}
-    \item Base network áp dụng một mạng convolutional neural network và giảm chiều dữ
+    \item Mạng cơ sở áp dụng một mạng neural tích chập và giảm chiều dữ
           liệu xuống chỉ còn 128 chiều. Do đó quá trình suy diễn và dự báo nhanh hơn và
           đồng thời độ chính xác vẫn được đảm bảo.
-    \item Sử dụng loss function là hàm triplet loss có khả năng học được đồng thời
+    \item Sử dụng hàm đánh giá mất mát là hàm đánh giá bộ ba (triplet loss) có khả năng học được đồng thời
           sự giống nhau giữa 2 bức ảnh cùng nhóm và phân biệt các bức ảnh không cùng nhóm.
           Do đó hiệu quả hơn rất nhiều so với các phương pháp trước đây.
 \end{itemize}
@@ -519,7 +519,7 @@ Facenet đã giải quyết cả 2 vấn đề trên bằng các hiệu chỉnh 
 \newpage
 \subsection{Giới thiệu Mạng InceptionResnetV1}
 
-Mạng InceptionResnetV1\cite{resnet} có là sự kết hợp giữa 2 mạng cơ sở là Inception Net hay còn gọi là GoogLe Net
+Mạng InceptionResnetV1\cite{resnet} có là sự kết hợp giữa 2 mạng cơ sở là InceptionNet hay còn gọi là GoogLe Net và ResNet.
 
 Nó được giới thiệu năm 2016 bởi các kĩ sư của Google, và cho thấy hiệu quả mạnh mẽ trên những tập dữ liệu ảnh lớn
 tiêu biểu là tập dữ liệu ImageNet.
@@ -535,7 +535,7 @@ tiêu biểu là tập dữ liệu ImageNet.
 \end{figure}
 
 InceptionResnetV1 là một mạng CNN kết hợp giữa các cấu trúc lớn với khoảng 23 triệu tham số trong mạng đồng nghĩa với
-mỗi khi cho ảnh đi qua mạng này phải thức hiện 23 triệu phép tính, còn chưa kể trong quá trình huẩn luyện
+mỗi khi cho ảnh đi qua mạng này phải thực hiện 23 triệu phép tính, còn chưa kể trong quá trình huẩn luyện
 mạng này phải thực hiện rất nhiều phép tính để thay đổi các tham số.
 
 Chính vì sự khổng lồ của nó nên đã gây ra sự khó khăn trong quá trình huấn luyện, với những điều kiện như:
@@ -549,7 +549,7 @@ Nên tôi đã sử dụng InceptionResnetV1 làm mạng cơ sở cho hệ thố
 
 \newpage
 \subsection{Kĩ thuật đánh giá bộ ba (Triplet loss)}
-Trong facenet, quá trình mã hóa của CNN đã giúp ta mã hóa bức ảnh về 128 chiều.
+Trong Facenet, quá trình mã hóa của CNN đã giúp ta mã hóa bức ảnh về 128 chiều.
 Sau đó những vector này sẽ làm đầu vào cho hàm đánh giá bộ ba để đánh giá khoảng
 cách giữa các vector.
 
@@ -574,7 +574,6 @@ Trong 3 ảnh thì ảnh anchor được cố định trước.
 Chúng ta sẽ lựa chọn 2 ảnh còn lại sao cho một ảnh là negative
 (của một người khác với anchor) và một ảnh là positive (cùng một người với anchor).
 
-Công thức --------------------------------------------------------------------
 
 Mục tiêu của hàm triplet loss là tối thiểu hóa khoảng cách giữa 2 ảnh khi chúng là
 negative và tối đa hóa khoảng cách khi chúng là positive.

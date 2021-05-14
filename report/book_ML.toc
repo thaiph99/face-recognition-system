@@ -26,7 +26,7 @@
 \contentsline {section}{\numberline {2.6}Các thuật toán học sâu sử dụng trong nhận diện khuôn mặt}{26}{section.2.6}%
 \contentsline {subsection}{\numberline {2.6.1}One-shot learning}{26}{subsection.2.6.1}%
 \contentsline {subsection}{\numberline {2.6.2}Learning similarity}{26}{subsection.2.6.2}%
-\contentsline {subsection}{\numberline {2.6.3}Siam learning}{26}{subsection.2.6.3}%
+\contentsline {subsection}{\numberline {2.6.3}Siam learning}{27}{subsection.2.6.3}%
 \contentsline {section}{\numberline {2.7}Mô hình học sâu được huấn luyện trước (Pre-train model)}{29}{section.2.7}%
 \contentsline {subsection}{\numberline {2.7.1}Sử dụng mô hình được huấn luyện trước}{29}{subsection.2.7.1}%
 \contentsline {subsection}{\numberline {2.7.2}Giới thiệu Facenet}{29}{subsection.2.7.2}%
