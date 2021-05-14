@@ -1,8 +1,3 @@
-# face-recognition-service
-
-<a href="https://www.youtube.com/playlist?list=PLFaW_8zE4amMZxCOYt7954AaP397_tMFc">Face recognition online service</a>,
-allow user training it.
-
 ## IDE for Python Development Pycharm
 
 Download Pycharm development tool https://www.jetbrains.com/pycharm/download/
@@ -60,7 +55,7 @@ mkdir build; cd build; cmake .. -DDLIB_USE_CUDA=0 -DUSE_AVX_INSTRUCTIONS=1; cmak
 pkg-config --libs --cflags dlib-1
 ```
 
-if above command error you may need instlal pkg-config use ``` brew install pkg-config ```
+if above command error you may need instlal pkg-config use `brew install pkg-config`
 
 Active python virtual enviroment and run
 
@@ -86,7 +81,3 @@ def home():
 if __name__ == "__main__":
     app.run()
 ```
-
-
-
-
