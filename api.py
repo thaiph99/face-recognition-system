@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import Normalizer
 import pickle
+import joblib
 from math import log, e
 # import visualkeras
 # turn off gpu
@@ -44,7 +45,8 @@ class Model:
     def __load_model(self):
         filename = self.storage + '/' + 'svm_model.sav'
         self.model_svm = svm.SVC(kernel='linear', probability=True)
-        self.model_svm = pickle.load(open(filename, 'rb'))
+        # self.model_svm = pickle.load(open(filename, 'rb'))
+        self.model_svm = joblib.load(filename)
 
     def __load_data(self):
         filename = self.storage + '/' + 'face_data.json'
@@ -153,7 +155,8 @@ class Model:
 
     def __save_model(self):
         filename = self.storage + '/' + 'svm_model.sav'
-        pickle.dump(self.model_svm, open(filename, 'wb'))
+        # pickle.dump(self.model_svm, open(filename, 'wb'))
+        joblib.dump(self.model_svm, filename)
 
     def __save_data(self):
         json_file = {}
@@ -297,7 +300,7 @@ class Model:
         out_encoder = LabelEncoder()
         out_encoder.classes_ = np.load(
             self.storage + '/' + 'face_name_encoded.npy')
-
+        print('info model ', self.model_svm)
         face_class = self.model_svm.predict(test_img_encs)
         face_prob = self.model_svm.predict_proba(test_img_encs)
         print('class : ', face_class)
