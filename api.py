@@ -10,7 +10,7 @@ from json import JSONEncoder
 import pickle
 from mtcnn import MTCNN
 from PIL import Image
-import Facenet
+import facenet
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import Normalizer
@@ -23,7 +23,7 @@ import os
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
-model = Facenet.loadModel()
+model = facenet.loadModel()
 model.summary()
 print('name model :', model.name)
 # visualkeras.layered_view(model, to_file='output.png')
