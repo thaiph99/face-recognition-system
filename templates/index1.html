@@ -1,12 +1,19 @@
-<!DOCTYPE html>
+<!DOCTYPE =html>
 <html>
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Xác nhận khuôn mặt</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Store Report</title>
   </head>
   <body>
-    <img src="img_chania.jpg" alt="Flowers in Chania">
+    <table border="1">
+      {%for value in result %}
+      <tr>
+        <th>
+          <!-- <img src="{{value}}" width="500" height="600" /> -->
+          <img src="lisa/lisa2.jpg" width="500" height="600" />
+        </th>
+      </tr>
+      {%endfor%}
+    </table>
   </body>
 </html>
+`
