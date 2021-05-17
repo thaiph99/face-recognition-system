@@ -1,31 +1,29 @@
 __author__ = 'thaiph99'
 
-from sklearn import svm
-import os
 import json
+import os
+from json import JSONEncoder
+from math import log, e
+import joblib
+import matplotlib.pyplot as plt
 import numpy as np
+from PIL import Image
+from mtcnn import MTCNN
 from numpy import asarray, expand_dims
 from numpy.linalg import norm
-from json import JSONEncoder
-import pickle
-from mtcnn import MTCNN
-from PIL import Image
-import facenet
-import matplotlib.pyplot as plt
+from sklearn import svm
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import Normalizer
-import pickle
-import joblib
-from math import log, e
-# import visualkeras
-# turn off gpu
-import os
+import facenet
 
+# turn off gpu
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 model = facenet.loadModel()
 model.summary()
 print('name model :', model.name)
+
+
 # visualkeras.layered_view(model, to_file='output.png')
 
 
@@ -145,7 +143,7 @@ class Model:
             image = image.resize((160, 160))
             face_array = asarray(image)
 
-            # face_enc = bla bla -> face_array  # embeding for face image
+            # face_enc = bla bla -> face_array  # embedding for face image
             face_enc = self.get_embedding(model, face_array)
 
             self.faces_embedded.append(face_enc)

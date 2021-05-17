@@ -73,8 +73,8 @@ def train():
         for filename in list_img_tmp:
             if filename == '.gitignore':
                 continue
-            shutil.move("data_face_temporary/"+filename,
-                        "storage_temporary/"+filename)
+            shutil.move("data_face_temporary/" + filename,
+                        "storage_temporary/" + filename)
 
     if (len(uploaded_files) == 0 or name in set(app.model.faces_name)) and check_data != 1:
         print(len(uploaded_files))

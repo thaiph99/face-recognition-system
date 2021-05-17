@@ -1,14 +1,7 @@
 __author__ = 'thaiph99'
 
-from flask import Flask, json, Response, request, render_template
-from werkzeug.utils import secure_filename
-from os import path, getcwd
-import time
-from collections import Counter
-from flask_cors import CORS
-from camera import VideoCamera
 from os import listdir
-import shutil
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
