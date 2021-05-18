@@ -1,3 +1,14 @@
 /models_weight/shape_predictor_68_face_landmarks.dat
 /models_weight/facenet_keras_weights.h5
+
+
+.idea/
+.vscode/
+
+experiments/
+tags
+
+# Byte-compiled / optimized / DLL files
 __pycache__/
+*.py[cod]
+*$py.class
