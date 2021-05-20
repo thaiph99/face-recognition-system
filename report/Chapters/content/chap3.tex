@@ -19,7 +19,7 @@ Về cơ bản một hệ thống điểm danh bằng khuôn mặt gồm các b�
     \item Lưu trữ các thông tin và kết quả phân loại đã được học
     \item Nhận dạng khuôn mặt và tiến hành điểm danh
 \end{itemize}
-
+\newpage
 Hệ thống được chia thành 2 quy trình:
 \begin{itemize}
     \item Người dùng đăng ký khuôn mặt của mình
@@ -34,7 +34,7 @@ Hệ thống được chia thành 2 quy trình:
     \caption{Tổng quan hệ thống}
 \end{figure}
 
-
+\newpage
 \section{Xây dựng}
 
 \subsection{Thu thập dữ liệu khuôn mặt}
@@ -55,7 +55,6 @@ nhiều góc mặt nhất có thể
     \caption{Thu thập dữ liệu khuôn mặt người dùng}
 \end{figure}
 
-\newpage
 Ngoài ra, để đảm bảo độ chính xác cho hệ thống, đối với mỗi người dùng
 cần thu thập một số lượng ảnh nhất định không quá ít, và mỗi bức ảnh chỉ
 chứa duy nhất một khuôn mặt.
@@ -63,7 +62,7 @@ chứa duy nhất một khuôn mặt.
 Bộ dữ liệu tôi sử dụng trong dự án này gồm 400 ảnh của 10 sinh viên.
 Với số lượng ảnh của mỗi sinh viên là khác nhau dao động từ 30 đến 40
 ảnh cho mỗi sinh viên.
-
+\newpage
 \subsection{Phát hiện khuôn mặt và gán nhãn dữ liệu}
 Để trích chọn đặc trưng cho mỗi khuôn mặt, trước tiên ta cần tìm ra
 vị trí khuôn mặt trong bức hình. Vì bộ dữ liệu sẽ bao gồm nhiều ảnh
@@ -82,11 +81,14 @@ yêu cầu người dùng nhập tên.
     \caption{MTCNN lấy khuôn mặt của người dùng}
 \end{figure}
 
+\newpage
 \subsection{Làm giàu dữ liệu}
 
 Dữ liệu là nguồn sống của học máy và học sâu, nhận thấy sự quan trọng của dữ liệu
 trong các mô hình học sâu nên các phương pháp làm giàu dữ liệu đã ra đời và đóng góp rất nhiều
 vào sự thành công của các mô hình học sâu.
+
+
 
 Ở trong dự án này tôi cũng sử dụng một số phương pháp làm giàu dữ liệu phổ biến sử dụng các thuật toán xử lý ảnh:
 \begin{itemize}
@@ -97,13 +99,15 @@ vào sự thành công của các mô hình học sâu.
 \end{itemize}
 
 \begin{figure}
-    \begin{subfigure}{1\textwidth}
+    \begin{subfigure}{0.9\textwidth}
         \includegraphics[width=1\linewidth]{Chapters/items/chap3_4.jpg}
         \label{fig:chap3_4}
     \end{subfigure}
     \caption{Dữ liệu đã đươc làm giàu}
 \end{figure}
 
+
+\newpage
 \subsection{Trích chọn các đặc trưng ảnh khuôn mặt}
 Trong hệ thống này tôi sử dụng 1 mô hình có sẵn với mạng cơ sở là InceptionResnetV1 được
 huẩn luyện trong tập dữ liệu với hàng triệu ảnh khuôn mặt khác nhau trong đó có cả người Việt Nam.
@@ -129,15 +133,13 @@ Sau đó FaceNet sẽ tiến hành trích rút đặc trưng của từng khuôn
 áp dụng mô hình học với thuật toán hàm đánh giá bộ ba và gắn nhãn cho từng
 khuôn mặt (nhãn sẽ được lấy theo tên thư mục chứa ảnh).
 
+\newpage
 \subsection{Đưa các vector đặc trưng vào mô hình phân loại}
 Sau khi đã có các vector đặc trưng của các khuôn mặt, tôi sẽ đưa các vector này
 vào một mô hình để thuật toán có thể học được cách phân loại các đối tượng đã đăng ký.
 
-Mô hình thuât toán phân loại mà tôi sử dụng là thuật toán SVM (Support vector machine)
 
-Sau khi thuât toán SVM đã được huấn luyện để phân loại xong thì tiến hành lưu kết quả huấn luyện cùng
-với các vector và nhãn đã đào tạo lại, nhằm mục đích huẩn luyện lại mô hình khi có thêm khuôn mặt mới
-đăng ký.
+Mô hình thuât toán phân loại mà tôi sử dụng là thuật toán SVM (Support vector machine)
 
 \begin{figure}
     \begin{subfigure}{0.8\textwidth}
@@ -146,6 +148,12 @@ với các vector và nhãn đã đào tạo lại, nhằm mục đích huẩn l
     \end{subfigure}
     \caption{Mô tả cơ chế phân loại của SVM}
 \end{figure}
+
+Sau khi thuât toán SVM đã được huấn luyện để phân loại xong thì tiến hành lưu kết quả huấn luyện cùng
+với các vector và nhãn đã đào tạo lại, nhằm mục đích huẩn luyện lại mô hình khi có thêm khuôn mặt mới
+đăng ký.
+
+
 
 \newpage
 \subsection{Nhận diện khuôn mặt và tiến hành điểm danh}

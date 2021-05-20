@@ -34,17 +34,17 @@
 \contentsline {subsection}{\numberline {2.7.4}Kĩ thuật đánh giá bộ ba (Triplet loss)}{32}{subsection.2.7.4}%
 \contentsline {chapter}{\numberline {3}Thiết kế và xây dựng hệ thống}{34}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Phân tích}{34}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Xây dựng}{35}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Thu thập dữ liệu khuôn mặt}{35}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Phát hiện khuôn mặt và gán nhãn dữ liệu}{36}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Làm giàu dữ liệu}{36}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Trích chọn các đặc trưng ảnh khuôn mặt}{37}{subsection.3.2.4}%
-\contentsline {subsection}{\numberline {3.2.5}Đưa các vector đặc trưng vào mô hình phân loại}{38}{subsection.3.2.5}%
-\contentsline {subsection}{\numberline {3.2.6}Nhận diện khuôn mặt và tiến hành điểm danh}{39}{subsection.3.2.6}%
-\contentsline {subsection}{\numberline {3.2.7}Kết quả thử nghiệm}{40}{subsection.3.2.7}%
-\contentsline {subsubsection}{Độ chính xác của mô hình facenet}{40}{subsection.3.2.7}%
-\contentsline {subsubsection}{Hiệu suất của hệ thống}{42}{figure.caption.34}%
-\contentsline {chapter}{\numberline {4}Kết luận và hướng phát triển}{43}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Kết luận}{43}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Hướng phát triển}{43}{section.4.2}%
-\contentsline {chapter}{Tài liệu tham khảo}{45}{chapter*.36}%
+\contentsline {section}{\numberline {3.2}Xây dựng}{36}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Thu thập dữ liệu khuôn mặt}{36}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Phát hiện khuôn mặt và gán nhãn dữ liệu}{37}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Làm giàu dữ liệu}{38}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Trích chọn các đặc trưng ảnh khuôn mặt}{39}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Đưa các vector đặc trưng vào mô hình phân loại}{40}{subsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.2.6}Nhận diện khuôn mặt và tiến hành điểm danh}{41}{subsection.3.2.6}%
+\contentsline {subsection}{\numberline {3.2.7}Kết quả thử nghiệm}{42}{subsection.3.2.7}%
+\contentsline {subsubsection}{Độ chính xác của mô hình facenet}{42}{subsection.3.2.7}%
+\contentsline {subsubsection}{Hiệu suất của hệ thống}{44}{figure.caption.34}%
+\contentsline {chapter}{\numberline {4}Kết luận và hướng phát triển}{45}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Kết luận}{45}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Hướng phát triển}{45}{section.4.2}%
+\contentsline {chapter}{Tài liệu tham khảo}{47}{chapter*.36}%
