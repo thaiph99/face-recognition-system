@@ -1,6 +1,6 @@
 __author__ = 'thaiph99'
 
-from flask import Flask, json, Response, request, render_template
+from flask import Flask, json, Response, request, render_template, send_from_directory
 from werkzeug.utils import secure_filename
 from os import path, getcwd
 import time
@@ -18,6 +18,7 @@ app.config['file_allowed'] = ['image/png', 'image/jpeg', 'image/jpg']
 app.config['storage'] = path.join(getcwd(), 'storage')
 app.config['storage_temporary'] = path.join(getcwd(), 'storage_temporary')
 app.model = Model()
+result = {}
 
 
 def success_handle(output, status=200, mimetype='application/json'):
@@ -120,6 +121,20 @@ def recognize():
                 return success_handle(json.dumps(message))
             else:
                 return error_handle("Sorry we can not found any people matched with your face image, try another image")
+
+
+@app.route('/<filename>')
+def send_image(filename):
+    return send_from_directory("dataset/datasave", filename)
+
+
+@app.route('/show', methods=['GET'])
+def test():
+    hists = listdir('dataset/datasave')
+    hists.sort()
+    hists = ['/' + file for file in hists]
+    print(hists)
+    return render_template('index1.html', result=hists)
 
 
 # app.model.delete_face('lisa')

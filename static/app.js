@@ -98,9 +98,7 @@ $(document).ready(function () {
         .then(function (response) {
           message = {
             type: "success",
-            message:
-              "Training has been done, user with id is: " +
-              _.get(response, "data.id"),
+            message: "Huấn luyện thành công",
           };
 
           train_data = { name: "", file: null };

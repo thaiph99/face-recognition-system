@@ -15,6 +15,7 @@ from sklearn import svm
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import Normalizer
 import facenet
+import cv2
 
 # turn off gpu
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
@@ -83,9 +84,10 @@ class Model:
 
     @staticmethod
     def extract_multi_face(filename, required_size=(160, 160)):
-        image = Image.open(filename)
-        image = image.convert('RGB')
+        img = Image.open(filename)
+        image = img.convert('RGB')
         pixels = asarray(image)
+        img_draw = pixels.copy()
         detector = MTCNN()
         results = detector.detect_faces(pixels)
         face_arrays = []
@@ -94,15 +96,18 @@ class Model:
             # bug fix
             x1, y1 = abs(x1), abs(y1)
             x2, y2 = x1 + width, y1 + height
+            cv2.rectangle(img_draw, (x1, y1), (x2, y2), (225, 225, 0), 2)
             # extract the face
             face = pixels[y1:y2, x1:x2]
             # resize pixels to the model size
-            image = Image.fromarray(face)
-            image = image.resize(required_size)
-            face_array = asarray(image)
+            face = Image.fromarray(face)
+            face = face.resize(required_size)
+            face_array = asarray(face)
             face_arrays.append(face_array)
             # plt.imshow(face_array)
             # plt.show()
+        img_save = Image.fromarray(img_draw)
+        img_save.save('dataset/datasave/A.jpg')
         return face_arrays
 
     @staticmethod
@@ -319,26 +324,29 @@ class Model:
                 print(dict_name[name[i]])
                 if dict_name[name[i]][0] > similarity_score:
                     dict_name[name[i]][0] = similarity_score
-                    name[dict_name[name[i]][1]] = 'unknown'
+                    name[dict_name[name[i]][1]] = 'unknown'+str(i)
                     dict_name[name[i]][1] = i
                 else:
-                    name[i] = 'unknown'
+                    name[i] = 'unknown'+str(i)
 
             if similarity_score >= 10:
-                name[i] = 'unknown'
+                name[i] = 'unknown'+str(i)
 
-        fg, ax = plt.subplots(1, len(name))
+        # fg, ax = plt.subplots(1, len(name))
 
         for i in range(len(name)):
             print('-----------------')
             print('name', name[i])
             print('probability', face_prob[i])
-            # print('entropy', self.entropy(face_prob[i]))
-            ax[i].imshow(faces_test[i])
-            title = (str(name[i]))
-            ax[i].set_title(title)
-            ax[i].axis('off')
-        plt.show()
+            print('entropy', self.entropy(face_prob[i]))
+            print('type ', type(faces_test[i]))
+            img_save = Image.fromarray(faces_test[i])
+            img_save.save(f'dataset/datasave/{name[i]}.jpg')
+            # ax[i].imshow(faces_test[i])
+            # title = (str(name[i]))
+            # ax[i].set_title(title)
+            # ax[i].axis('off')
+        # plt.show()
         list_name_predict += list(name)
         print('list name', list_name_predict)
         os.remove(path)
