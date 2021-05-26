@@ -86,7 +86,7 @@ class Model:
 
     @staticmethod
     def extract_multi_face(filename, required_size=(160, 160)):
-        name_img = re.findall(r'\/([^/]*)(.jpg|.png|.jpeg)', filename)
+        name_img = re.findall(r'/([^/]*)(.jpg|.png|.jpeg)', filename)
         img = Image.open(filename)
         image = img.convert('RGB')
         pixels = asarray(image)
@@ -297,7 +297,6 @@ class Model:
 
         list_name_predict = []
         result = []
-        name = ''
         for key in dict_em.keys():
             list_ems = dict_em[key]
             res = self.is_known_faces(test_img_encs, list_ems)

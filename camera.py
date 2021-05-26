@@ -53,8 +53,6 @@ class VideoCamera(object):
         frame_new = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         dets = self.detertor(frame_new, 1)
         if len(dets) == 1:
-
-            faces = dlib.full_object_detections()
             faces = self.predictor(frame_new, dets[0])
 
             points = self.shape_to_np(faces)
