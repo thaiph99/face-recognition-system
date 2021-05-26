@@ -16,6 +16,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import Normalizer
 import facenet
 import cv2
+import re
 
 # turn off gpu
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
@@ -84,6 +85,7 @@ class Model:
 
     @staticmethod
     def extract_multi_face(filename, required_size=(160, 160)):
+        name_img = re.findall(r'\/([^/]*)(.jpg|.png|.jpeg)', filename)
         img = Image.open(filename)
         image = img.convert('RGB')
         pixels = asarray(image)
@@ -107,7 +109,7 @@ class Model:
             # plt.imshow(face_array)
             # plt.show()
         img_save = Image.fromarray(img_draw)
-        img_save.save('dataset/datasave/A.jpg')
+        img_save.save(f'dataset/datasave/A{name_img[0][0].upper()}.jpg')
         return face_arrays
 
     @staticmethod

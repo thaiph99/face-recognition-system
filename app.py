@@ -8,7 +8,7 @@ from api import Model
 from collections import Counter
 from flask_cors import CORS
 from camera import VideoCamera
-from os import listdir
+from os import listdir, remove
 import shutil
 
 app = Flask(__name__)
@@ -99,6 +99,10 @@ def train():
 # router for recognize a unknown face
 @app.route('/api/recognize', methods=['POST'])
 def recognize():
+    paths = listdir('dataset/datasave')
+    paths = ['dataset/datasave/'+_ for _ in paths]
+    for pat in paths:
+        remove(pat)
     if 'file' not in request.files:
         return error_handle("Image is required")
     else:
@@ -115,7 +119,8 @@ def recognize():
             print(file_path)
             list_name = app.model.recognize()
             if len(list_name) != 0:
-                user_name = list_name
+                user_name = ', '.join(list_name)
+                print(user_name)
                 message = {"message": "Hey we found {0} matched with your face image".format(len(user_name)),
                            "user": user_name}
                 return success_handle(json.dumps(message))

@@ -137,14 +137,14 @@ $(document).ready(function () {
       .post("/api/recognize", recog_form_data)
       .then(function (response) {
         console.log(
-          "We found a user matched with your face image is",
+          "Đã xác định được các khuôn mặt trong ảnh : ",
           response.data
         );
 
         message = {
           type: "success",
           message:
-            "We found a user matched with your face image is: " +
+            "Đã xác định được các khuôn mặt trong ảnh : " +
             response.data.user.toString(),
         };
 
