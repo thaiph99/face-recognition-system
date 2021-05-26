@@ -2,10 +2,12 @@ __author__ = 'thaiph99'
 
 import json
 import os
+import re
 from json import JSONEncoder
 from math import log, e
+
+import cv2
 import joblib
-import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image
 from mtcnn import MTCNN
@@ -14,9 +16,8 @@ from numpy.linalg import norm
 from sklearn import svm
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import Normalizer
+
 import facenet
-import cv2
-import re
 
 # turn off gpu
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"

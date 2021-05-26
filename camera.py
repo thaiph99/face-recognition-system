@@ -1,10 +1,10 @@
 __author__ = 'thaiph99'
 
-from imutils.video import WebcamVideoStream
 import cv2
-import face_recognition
 import dlib
+import face_recognition
 import numpy as np
+from imutils.video import WebcamVideoStream
 
 
 # predictor_path = 'testcode/shape_predictor_5_face_landmarks.dat'

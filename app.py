@@ -1,15 +1,17 @@
 __author__ = 'thaiph99'
 
-from flask import Flask, json, Response, request, render_template, send_from_directory
-from werkzeug.utils import secure_filename
-from os import path, getcwd
-import time
-from api import Model
-from collections import Counter
-from flask_cors import CORS
-from camera import VideoCamera
-from os import listdir, remove
 import shutil
+import time
+from collections import Counter
+from os import listdir, remove
+from os import path, getcwd
+
+from flask import Flask, json, Response, request, render_template, send_from_directory
+from flask_cors import CORS
+from werkzeug.utils import secure_filename
+
+from api import Model
+from camera import VideoCamera
 
 app = Flask(__name__)
 CORS(app)
