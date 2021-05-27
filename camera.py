@@ -71,8 +71,9 @@ class VideoCamera(object):
 
             for item in pose_face:
                 if int(ratio) == item:
-                    cv2.imwrite(
-                        f'data_face_temporary/img_in_{str(int(ratio))}sec.jpg', frame)
+                    # cv2.imwrite(
+                    #     f'data_face_temporary/img_in_{str(int(ratio))}sec.jpg', frame)
+                    pass
 
             if ratio > 0:
                 recomend = 'HAY QUAY SANG PHAI'

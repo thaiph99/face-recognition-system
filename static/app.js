@@ -98,7 +98,7 @@ $(document).ready(function () {
         .then(function (response) {
           message = {
             type: "success",
-            message: "Huấn luyện thành công",
+            message: "Đăng ký thành công",
           };
 
           train_data = { name: "", file: null };

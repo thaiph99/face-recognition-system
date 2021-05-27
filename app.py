@@ -144,7 +144,7 @@ def test():
     return render_template('index1.html', result=hists)
 
 
-# app.model.delete_face('lisa')
+# app.model.delete_face('thai')
 set_name = Counter(app.model.faces_name)
 print(set_name)
 
